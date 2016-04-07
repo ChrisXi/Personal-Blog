@@ -13,7 +13,7 @@
 body{
   margin: 0;
   padding: 0;
-  background: white;
+  background: #FFFFFF;
 }
 
 u.error {    
@@ -45,13 +45,13 @@ pre.error {
 div.circleDiv {
   position: absolute;
   border-radius: 50%;
-  behavior: url(PIE.htc); /* remove if you don't care about IE8 */
-  top: 100px;
+  top: 10%;
   left: 40%;
   width: 20%;
-  max-width: 150px;
+  max-width: 140px;
+  min-width: 90px;
   background-color: white;
-  border: 3px  solid white;
+  border: 3px solid white;
 }
 
 .tooltip-inner {
@@ -83,21 +83,17 @@ button.enter {
 
 </style>
 
-<script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-});
-</script>
-
 </head>
 
 <body>
 
-
 <div >           
-  <img src="5.jpg" class="img-responsive" height="800"> 
+  <img src="5.jpg" class="img-responsive" height="800" id="header" > 
 </div>
 
+<div class="circleDiv" id="avatar">
+  <img src="avatar.png" class="img-responsive"> 
+</div>
 
 <div style="background-color: #F1F1E9; 
             color: white; 
@@ -142,10 +138,19 @@ $(document).ready(function(){
 
 </div>
 
-<div class="circleDiv">
-  <img src="avatar.png" class="img-responsive"> 
-</div>
 
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+  // var top = $("#header").height() - $("#avatar").height()/2; 
+  // $("#avatar").css({top: top, position:'absolute'});
+});
+
+$(window).resize(function() {
+  var top = $("#header").height() - $("#avatar").height()/2; 
+  $("#avatar").css({top: top, position:'absolute'});
+})
+</script>
 
 
 </body>

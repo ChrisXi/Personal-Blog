@@ -1,30 +1,52 @@
-<html>  
-<head>  
-  <style>  
-    div { border: 3px solid; padding: 5px; }  
-    div.left { text-align: left; background: #ffcccc; }  
-    div.center { text-align: center; background: #ccffcc; }  
-    div.right { text-align: right; background: #ccccff; }  
-    div.justify { text-align: justify; background: #ffffcc; }  
-  </style>  
-</head>  
-  
-<body>  
-  <div class="left"><em>Left-aligned text.</em></div>  
-  
-  <div class="center"><em>Centered text.</em></div>  
-  
-  <div class="right"><em>Right-aligned text.</em></div>  
-  
-  <div class="justify"><em>Justified text.</em> Upon this a question  
-  arises: whether it be better to be loved than feared or feared than  
-  loved? It may be answered that one should wish to be both, but, because  
-  it is difficult to unite them in one person, it is much safer to be  
-  feared than loved, when, of the two, either must be dispensed with.  
-  Because this is to be asserted in general of men, that they are  
-  ungrateful, fickle, false, cowardly, covetous, and as long as you  
-  succeed they are yours entirely; they will offer you their blood,  
-  property, life, and children, as is said above, when the need is far  
-  distant; but when it approaches they turn against you.</div>  
-</body>  
-</html>  
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>width demo</title>
+  <style>
+  body {
+    background: yellow;
+  }
+  button {
+    font-size: 12px;
+    margin: 2px;
+  }
+  p {
+    width: 150px;
+    border: 1px red solid;
+  }
+  div {
+    color: red;
+    font-weight: bold;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<button id="getp">Get Paragraph Width</button>
+<button id="getd">Get Document Width</button>
+<button id="getw">Get Window Width</button>
+<div>&nbsp;</div>
+<p>
+  Sample paragraph to test width
+</p>
+ 
+<script>
+function showWidth( ele, w ) {
+  $( "div" ).text( "The width for the " + ele + " is " + w + "px." );
+}
+$( "#getp" ).click(function() {
+  showWidth( "paragraph", $( "p" ).width() );
+});
+$( "#getd" ).click(function() {
+  showWidth( "document", $( document ).width() );
+});
+$("#getw").click(function() {
+  showWidth( "window", $( window ).width() );
+  alert("111");
+});
+
+</script>
+ 
+</body>
+</html>
