@@ -9,10 +9,11 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <style type="text/css"> 
+
 body{
   margin: 0;
   padding: 0;
-  background:#4A66A3;
+  background: white;
 }
 
 u.error {    
@@ -24,9 +25,9 @@ pre.content {
    /*font-family: "courier new";*/
    font-family: "Lucida Console";
    font-size: 12px;
-   color: white; 
-   background-color: #4CAF50;
-   border: 0px  solid #4CAF50;
+   color: #2A6EA2; 
+   background-color: #F1F1E9;
+   border: 0px  solid #F1F1E9;
    padding: 0px;
    margin: 0px;
 }
@@ -35,8 +36,8 @@ pre.error {
    /*font-family: "courier new", courier, monospace;*/
    font-size: 11px;
    color: black; 
-   background-color: #FFF;
-   border: 0px  solid #FFF;
+   background-color: white;
+   border: 0px  solid white;
    padding: 0px;
    margin: 0px;
 }
@@ -46,11 +47,11 @@ div.circleDiv {
   border-radius: 50%;
   behavior: url(PIE.htc); /* remove if you don't care about IE8 */
   top: 100px;
-  left: 800px;
-  width: 200px;
-  height: 200px;
+  left: 40%;
+  width: 20%;
+  max-width: 150px;
   background-color: white;
-  border: 3px  solid #4A66A3;
+  border: 3px  solid white;
 }
 
 .tooltip-inner {
@@ -73,7 +74,13 @@ div.circleDiv {
   border-bottom-color: white;
   /*border-width: 0 5px 5px;*/
 }
- 
+
+button.enter {
+  position: absolute;
+  top: 650px;
+  left: 50px;
+}
+
 </style>
 
 <script>
@@ -87,32 +94,23 @@ $(document).ready(function(){
 <body>
 
 
-<!-- <div class="container">           
-  <img src="5.jpg" class="img-responsive" alt="Cinque Terre" width="1200" height="600"> 
-</div> -->
-
-<div style="background-color: #17A6DA; 
-            color: white; 
-            height: 180px; 
-            padding: 10px; 
-            margin-left: 20px;
-            margin-right: 20px;
-            margin-top: 20px;
-            border: 5px  solid #F1F1F1;">
-  <h3>This is a heading</h3>
-  <p>This is a paragraph.</p>
+<div >           
+  <img src="5.jpg" class="img-responsive" height="800"> 
 </div>
 
-<div style="background-color: #4CAF50; 
+
+<div style="background-color: #F1F1E9; 
             color: white; 
-            height: 500px;
+            height: 40%;
+            width: 90%;
             padding: 10px; 
-            margin-left: 20px;
-            margin-right: 20px;
-            margin-top: 3px;
-            border: 5px solid #F1F1F1;">
+            margin: 0 auto;
+            margin-top: 5px;
+            max-width: 1000px;
+            border: 5px solid #F1F1E9;" >
 
   <pre class="content"><code><em style="color: green;">
+
   /*
    * Hey, guys, my name is Yang Xi. I was luckily brought to this world by my parents in December-17-1990.
      I am from Xi'an city, which is an old city with very long history and various delicious food.
@@ -129,17 +127,25 @@ $(document).ready(function(){
       me.becomeToUgradStu("Chang'an University", "Ugrad Student", "Computer Science", "2008-2012");
       me.becomeToGradStu("Chang'an University", "Grad Student", "Computer Science", "2012-2015");
       me.becomeToAnotherGradStu("Johns Hopkins University", "Grad Student", "Computer Science", "2015-2016"); 
-      me.<u class = "error" data-toggle="tooltip" data-placement="bottom" data-html='true' title="<u>Missing argument: 'Company' in the method tryingToBecomeMonkey(Company, Position)</u><br/>three quick fixes available:<br/><pre class='error'>    1. keep practicing<br/>    2. be optimistic<br/>    3. never give up</pre>">tryingToBecomeMonkey</u>( <u class = "error">,</u> "Software Development Engineer");
+      me.<u class = "error" 
+            data-toggle="tooltip" 
+            data-placement="bottom" 
+            data-html='true' 
+            title="<u>Missing argument: 'Company' in the method tryingToBecomeMonkey(Company, Position)</u><br/>
+                      three quick fixes available:<br/>
+                      <pre class='error'>    1. keep practicing<br/>    2. be optimistic<br/>    3. never give up</pre>">tryingToBecomeMonkey</u>( <u class = "error">,</u> "Software Development Engineer");
 
       <em style="color: green;">/*nothing will be brought to heaven*/</em>
       return void;
   }
-  
   </code></pre>
 
 </div>
 
-<div class="circleDiv"></div>
+<div class="circleDiv">
+  <img src="avatar.png" class="img-responsive"> 
+</div>
+
 
 
 </body>
