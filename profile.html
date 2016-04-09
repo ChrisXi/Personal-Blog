@@ -13,7 +13,7 @@
 body{
   margin: 0;
   padding: 0;
-  background: #FFFFFF;
+  background: #F5F8FA;
 }
 
 u.error {    
@@ -26,8 +26,8 @@ pre.content {
    font-family: "Lucida Console";
    font-size: 12px;
    color: #2A6EA2; 
-   background-color: #F1F1E9;
-   border: 0px  solid #F1F1E9;
+   background-color: #FFFFFF;
+   border: 0px  solid #FFFFFF;
    padding: 0px;
    margin: 0px;
 }
@@ -36,8 +36,8 @@ pre.error {
    /*font-family: "courier new", courier, monospace;*/
    font-size: 11px;
    color: black; 
-   background-color: white;
-   border: 0px  solid white;
+   background-color: #F5F8FA;
+   border: 0px  solid #F5F8FA;
    padding: 0px;
    margin: 0px;
 }
@@ -46,13 +46,14 @@ div.circleDiv {
   position: absolute;
   border-radius: 50%;
   top: 10%;
-  left: 40%;
+  left: 42%;
   width: 20%;
-  max-width: 140px;
   min-width: 90px;
+  max-width: 120px;
   padding: 5px;
   background-color: white;
   border: 1px solid #D3E0E9;
+  z-index: 10;
 }
 
 .tooltip-inner {
@@ -60,8 +61,8 @@ div.circleDiv {
   color: #000;
   max-width: 500px;
   width: 500px;
-  background: #fff;
-  border: solid 1px #fff;
+  background: #F5F8FA;
+  border: solid 1px black;
   position: absolute;
   left: -75px;
   top: 5px;
@@ -72,7 +73,7 @@ div.circleDiv {
   align: right;
   color: #000;
   top: 0;
-  border-bottom-color: white;
+  border-bottom-color: black;
   /*border-width: 0 5px 5px;*/
 }
 
@@ -90,23 +91,27 @@ button.enter {
 
 <div style="border: 1px solid #D3E0E9;
             border-radius: 1%;" >           
-  <img src="5.jpg" class="img-responsive" height="800" id="header" > 
+  <img src="header.jpg" class="img-responsive" height="800" id="header" > 
 </div>
 
 <div class="circleDiv" id="avatar">
-  <img src="avatar.png" class="img-responsive"> 
+  <!-- <img src="avatar.png" class="img-responsive">  -->
+  <img class="img-responsive" src="avatar.png" onmouseover="this.src='avatar1.png'" 
+                              onmouseout="this.src='avatar.png'"> 
 </div>
 
-<div style="background-color: #F1F1E9; 
+<div style="background-color: #FFFFFF; 
             border-radius: 1%;
             color: white; 
-            height: 40%;
+            /*height: 40%;*/
             width: 90%;
             padding: 10px; 
             margin: 0 auto;
             margin-top: 5px;
+            margin-bottom: 20px;
             max-width: 1000px;
-            border: 1px solid #D3E0E9;" >
+            border: 1px solid #D3E0E9;" 
+     id="mid-content">
 
   <pre class="content"><code><em style="color: green;">
 
@@ -153,6 +158,28 @@ $(window).resize(function() {
   var top = $("#header").height() - $("#avatar").height()/2; 
   $("#avatar").css({top: top, position:'absolute'});
 })
+
+$('#avatar').css('cursor', 'pointer');
+
+$('#avatar').hover(function() {
+  $('#header').fadeTo(10, 0.2);
+  $('#mid-content').fadeTo(10, 0.2);
+}, function() {
+  $('#header').fadeTo(10, 1);
+  $('#mid-content').fadeTo(10, 1);
+});
+
+
+// $("#avatar").mouseover(function() { 
+//   var src = $('#avatar').attr("src").match(/[^\.]+/) + "avatar.png";
+//   alert("dd");
+  
+//   $(this).attr("src", src);
+// }).mouseout(function() {
+//   var src = $('#avatar').attr("src").replace("avatar1.png", ".png");
+//   $(this).attr("src", src);
+// });
+
 </script>
 
 
