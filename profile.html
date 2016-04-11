@@ -150,14 +150,17 @@ button.enter {
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();   
-  // var top = $("#header").height() - $("#avatar").height()/2; 
-  // $("#avatar").css({top: top, position:'absolute'});
 });
 
 $(window).resize(function() {
   var top = $("#header").height() - $("#avatar").height()/2; 
   $("#avatar").css({top: top, position:'absolute'});
-})
+});
+
+$(window).load(function() {
+  var top = $("#header").height() - $("#avatar").height()/2; 
+  $("#avatar").css({top: top, position:'absolute'});
+});
 
 $('#avatar').css('cursor', 'pointer');
 
