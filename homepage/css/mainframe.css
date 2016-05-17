@@ -33,7 +33,7 @@ html { height: 100%;}
     overflow-y: auto;
     overflow-x: hidden;
     /*background: #1a1a1a;*/
-    background-image: url("sidebar3.jpg");
+    background-image: url("../pic/sidebar.jpg");
     background-repeat:no-repeat;
     background-size:100% 100%;
     background-position:center;
@@ -204,6 +204,7 @@ html { height: 100%;}
     color: #fff;
     text-decoration: none;
     background-color: transparent;
+    border-bottom: 2px solid #ddd;   
 }
 
 .sidebar-nav > .sidebar-brand {
