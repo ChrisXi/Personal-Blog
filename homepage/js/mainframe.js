@@ -27,6 +27,7 @@ $(document).ready(function () {
   });  
 });
 
+
 /**
  * Add JQuery animation to bootstrap dropdown elements.
  */

@@ -8,6 +8,7 @@ html { height: 100%;}
 .nav .open > a:hover, 
 .nav .open > a:focus {background-color: transparent;}
 
+
 /*-------------------------------*/
 /*           Wrappers            */
 /*-------------------------------*/
@@ -41,6 +42,10 @@ html { height: 100%;}
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+
+    -moz-box-shadow:    3px 0 5px 0 #555;
+    -webkit-box-shadow: 3px 0 5px 0 #555;
+    box-shadow:         3px 0 5px 0 #555;
 }
 
 #sidebar-wrapper::-webkit-scrollbar {
@@ -54,6 +59,7 @@ html { height: 100%;}
 #page-content-wrapper {
     width: 100%;
     padding-top: 70px;
+    background-color: #F5F5F5;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -228,7 +234,21 @@ html { height: 100%;}
 .sidebar-badge {
   position: absolute; 
   right: 16px;
-  top: 12px;
+  top: 8px;
+  color: #ffffff;
+  background-color: #bdbdbd;
+  border-radius: 2%;
+
+  display: inline-block;
+  min-width: 24px;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 3px;
+  font-size: 10px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  opacity: 0.8;
 }
 
 /*-------------------------------*/
