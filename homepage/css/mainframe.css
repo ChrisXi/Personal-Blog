@@ -225,6 +225,12 @@ html { height: 100%;}
     box-shadow: none;
 }
 
+.sidebar-badge {
+  position: absolute; 
+  right: 16px;
+  top: 12px;
+}
+
 /*-------------------------------*/
 /*       Hamburger-Cross         */
 /*-------------------------------*/
