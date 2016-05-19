@@ -8,7 +8,6 @@ hr {
 }
 
 p {
-	text-indent: 22px;
 	margin-bottom: 0px;
 }
 
@@ -21,10 +20,6 @@ p {
 	margin-bottom: 20px;
   	font-family: "Comic Sans MS", cursive, sans-serif;
   	background-color: red;
-}
-
-.doubleIndent {
-	text-indent: 30px;
 }
 
 .panel {
@@ -55,7 +50,8 @@ p {
 }
 
 #accordion .panel-title > a.accordion-toggle::before, #accordion a[data-toggle="collapse"]::before  {
-    /*content:"\e113";*/
+    /*font-family: 'Glyphicons Halflings'; 
+    content:"\e113";*/
     float: left;
 	margin-right :1em;
 }

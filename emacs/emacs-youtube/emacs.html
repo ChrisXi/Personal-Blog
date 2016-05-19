@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap Core CSS -->
+    <link href="../../global/css/bootstrap.css" rel="stylesheet">
     <link href="../../global/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/emacs.css" rel="stylesheet"> 
@@ -40,15 +41,17 @@
 		      		<!-- <div id="filter-panel" class="collapse well" align="center">
 		        		<iframe width="750" height="450" src="http://www.youtube.com/embed/MRYzPWnk2mE?autoplay=0" style="border:none"></iframe>
 			        </div> -->
-			  		(1) Ctrl+h i : bring up info tabel<br>
-			  		(2) Ctrl+g   : give up current command <br> 
-					(3) u        : go upper level of page (dir) <br>
-					(4) l        : go last viewed page (dir) <br> 
-					(5) Ctrl+s   : search for word (Ctrl+s to next word; press enter to end search)<br>
-					(6) Ctrl+x k : kill buffer<br>
-					(7) Ctrl+h m : help on the mode<br>
-					(8) Ctrl+x o : switch to other window<br>
-					(9) Ctrl+x 1 : return to single view mode<br>
+			        <ul>
+			  			<li>Ctrl+h i : bring up info tabel </li>
+			  			<li>Ctrl+g   : give up current command   </li>
+						<li>u        : go upper level of page (dir)  </li>
+						<li>l        : go last viewed page (dir)   </li>
+						<li>Ctrl+s   : search for word (Ctrl+s to next word; press enter to end search) </li>
+						<li>Ctrl+x k : kill buffer </li>
+						<li>Ctrl+h m : help on the mode </li>
+						<li>Ctrl+x o : switch to other window </li>
+						<li>Ctrl+x 1 : return to single view mode </li>
+					</ul>
 			  		<hr>
 			  		<small>Last Updated on: <time>Tuesday, May 17, 2016</time></small>
 			  		<a href="https://www.youtube.com/watch?v=MRYzPWnk2mE&list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr&index=1" target="_blank" class="btn btn-default sidebtn">Video1</a>
@@ -67,26 +70,28 @@
 	      	</div>
 	      	<div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
 		      	<div class="panel-body">
-			  		(1) Meta+x customize <- : enter customize menu<br>
-			  		<p>
-			  			-> 'Environment', -> 'Frame', -> 'Menu Bar Mode', -> Toggle (choose on/off), -> State (choose 0, 1, 2, 3, ...)
-			  		</p>
-			  		<p>
-			  			-> 'Environment', -> 'Frame', -> 'Tool Bar Mode', -> Toggle (choose on/off), -> State (choose 0, 1, 2, 3, ...)
-			  		</p>
-			  		<p>
+	      			<ul>
+			  			<li> Meta+x customize <- : enter customize menu</li>
+			  			<p>
+			  				-> 'Environment', -> 'Frame', -> 'Menu Bar Mode', -> Toggle (choose on/off), -> State (choose 0, 1, 2, 3, ...)
+			  			</p>
+			  			<p>
+			  				-> 'Environment', -> 'Frame', -> 'Tool Bar Mode', -> Toggle (choose on/off), -> State (choose 0, 1, 2, 3, ...)
+			  			</p>
+			  			<p>
 			  			-> 'Environment', -> 'Frame', -> 'Cursor', -> Blink Cursor Blinks -> Toggle (choose on/off), -> State (choose 0, 1, 2, 3, ...)
-			  		</p>
-			  		(2) Ctrl+x Ctrl+f : find file
-			  		<p>
-                       C+x C+f ~/.emacs
-                    </p>
-			  		(3) Set font
-			  		<p>
-			  			-> 'Face', -> 'Basic Faces', -> 'Default face', -> 'Cursor', -> Blink Cursor Blinks, -> ..., -> State (choose 0, 1, 2, 3, ...)
-			  		</p>
-			  		(4) Meta+x customize-themes <- : set color themes <strike>(search 'theme')</strike> <br>
-			  		(5) Ctrl+x b "name": get back to the "name" buffer (if name was empty, it will get back to the last buffer)
+			  			</p>
+			  			<li> Ctrl+x Ctrl+f : find file</li>
+			  			<p>
+                    	   C+x C+f ~/.emacs
+                    	</p>
+			  			<li> Set font</li>
+			  			<p>
+			  				-> 'Face', -> 'Basic Faces', -> 'Default face', -> 'Cursor', -> Blink Cursor Blinks, -> ..., -> State (choose 0, 1, 2, 3, ...)
+			  			</p>
+			  			<li> Meta+x customize-themes <- : set color themes <strike>(search 'theme')</strike> </li>
+			  			<li> Ctrl+x b "name": get back to the "name" buffer (if name was empty, it will get back to the last buffer) </li>
+			  		</ul>
 			  		<hr>
 			  		<small>Last Updated on: <time>Thursday, May 19, 2016</time></small>
 			  		<a href="https://www.youtube.com/watch?v=mMcc0IF1hV0&list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr&index=2" target="_blank" class="btn btn-default sidebtn">Video2</a>
@@ -105,18 +110,20 @@
 	      	</div>
 	      	<div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
 		      	<div class="panel-body">
-			  		(1) Meta-x list-packages <- : view the list of packages <br>
-			  		(2) M-x customize-group <-, package <- : enter install packages origin
-			  		<p>
-			  			-> 'Package Archives', -> 'INS', -> write Archive Name / URL or directory name
-			  		</p>
-			  		(3) Shift-u : mark package for upgrading <br>
-			  		(4) i (before the package name) x : install package
-			  		(5) Choose package:
-			  		<p> Choose package (referece 2.4)</p>
-			  		<p> Open ~/.emacs file; Add (package-initlize) on the top (enable to load new theme when open emacs)</p>
-			  		(5) Install/Enable nyan-mode package.
-			  		<p> Meta+x nyan-mode (repeat to disable) </p>
+		      		<ul>
+		  				<li> Meta-x list-packages <- : view the list of packages  </li>
+		  				<li> M-x customize-group <-, package <- : enter install packages origin </li>
+			  			<p>
+			  				-> 'Package Archives', -> 'INS', -> write Archive Name / URL or directory name
+			  			</p>
+		  				<li> Shift-u : mark package for upgrading  </li>
+		  				<li> i (before the package name) x : install package </li>
+		  				<li> Choose package: </li>
+			  			<p> Choose package (referece 2.4)</p>
+			  			<p> Open ~/.emacs file; Add (package-initlize) on the top (enable to load new theme when open emacs)</p>
+		  				<li> Install/Enable nyan-mode package. </li>
+			  			<p> Meta+x nyan-mode (repeat to disable) </p>
+			  		</ul>
 			  		<hr>
 			  		<small>Last Updated on: <time>Thursday, May 19, 2016</time></small>
 			  		<a href="https://www.youtube.com/watch?v=Cf6tRBPbWKs&index=3&list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr" target="_blank" class="btn btn-default sidebtn">Video3</a>
@@ -135,28 +142,30 @@
 	      	</div>
 	      	<div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
 		      	<div class="panel-body">
-			  		(1) Ctrl+x Ctrl+f <- : open the current directory, enter the Dired mode<br>
-			  		(2) Ctrl+s <- : quick jump to and open the file/folder <br>
-			  		(3) d x : delete a file/folder(could mark multiple file then delete all of them) <br>
-			  		(4) + "name" : create a new directory named "name" <br>
-			  		(5) Ctrl+x Ctrl+f : create a new file <br>
-			  		(6) Ctrl+s : save <br>
-			  		(7) g : refresh the directory <br>
-			  		(8) ! : run shell command on the file
-			  		<p> ! (on the line of the file just created), open -a "Google Chrome" </p>
-			  		(9) Shift+c "new name" : copy file with new name of "new name" <br>
-			  		(10) m : mark the files
-			  		<p class="doubleIndent"> mark multiple files and open them with Google Chrome </p>
-			  		(11) u : unmark file<br>
-			  		(12) Shift+u : unmark all the files<br>
-			  		(13) t : mark all the file (repeat to unmark)<br>
-			  		<p class="doubleIndent"> In fact, it's like the operator of negation (toggle) </p>
-			  		(14) * / : mark all the folders <br>
-			  		(15) Shift+a : search for key word <br>
-			  		(16) R "new name": rename the file (R should be the upper case) <br>
-			  		(17) s : change the file sorting order <br>
-			  		(18) Ctrl+x Ctrl+q : make the current buffer editable (editable Dired which could be treated as a text buffer) <br>
-			  		(19) ~ : mark all the backup files
+		      		<ul>
+			  			<li>Ctrl+x Ctrl+f <- : open the current directory, enter the Dired mode</li>
+			  			<li>Ctrl+s <- : quick jump to and open the file/folder </li>
+			  			<li>d x : delete a file/folder(could mark multiple file then delete all of them) </li>
+			  			<li>+ "name" : create a new directory named "name" </li>
+			  			<li>Ctrl+x Ctrl+f : create a new file </li>
+			  			<li>Ctrl+s : save </li>
+			  			<li>g : refresh the directory </li>
+			  			<li>! : run shell command on the file</li>
+			  			<p> ! (on the line of the file just created), open -a "Google Chrome" </p>
+			  			<li>Shift+c "new name" : copy file with new name of "new name" </li>
+			  			<li> m : mark the files</li>
+			  			<p> mark multiple files and open them with Google Chrome </p>
+			  			<li> u : unmark file</li>
+			  			<li> Shift+u : unmark all the files</li>
+			  			<li> t : mark all the file (repeat to unmark)</li>
+			  			<p> In fact, it's like the operator of negation (toggle) </p>
+			  			<li> * / : mark all the folders </li>
+			  			<li> Shift+a : search for key word </li>
+			  			<li> R "new name": rename the file (R should be the upper case) </li>
+			  			<li> s : change the file sorting order </li>
+			  			<li> Ctrl+x Ctrl+q : make the current buffer editable (editable Dired which could be treated as a text buffer) </li>
+			  			<li> ~ : mark all the backup files</li>
+			  		</ul>
 			  		<hr>
 			  		<small>Last Updated on: <time>Thursday, May 19, 2016</time></small>
 			  		<a href="https://www.youtube.com/watch?v=7jZdul2fC94&list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr&index=4" target="_blank" class="btn btn-default sidebtn">Video4</a>
@@ -175,7 +184,52 @@
 	      	</div>
 	      	<div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
 		      	<div class="panel-body">
-			  		
+		      		<ul>
+			  			<li> Ctrl+x Ctrl+b : get buffer list </li>
+			  			<li> Meta+x clean-buffer-list : clean buffer list </li>
+			  			<li> Meta+x ido-mode : Switch between buffer </li>
+			  			<p> Ctrl+s : forward </p>
+			  			<p> Ctrl+r : backward </p>
+			  			<li> Turn on ido mode search behavior</li>
+			  			<p> search ido <-, -> 'Ido Mode', -> State (1)</p>
+			  			<li> Distinguish buffer with same name under different directory</li>
+			  			<p> Meta-x customize-group, -> 'Uniquify Buffer Name Styles', -> (choose one style) </p>
+			  			<li> Meta+x occur "content" : find all the lines that match your regular expression </li>
+			  			<li> Meta+x multi-occur-in-matching-buffers "filename" "content": find all the lines that match your regular expression in all buffers </li>
+			  			<p>E.g. Meta+x multi-occur-in-matching-buffers .* new </p>
+			  		</ul>
+			  		<hr>
+			  		<small>Last Updated on: <time>Thursday, May 19, 2016</time></small>
+			  		<a href="https://www.youtube.com/watch?v=JsggDFtAA78&index=5&list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr" target="_blank" class="btn btn-default sidebtn">Video5</a>
+		      	</div>
+	      	</div>
+	    </div>
+
+	    <!-- row6 -->
+	    <div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading5">
+		    	<h4 class="panel-title">
+	      			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                      	5. Managing and Finding Buffers
+                	</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+		      	<div class="panel-body">
+		      		<ul>
+			  			<li> Ctrl+x Ctrl+b : get buffer list </li>
+			  			<li> Meta+x clean-buffer-list : clean buffer list </li>
+			  			<li> Meta+x ido-mode : Switch between buffer </li>
+			  			<p> Ctrl+s : forward </p>
+			  			<p> Ctrl+r : backward </p>
+			  			<li> Turn on ido mode search behavior</li>
+			  			<p> search ido <-, -> 'Ido Mode', -> State (1)</p>
+			  			<li> Distinguish buffer with same name under different directory</li>
+			  			<p> Meta-x customize-group, -> 'Uniquify Buffer Name Styles', -> (choose one style) </p>
+			  			<li> Meta+x occur "content" : find all the lines that match your regular expression </li>
+			  			<li> Meta+x multi-occur-in-matching-buffers "filename" "content": find all the lines that match your regular expression in all buffers </li>
+			  			<p>E.g. Meta+x multi-occur-in-matching-buffers .* new </p>
+			  		</ul>
 			  		<hr>
 			  		<small>Last Updated on: <time>Thursday, May 19, 2016</time></small>
 			  		<a href="https://www.youtube.com/watch?v=JsggDFtAA78&index=5&list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr" target="_blank" class="btn btn-default sidebtn">Video5</a>
