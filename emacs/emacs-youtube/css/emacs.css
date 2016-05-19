@@ -3,8 +3,13 @@ body {
 }
 
 hr {
-	margin-top: 0px;
-	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+p {
+	text-indent: 22px;
+	margin-bottom: 0px;
 }
 
 #headline {
@@ -18,14 +23,26 @@ hr {
   	background-color: red;
 }
 
+.doubleIndent {
+	text-indent: 30px;
+}
+
 .panel {
 	font-family: "Comic Sans MS", cursive, sans-serif;	
 }
 
+.panel-body {
+	padding-bottom: 5px;
+}
+
 .sidebtn {
 	float: right;
-	height:30px;
+	height: 20px;
 	font-size: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 }
 
 

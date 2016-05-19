@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Emacs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/emacs.css" rel="stylesheet"> 
+
+</head>
+
+<body>
+	<!-- <h1>Emacs Tutorial</h1> -->
+	<div class="panel panel-danger" id="headline">
+      	<div class="panel-heading">
+      		Tutorial on Youtube
+      	</div>
+    </div>
+
+    <!-- content -->
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+    	<!-- row1 -->
+		<div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading1">
+	      		<!-- <button type="button" class="btn btn-primary sidebtn" data-toggle="collapse" data-target="#filter-panel">
+		        	Open Video
+		    	</button> -->
+		    	<h4 class="panel-title">
+		    		<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                      	1. Getting Started and Playing Games
+               		</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+		      	<div class="panel-body">
+		      		<!-- <div id="filter-panel" class="collapse well" align="center">
+		        		<iframe width="750" height="450" src="http://www.youtube.com/embed/MRYzPWnk2mE?autoplay=0" style="border:none"></iframe>
+			        </div> -->
+			  		(1) Ctrl+h i : bring up info tabel<br>
+			  		(2) Ctrl+g   : give up current command <br> 
+					(3) u        : go upper level of page (dir) <br>
+					(4) l        : go last viewed page (dir) <br> 
+					(5) Ctrl+s   : search for word (Ctrl+s to next word; press enter to end search)<br>
+					(6) Ctrl+x k : kill buffer<br>
+					(7) Ctrl+h m : help on the mode<br>
+					(8) Ctrl+x o : switch to other window<br>
+					(9) Ctrl+x 1 : return to single view mode<br>
+			  		<hr>
+			  		<small>Last Updated on: <time>Tuesday, May 17, 2016</time></small>
+			  		<a href="https://www.youtube.com/watch?v=MRYzPWnk2mE&list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr&index=1" target="_blank" class="btn btn-default sidebtn">Video1</a>
+		      	</div>
+	      	</div>
+	    </div>
+
+	    <!-- row2 -->
+	    <div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading2">
+		    	<h4 class="panel-title">
+	      			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                      	2. Customizations and Themes
+                	</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+		      	<div class="panel-body">
+			  		(1) Meta+x customize <- : enter customize menu<br>
+			  		<p>
+			  			-> 'Environment', -> 'Frame', -> 'Menu Bar Mode', -> Toggle (choose on/off), -> State (choose 0, 1, 2, 3, ...)
+			  		</p>
+			  		<p>
+			  			-> 'Environment', -> 'Frame', -> 'Tool Bar Mode', -> Toggle (choose on/off), -> State (choose 0, 1, 2, 3, ...)
+			  		</p>
+			  		<p>
+			  			-> 'Environment', -> 'Frame', -> 'Cursor', -> Blink Cursor Blinks -> Toggle (choose on/off), -> State (choose 0, 1, 2, 3, ...)
+			  		</p>
+			  		(2) Ctrl+x Ctrl+f : find file
+			  		<p>
+                       C+x C+f ~/.emacs
+                    </p>
+			  		(3) Set font
+			  		<p>
+			  			-> 'Face', -> 'Basic Faces', -> 'Default face', -> 'Cursor', -> Blink Cursor Blinks, -> ..., -> State (choose 0, 1, 2, 3, ...)
+			  		</p>
+			  		(4) Meta+x customize-themes <- : set color themes <strike>(search 'theme')</strike> <br>
+			  		(5) Ctrl+x b "name": get back to the "name" buffer (if name was empty, it will get back to the last buffer)
+			  		<hr>
+			  		<small>Last Updated on: <time>Thursday, May 19, 2016</time></small>
+			  		<a href="https://www.youtube.com/watch?v=mMcc0IF1hV0&list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr&index=2" target="_blank" class="btn btn-default sidebtn">Video2</a>
+		      	</div>
+	      	</div>
+	    </div>
+
+	    <!-- row3 -->
+	    <div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading3">
+		    	<h4 class="panel-title">
+	      			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                      	3. Installing Packages and Extensions
+                	</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+		      	<div class="panel-body">
+			  		(1) Meta-x list-packages <- : view the list of packages <br>
+			  		(2) M-x customize-group <-, package <- : enter install packages origin
+			  		<p>
+			  			-> 'Package Archives', -> 'INS', -> write Archive Name / URL or directory name
+			  		</p>
+			  		(3) Shift-u : mark package for upgrading <br>
+			  		(4) i (before the package name) x : install package
+			  		(5) Choose package:
+			  		<p> Choose package (referece 2.4)</p>
+			  		<p> Open ~/.emacs file; Add (package-initlize) on the top (enable to load new theme when open emacs)</p>
+			  		(5) Install/Enable nyan-mode package.
+			  		<p> Meta+x nyan-mode (repeat to disable) </p>
+			  		<hr>
+			  		<small>Last Updated on: <time>Thursday, May 19, 2016</time></small>
+			  		<a href="https://www.youtube.com/watch?v=Cf6tRBPbWKs&index=3&list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr" target="_blank" class="btn btn-default sidebtn">Video3</a>
+		      	</div>
+	      	</div>
+	    </div>
+
+	    <!-- row4 -->
+	    <div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading4">
+		    	<h4 class="panel-title">
+	      			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                      	4. Exploring the Filesystem with Dired
+                	</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+		      	<div class="panel-body">
+			  		(1) Ctrl+x Ctrl+f <- : open the current directory, enter the Dired mode<br>
+			  		(2) Ctrl+s <- : quick jump to and open the file/folder <br>
+			  		(3) d x : delete a file/folder(could mark multiple file then delete all of them) <br>
+			  		(4) + "name" : create a new directory named "name" <br>
+			  		(5) Ctrl+x Ctrl+f : create a new file <br>
+			  		(6) Ctrl+s : save <br>
+			  		(7) g : refresh the directory <br>
+			  		(8) ! : run shell command on the file
+			  		<p> ! (on the line of the file just created), open -a "Google Chrome" </p>
+			  		(9) Shift+c "new name" : copy file with new name of "new name" <br>
+			  		(10) m : mark the files
+			  		<p class="doubleIndent"> mark multiple files and open them with Google Chrome </p>
+			  		(11) u : unmark file<br>
+			  		(12) Shift+u : unmark all the files<br>
+			  		(13) t : mark all the file (repeat to unmark)<br>
+			  		<p class="doubleIndent"> In fact, it's like the operator of negation (toggle) </p>
+			  		(14) * / : mark all the folders <br>
+			  		(15) Shift+a : search for key word <br>
+			  		(16) R "new name": rename the file (R should be the upper case) <br>
+			  		(17) s : change the file sorting order <br>
+			  		(18) Ctrl+x Ctrl+q : make the current buffer editable (editable Dired which could be treated as a text buffer) <br>
+			  		(19) ~ : mark all the backup files
+			  		<hr>
+			  		<small>Last Updated on: <time>Thursday, May 19, 2016</time></small>
+			  		<a href="https://www.youtube.com/watch?v=7jZdul2fC94&list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr&index=4" target="_blank" class="btn btn-default sidebtn">Video4</a>
+		      	</div>
+	      	</div>
+	    </div>
+
+	    <!-- row5 -->
+	    <div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading5">
+		    	<h4 class="panel-title">
+	      			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                      	5. Managing and Finding Buffers
+                	</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+		      	<div class="panel-body">
+			  		
+			  		<hr>
+			  		<small>Last Updated on: <time>Thursday, May 19, 2016</time></small>
+			  		<a href="https://www.youtube.com/watch?v=JsggDFtAA78&index=5&list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr" target="_blank" class="btn btn-default sidebtn">Video5</a>
+		      	</div>
+	      	</div>
+	    </div>
+    </div>
+    
+
+
+<!-- jQuery -->
+<script src="../../global/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../global/js/bootstrap.min.js"></script>
+
+<!-- Test JavaScript -->
+<!-- <script src="js/mainframe.js"></script> -->
+
+
+</body>
+</html>
+
+
