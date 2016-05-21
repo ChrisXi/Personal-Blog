@@ -1,8 +1,8 @@
 // var release = false;
 
-$( "#mousenose" ).click(function() {
-	alert("dd");
-	window.top.$('html, body').animate({scrollTop: 550}, 500);
+// $( "#mousenose" ).click(function() {
+	// alert("dd");
+	// window.top.$('html, body').animate({scrollTop: 550}, 500);
 	// if (release == false) {
 	// 	alert("dd");
 	// 	window.top.$('html, body').animate({scrollTop: 550}, 500);
@@ -12,8 +12,8 @@ $( "#mousenose" ).click(function() {
 	// 	window.top.$('html, body').animate({scrollTop: 55}, 500);
 	// 	release = false;
 	// }
-});
-/*
+// });
+
 $(document).ready(function () {
 
   var trigger = $('#mousenose');
@@ -23,13 +23,13 @@ $(document).ready(function () {
   });
 
   function toggle() {
-  	window.top.$('html, body').animate({scrollTop: 550}, 500);
- //    if (release == false) {	
-	// 	window.top.$('html, body').animate({scrollTop: 550}, 500);
-	// 	release = true;
-	// } else {
-	// 	window.top.$('html, body').animate({scrollTop: 55}, 500);
-	// 	release = false;
-	// }
+    if (release == false) {	
+		window.top.$('html, body').animate({scrollTop: 550}, 500);
+		release = true;
+	} else {
+		window.top.$('html, body').animate({scrollTop: 55}, 500);
+		release = false;
+	}
   }
-});*/
+});
+
