@@ -22,13 +22,13 @@ $(document).ready(function () {
   });
 
   function toggle() {
-
-    if (release == false) {
-		window.top.$('html, body').animate({scrollTop: 550}, 500);
-		release = true;
-	} else {
-		window.top.$('html, body').animate({scrollTop: 55}, 500);
-		release = false;
-	}
+  	window.top.$('html, body').animate({scrollTop: 550}, 500);
+ //    if (release == false) {	
+	// 	window.top.$('html, body').animate({scrollTop: 550}, 500);
+	// 	release = true;
+	// } else {
+	// 	window.top.$('html, body').animate({scrollTop: 55}, 500);
+	// 	release = false;
+	// }
   }
 });
