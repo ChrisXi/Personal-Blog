@@ -1,18 +1,34 @@
-var release = false;
+// var release = false;
 
-$( "#mousenose" ).click(function() {
-	// alert("dd");
-	if (release == false) {
-		alert("dd");
+// $( "#mousenose" ).click(function() {
+// 	// alert("dd");
+// 	if (release == false) {
+// 		alert("dd");
+// 		window.top.$('html, body').animate({scrollTop: 550}, 500);
+// 		release = true;
+// 	} else {
+// 		alert("dd2");
+// 		window.top.$('html, body').animate({scrollTop: 55}, 500);
+// 		release = false;
+// 	}
+// });
+
+$(document).ready(function () {
+
+  var trigger = $('#mousenose');
+  var release = false;
+  trigger.click(function () {
+    toggle();      
+  });
+
+  function toggle() {
+
+    if (release == false) {
 		window.top.$('html, body').animate({scrollTop: 550}, 500);
 		release = true;
 	} else {
-		alert("dd2");
 		window.top.$('html, body').animate({scrollTop: 55}, 500);
 		release = false;
 	}
-	// $('#dropDownSpan', window.parent.document).css('visibility', 'visible');
-	// $('html, body', window.parent.document).animate({scrollTop: 550}, 500);
-	// $('#btn', window.parent.document).css("background-color", "yellow");
-	// window.parent.$("#frame").css("background-color", "yellow");
+  }
 });

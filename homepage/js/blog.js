@@ -36,21 +36,8 @@ $(document).ready(function () {
     alert("test");
   });
 
-  // $( "#frame" ).contents().find( "pre" ).css( "background-color", "#BADA55" );
-
-  
 });
 
-/**
- * mouse click listener, scoll down to the bottom
- */
-// $('#frame').load(function(){
-
-//   var iframe = $('#frame').contents();
-//   iframe.find("#btn").click(function(){
-//     alert("test");
-//   });
-// });
 
 /**
  * bind shortcut for open/close the sidebar
@@ -93,7 +80,6 @@ $('.dropdown .dropdown-menu').on({
 /**
  * Add JQuery animation to bootstrap dropdown elements.
  */
-
 (function($) {
     var dropdown = $('.dropdown');
 
