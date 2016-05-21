@@ -4,8 +4,10 @@ $( "#mousenose" ).click(function() {
 	// alert("dd");
 	if (release == false) {
 		window.top.$('html, body').animate({scrollTop: 550}, 500);
+		release = true;
 	} else {
 		window.top.$('html, body').animate({scrollTop: 55}, 500);
+		release = false;
 	}
 	// $('#dropDownSpan', window.parent.document).css('visibility', 'visible');
 	// $('html, body', window.parent.document).animate({scrollTop: 550}, 500);
