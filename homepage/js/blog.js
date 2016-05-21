@@ -1,5 +1,9 @@
 var isClosed;
+
 $(document).ready(function () {
+
+  $('html, body').animate({scrollTop: 55}, 500);
+
   var trigger = $('.hamburger'),
       overlay = $('.overlay');
   isClosed = false;
@@ -26,7 +30,27 @@ $(document).ready(function () {
   $('[data-toggle="offcanvas"]').click(function () {
     $('#wrapper').toggleClass('toggled');
   });  
+
+  var iframe = $('#frame').contents();
+  iframe.find("#btn").click(function(){
+    alert("test");
+  });
+
+  // $( "#frame" ).contents().find( "pre" ).css( "background-color", "#BADA55" );
+
+  
 });
+
+/**
+ * mouse click listener, scoll down to the bottom
+ */
+// $('#frame').load(function(){
+
+//   var iframe = $('#frame').contents();
+//   iframe.find("#btn").click(function(){
+//     alert("test");
+//   });
+// });
 
 /**
  * bind shortcut for open/close the sidebar

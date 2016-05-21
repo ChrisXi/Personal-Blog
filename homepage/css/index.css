@@ -8,13 +8,28 @@ pre {
     margin-bottom: 0px;
 }
 
-em {
+#mousenose:hover {
     color: red;
+    cursor: pointer;
 }
 
-em:hover {
-    color: black;
-    cursor: pointer;
+#mousenose:hover #sen {
+    display:block;
+}
+
+#sen {
+    display:none;
+    position:absolute;
+    top: 540px;
+    left: 50%;
+    width: 215px;
+    text-align: center;
+    color: red;
+    /*border:1px solid red;*/
+    border-radius: 5px;
+    padding:5px;
+    margin-left: 25px;
+    font-size: 10px;
 }
 
 .float_center {
