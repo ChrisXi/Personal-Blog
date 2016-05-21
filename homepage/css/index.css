@@ -1,6 +1,29 @@
+body {
+    background-color: #F5F5F5;  
+}
+
+pre {
+    overflow-x: hidden;
+    border: none;
+    margin-bottom: 0px;
+}
+
+em {
+    color: red;
+}
+
+em:hover {
+    color: black;
+    cursor: pointer;
+}
+
 .float_center {
     display: inline-block;
     vertical-align: top;
+}
+
+#pet {
+    background-color: #F5F5F5;  
 }
 
 #mouse {
