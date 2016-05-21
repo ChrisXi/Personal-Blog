@@ -1,7 +1,7 @@
 // var release = false;
 
 $( "#mousenose" ).click(function() {
-	// alert("dd");
+	alert("dd");
 	window.top.$('html, body').animate({scrollTop: 550}, 500);
 	// if (release == false) {
 	// 	alert("dd");
