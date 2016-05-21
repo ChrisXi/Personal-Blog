@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Emacs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/emacs-hotkey.css" rel="stylesheet"> 
+
+</head>
+
+<body>
+    <!-- content -->
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+    	<!-- row1 -->
+		<div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading1">
+	      		<!-- <button type="button" class="btn btn-primary sidebtn" data-toggle="collapse" data-target="#filter-panel">
+		        	Open Video
+		    	</button> -->
+		    	<h4 class="panel-title">
+		    		<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                      	1. File Command
+               		</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+		      	<div class="panel-body">
+		      		<!-- <div id="filter-panel" class="collapse well" align="center">
+		        		<iframe width="750" height="450" src="http://www.youtube.com/embed/MRYzPWnk2mE?autoplay=0" style="border:none"></iframe>
+			        </div> -->
+			        <ul>
+			  			<li>C+x C+f : Opens a file, asks for the file name. If it cannot find the file, creates the file</li>
+						<li>C+x C+s : Saves the file without a prompt</li>
+						<li>C+x s   : Saves all files with a prompt</li>
+						<li>C+s C+w : Saves the file with a different name. Asks you for the name.</li>
+						<li>M+x "recover-file" : recovers the auto-saved file</li>
+					</ul>
+			  		<hr>
+			  		<small>Last Updated on: <time>Friday, May 20, 2016</time></small>
+		      	</div>
+	      	</div>
+	    </div>
+
+	    <div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading2">
+		    	<h4 class="panel-title">
+	      			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                      	2. Copy/Cut/Paste Command
+                	</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+		      	<div class="panel-body">
+	      			<ul>
+			  			<li>C+k : Kills/deletes the whole lines, puts it into the clipboard</li>
+						<li>C+y : Pastes whatever is in the clipboard at the cursor (subsequent C+y's will keep on pasting)</li>
+						<li>C+s : Starts marking/highligting a region</li>
+						<li>M+w : Copies this region into the clipboard</li>
+						<li>C+w : Cuts this regions into the clipboard (deletes the region and copies it to clipboard)</li>
+						<li>C+/      : Undo</li>
+						<li>C+g C+/  : Redo</li>
+			  		</ul>
+			  		<hr>
+			  		<small>Last Updated on: <time>Friday, May 20, 2016</time></small>
+		      	</div>
+	      	</div>
+	    </div>
+
+	    <!-- row3 -->
+	    <div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading3">
+		    	<h4 class="panel-title">
+	      			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                      	3. Cursor Command
+                	</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+		      	<div class="panel-body">
+		      		<ul>
+		  				<li>fn+-> : Move cursor to the end of the file</li>
+						<li>fn+<- : Move cursor to the head of the file</li>
+						<li>C+a : Beginning of line</li>
+						<li>C+e : End of line</li>
+						<li>M+-> : End of word</li>
+						<li>M+<- : Beginning of word</li>
+			  		</ul>
+			  		<hr>
+			  		<small>Last Updated on: <time>Friday, May 20, 2016</time></small>
+		      	</div>
+	      	</div>
+	    </div>
+
+	    <!-- row4 -->
+	    <div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading4">
+		    	<h4 class="panel-title">
+	      			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                      	4. Buffer Management Command
+                	</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+		      	<div class="panel-body">
+		      		<ul>
+			  			<li> C+x b    : Switches buffers, asks you which buffer to switch to.</li>
+						<li> C+x C+b  : Switches buffers, but shows you the list of buffers in a new window.</li>
+						<li> C+x k : kill buffer </li>
+						<li> C+x o (other window) : Go to the other window and hit enter on the buffer you want to switch to </li>
+						<li> C+x 0    : Will close that window</li>
+						<li> C+x 1    : Will leave only one window</li>
+						<li> C+x 2    : Will make a horizontal cut and show a secondary window</li>
+						<li> C+x 3    : Will make a vertical cut and show a secondary window</li>
+						<li> C+x C+q  : Make the current buffer editable (editable Dired which could be treated as a text buffer) </li>
+						<li> M+x clean-buffer-list : Clean buffer list </li>
+			  			<li> M+x ido-mode : Switch between buffer </li>
+			  		</ul>
+			  		<hr>
+			  		<small>Last Updated on: <time>Friday, May 20, 2016</time></small>
+		      	</div>
+	      	</div>
+	    </div>
+
+	    <!-- row5 -->
+	    <div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading5">
+		    	<h4 class="panel-title">
+	      			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                      	5. Search Command
+                	</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+		      	<div class="panel-body">
+		      		<ul>
+			  			<li>C-s : Searches forward as you type (When you are within a search, C-s will find the next occurance.)</li>
+						<li>M-C-s : Searches a regexp (Again, hitting C-s while you are in regexp search will find the next occurance.)</li> 
+						<li>M-% : Searches and replaces</li>
+						<li>M-s o  : Searches and shows alll occurance in an *Occur* buffer (You can click on the lines to jump to those lines)</li>         
+						<li>M-x grep : Greps a pattern in the files you specify and shows the results in a *Grep* buffer</li>
+						<li>M-x rgrep: Will recursively grep in a directory (all the files and subdirectories)</li>
+			  		</ul>
+			  		<hr>
+			  		<small>Last Updated on: <time>Friday, May 20, 2016</time></small>
+		      	</div>
+	      	</div>
+	    </div>
+
+	    <!-- row6 -->
+	    <div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading6">
+		    	<h4 class="panel-title">
+	      			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="true" aria-controls="collapse6">
+                      	6. Add Self-Designed Command
+                	</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+		      	<div class="panel-body">
+		      		<ul>
+			  			<li>M-x command-name : Will execute the command</li>
+						<li>M-x pwd          : Print the working directory</li>
+						<li>M-x indent-region: Indents the region</li>
+						<li>M-x and type anything and hit TAB to auto-complete the commands (or to see the available commands)</li>
+						<li>C-h v : See the value of a veriable</li>
+						<li>C-x C-e : Evaluate a lisp statement at the cursor</li>
+			  		</ul>
+			  		<hr>
+			  		<small>Last Updated on: <time>Friday, May 20, 2016</time></small>
+		      	</div>
+	      	</div>
+	    </div>
+
+	    <!-- row7 -->
+	    <div class="panel panel-info">
+	      	<div class="panel-heading" role="tab" id="heading7">
+		    	<h4 class="panel-title">
+	      			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="true" aria-controls="collapse7">
+                      	7. Other Command
+                	</a>
+                </h4>
+	      	</div>
+	      	<div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+		      	<div class="panel-body">
+		      		<ul>
+		      			<li> C-x C-c : Quit Emacs</li>
+			  			<li> C-g : Always quits your command.</li>
+			  		</ul>
+			  		<hr>
+			  		<small>Last Updated on: <time>Friday, May 20, 2016</time></small>
+		      	</div>
+	      	</div>
+	    </div>
+
+	   
+    </div>
+    
+<!-- jQuery -->
+<script src="../../global/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../global/js/bootstrap.min.js"></script>
+
+<!-- Test JavaScript -->
+<!-- <script src="js/mainframe.js"></script> -->
+
+
+</body>
+</html>
+
+

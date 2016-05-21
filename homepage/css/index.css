@@ -1,0 +1,13 @@
+.float_center {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#mouse {
+    margin-top: 20px;
+}
+
+#name {
+    margin-right: 5%;
+    padding-top: 40px;
+}
