@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="css/java-heap.css" rel=" stylesheet"> 
+</head>
+
+<body>
+Heap Space (2GB allocated to JVM)<br>
+This 2GB willl divided by 2 part by configuration. (1. Heap Area; 2. Non Heap Area)<br>
+The Heap Area is divided into generations:<br>
+1. The young generation stores short-lived objects that are created and immediately garbage collected.<br>
+2. Objects that persist longer are moved to the old generation (also called the tneured generation).<br>
+
+
+<center>
+<pre>
+
+||| ---------------------------------------------------------- ||| ----------------------------------------------------------- |||
+|||                         1GB Heap                           |||                       1GB Non Heap                          |||
+||| ---------------------------------------------------------- ||| ----------------------------------------------------------- |||
+|||        Young Generation      ||    Tenured Generation      |||   Permanent Space Generation  ||       Native Memory        |||
+||| ---------------------------- || -------------------------- ||| ------------------------------|| -------------------------- |||
+||| Eden Space  | Survivor Space || GC moves live objects from ||| contains meta data of virtual || Native mem is the memory   |||
+||| ----------- | -------------- || Survivor Space to Tenured  ||| machine, class and method     || which is availiable to a   |||
+||| Every object|  From  |  To   || Generation                 ||| objects                       || process. E.g. Java process |||
+|||            |
+</pre>
+</center>
+
+<!-- jQuery -->
+<script src="../global/js/jquery.js"></script>
+<!-- Cutomize -->
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>
+
+

@@ -103,7 +103,7 @@ html { height: 100%;}
 
 .sidebar-nav li li{
     position: relative; 
-    line-height: 10px;
+    line-height: 15px;
     font-family: "Comic Sans MS", cursive, sans-serif;
     display: inline-block;
     width: 100%;
@@ -127,6 +127,7 @@ html { height: 100%;}
 
 .sidebar-nav li li:before{
     width: 5px;
+    height: 100%;
 }
 /*.sidebar-nav li:first-child a {
     color: #fff;
@@ -196,8 +197,11 @@ html { height: 100%;}
     display: block;
     color: #ddd;
     text-decoration: none;
-    padding: 1px 10px 1px 40px;   
-    border-bottom: 1px solid #ddd;    
+    padding: 5px 10px 5px 40px;   
+    border-bottom: 1px solid #ddd;   
+
+    /*height: 20px;*/
+    font-size: 11px;
 }
 
 .sidebar-nav li a:hover,
@@ -217,6 +221,7 @@ html { height: 100%;}
     font-size: 20px;
     line-height: 70px;
 }
+
 .sidebar-nav .dropdown-menu {
     position: relative;
     width: 100%;
