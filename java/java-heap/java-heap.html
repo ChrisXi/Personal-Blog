@@ -33,17 +33,24 @@
                     <li>The Heap Area is divided into generations:<br></li>
                         1. The young generation stores short-lived objects that are created and immediately garbage collected.<br>
                         2. Objects that persist longer are moved to the old generation (also called the tneured generation).<br>
+                    <li> GC will move survived objects in Eden Space and From Space to To Space. Then switch the role of To Space with From Space</li>
                 </ul>
-                <center><pre>
+                <pre>
 | ---------------------------------------------------- || ------------------------------------------------- |
-|                       1GB Heap                       ||                    1GB Non Heap                   |
+|                    1GB Heap Area                     ||                 1GB Non Heap Area                 |
 | ---------------------------------------------------- || ------------------------------------------------- |
-|       Young Generation      ||  Tenured Generation   ||  Permanent Space Generation  ||   Native Memory   |
+|       Young Generation      ||  <a id="e3">Tenured Generation</a>   ||  <a id="e4">Permanent Space Generation</a>  ||   <a id="e5">Native Memory</a>   |
 | --------------------------- || --------------------- || ---------------------------- || ----------------- |
-| Eden Space | Survivor Space ||                       ||                              ||                   |
+| <a id="e1">Eden Space</a> | <a id="e2">Survivor Space </a>||                       ||                              ||                   |
 | ---------- | -------------- ||                       ||                              ||                   |
 |            |  From  |  To   ||                       ||                              ||                   |
-                </pre></center>
+|            |                ||                       ||                              ||                   |
+|            |                ||                       ||                              ||                   |
+|            |                ||                       ||                              ||                   |
+|            |                ||                       ||                              ||                   |
+|            |                ||                       ||                              ||                   |
+</pre>
+<button type="button" id="btn">Show</button>
                 <hr>
                 <small>Last Updated on: <time>Sunday, May 22, 2016</time></small>
             </div>
@@ -51,13 +58,44 @@
     </div>
 </div>
 
-<center>
+<pre id="sen1" class="sen">
+Every object 
+starts its 
+life from 
+Eden Space
+</pre>
 
-</center>
+<pre id="sen2" class="sen">
+If an object is still 
+alive and it will be 
+moved to survivor 
+space and other 
+dereferenced objects 
+will be removed
+</pre>
+
+<pre id="sen3" class="sen">
+GC moves live objects from 
+survivor space to tenured
+generation
+</pre>
+
+<pre id="sen4" class="sen">
+contains meta data of virtual machine,
+class and method objects
+</pre>
+
+<pre id="sen5" class="sen">
+Native Mem is the memory 
+which is availiable to a 
+process
+</pre>
+
 
 <!-- jQuery -->
 <script src="../../global/js/jquery.js"></script>
 <!-- Cutomize -->
+<script src="js/java-heap.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../../global/js/bootstrap.min.js"></script>

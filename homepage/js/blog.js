@@ -13,7 +13,7 @@ $(document).ready(function () {
   });
 
   function hamburger_cross() {
-
+    $('html, body').animate({scrollTop: 55}, 500);
     if (isClosed == true) {          
       overlay.hide();
       trigger.removeClass('is-open');
@@ -50,21 +50,22 @@ $(document).bind('keydown', function(e) {
   var overlay = $('.overlay');
 
   var key  = e.keyCode;
+
   if((key == 27 || key == 37) && isClosed == true) {
+    $('html, body').animate({scrollTop: 55}, 500);
     overlay.hide();
     trigger.removeClass('is-open');
     trigger.addClass('is-closed');
     isClosed = false;
     $('#wrapper').toggleClass('toggled');
   } else if(key == 39 && isClosed == false) {
+    $('html, body').animate({scrollTop: 55}, 500);
     overlay.show();
     trigger.removeClass('is-closed');
     trigger.addClass('is-open');
     isClosed = true;
     $('#wrapper').toggleClass('toggled');
   }
-  
-  
 });
 
 /**
@@ -93,3 +94,5 @@ $('.dropdown .dropdown-menu').on({
         $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
     });
 })(jQuery);
+
+
