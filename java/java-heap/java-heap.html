@@ -6,41 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap Core CSS -->
-    <link href="../global/css/bootstrap.css" rel="stylesheet">
-    <link href="../global/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../../global/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS --> 
     <link href="css/java-heap.css" rel=" stylesheet"> 
 </head>
 
 <body>
-Heap Space (2GB allocated to JVM)<br>
-This 2GB willl divided by 2 part by configuration. (1. Heap Area; 2. Non Heap Area)<br>
-The Heap Area is divided into generations:<br>
-1. The young generation stores short-lived objects that are created and immediately garbage collected.<br>
-2. Objects that persist longer are moved to the old generation (also called the tneured generation).<br>
 
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-info">
+        <div class="panel-heading" role="tab" id="heading1">
+          <!-- <button type="button" class="btn btn-primary sidebtn" data-toggle="collapse" data-target="#filter-panel">
+            Open Video
+        </button> -->
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">Heap Space</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <ul>
+                    <li>Heap Space (2GB allocated to JVM). This 2GB willl divided by 2 part by configuration.</li>
+                        1. Heap Area<br>
+                        2. Non Heap Area<br>
+                    <li>The Heap Area is divided into generations:<br></li>
+                        1. The young generation stores short-lived objects that are created and immediately garbage collected.<br>
+                        2. Objects that persist longer are moved to the old generation (also called the tneured generation).<br>
+                </ul>
+                <center><pre>
+| ---------------------------------------------------- || ------------------------------------------------- |
+|                       1GB Heap                       ||                    1GB Non Heap                   |
+| ---------------------------------------------------- || ------------------------------------------------- |
+|       Young Generation      ||  Tenured Generation   ||  Permanent Space Generation  ||   Native Memory   |
+| --------------------------- || --------------------- || ---------------------------- || ----------------- |
+| Eden Space | Survivor Space ||                       ||                              ||                   |
+| ---------- | -------------- ||                       ||                              ||                   |
+|            |  From  |  To   ||                       ||                              ||                   |
+                </pre></center>
+                <hr>
+                <small>Last Updated on: <time>Sunday, May 22, 2016</time></small>
+            </div>
+        </div>
+    </div>
+</div>
 
 <center>
-<pre>
 
-||| ---------------------------------------------------------- ||| ----------------------------------------------------------- |||
-|||                         1GB Heap                           |||                       1GB Non Heap                          |||
-||| ---------------------------------------------------------- ||| ----------------------------------------------------------- |||
-|||        Young Generation      ||    Tenured Generation      |||   Permanent Space Generation  ||       Native Memory        |||
-||| ---------------------------- || -------------------------- ||| ------------------------------|| -------------------------- |||
-||| Eden Space  | Survivor Space || GC moves live objects from ||| contains meta data of virtual || Native mem is the memory   |||
-||| ----------- | -------------- || Survivor Space to Tenured  ||| machine, class and method     || which is availiable to a   |||
-||| Every object|  From  |  To   || Generation                 ||| objects                       || process. E.g. Java process |||
-|||            |
-</pre>
 </center>
 
 <!-- jQuery -->
-<script src="../global/js/jquery.js"></script>
+<script src="../../global/js/jquery.js"></script>
 <!-- Cutomize -->
 
 <!-- Bootstrap Core JavaScript -->
-<script src="../global/js/bootstrap.min.js"></script>
+<script src="../../global/js/bootstrap.min.js"></script>
 <!-- <script src="../global/js/bootstrap.js"></script> -->
 
 </body>

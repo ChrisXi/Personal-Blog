@@ -33,7 +33,7 @@ pre {
 
 #sen2 {
     color: green;
-    top: 555px;
+    top: 540px;
     margin-left: 50px;
 }
 
@@ -44,6 +44,7 @@ pre {
 
 #pet {
     background-color: #F5F5F5;  
+    margin-top: -50px;
 }
 
 #mouse {
