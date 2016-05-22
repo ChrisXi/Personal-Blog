@@ -1,23 +1,8 @@
-// var release = false;
-
-// $( "#mousenose" ).click(function() {
-	// alert("dd");
-	// window.top.$('html, body').animate({scrollTop: 550}, 500);
-	// if (release == false) {
-	// 	alert("dd");
-	// 	window.top.$('html, body').animate({scrollTop: 550}, 500);
-	// 	release = true;
-	// } else {
-	// 	alert("dd2");
-	// 	window.top.$('html, body').animate({scrollTop: 55}, 500);
-	// 	release = false;
-	// }
-// });
-
+var release;
 $(document).ready(function () {
 
   var trigger = $('#mousenose');
-  var release = false;
+  release = false;
   trigger.click(function () {
     toggle();      
   });
@@ -32,3 +17,17 @@ $(document).ready(function () {
 	}
   }
 });
+
+$('#mousenose').hover(function() {
+
+	if (release == false) {	
+		$('#sen1').css('display','block');
+	} else {
+		$('#sen2').css('display','block');
+	}
+
+}, function() {
+	$('#sen1').css('display','none');
+	$('#sen2').css('display','none');
+});
+

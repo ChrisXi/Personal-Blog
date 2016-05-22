@@ -13,23 +13,30 @@ pre {
     cursor: pointer;
 }
 
-#mousenose:hover #sen {
-    display:block;
+#mousenose:hover #sen1 {
+    /*display:block;*/
 }
 
-#sen {
+#sen1, #sen2 {
     display:none;
     position:absolute;
     top: 540px;
     left: 50%;
     width: 215px;
     text-align: center;
-    color: red;
     /*border:1px solid red;*/
     border-radius: 5px;
     padding:5px;
     margin-left: 25px;
     font-size: 10px;
+}
+
+#sen1 {
+    color: red;
+}
+
+#sen2 {
+    color: green;
 }
 
 .float_center {
