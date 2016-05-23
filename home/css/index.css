@@ -8,6 +8,34 @@ pre {
     margin-bottom: 0px;
 }
 
+#sblog {
+    color: #ec1b5a;
+}
+
+#syang {
+    color: #79aefe;
+}
+
+#sxi {
+    color: #279636;
+}
+
+#scomma {
+    color: #ead24c;
+}
+
+#sto {
+    color: #7d5d81;
+}
+
+#ss {
+    color: #314190;
+}
+
+#swelcome {
+    color: #F69C55;
+}
+
 #mousenose:hover {
     color: red;
     cursor: pointer;
