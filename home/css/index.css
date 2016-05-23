@@ -36,6 +36,18 @@ pre {
     color: #F69C55;
 }
 
+#smouse {
+    color: #F69C55; 
+}
+
+#ssky {
+    color: #79aefe;
+}
+
+#sground {
+    color: #279636;
+}
+
 #mousenose:hover {
     color: red;
     cursor: pointer;
