@@ -39,11 +39,11 @@ p {
 }
 
 #accordion .panel-title > a.accordion-toggle::before, #accordion a[data-toggle="collapse"]::before  {
-    /*font-family: 'Glyphicons Halflings'; 
-    content:"\e113";*/
-    float: left;
-	margin-right :1em;
+    font-family: 'Glyphicons Halflings'; 
+    content:"\e113";
+    float: right;
+	/*margin-right :1em;*/
 }
 #accordion .panel-title > a.accordion-toggle.collapsed::before, #accordion a.collapsed[data-toggle="collapse"]::before  {
-    /*content:"\e114";*/
+    content:"\e114";
 }
