@@ -1,7 +1,6 @@
 var isClosed;
 
 $(document).ready(function () {
-
   $('html, body').animate({scrollTop: 55}, 500);
 
   var trigger = $('.hamburger'),
@@ -30,12 +29,6 @@ $(document).ready(function () {
   $('[data-toggle="offcanvas"]').click(function () {
     $('#wrapper').toggleClass('toggled');
   });  
-
-  var iframe = $('#frame').contents();
-  iframe.find("#btn").click(function(){
-    alert("test");
-  });
-
 });
 
 
@@ -94,5 +87,8 @@ $('.dropdown .dropdown-menu').on({
         $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
     });
 })(jQuery);
+
+
+
 
 
