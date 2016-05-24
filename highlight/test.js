@@ -18,6 +18,11 @@ $(document).ready(function () {
 	    for (var i=0; i < aCodes.length; i++) {
 	        hljs.highlightBlock(aCodes[i]);
 	    }
-	    alert("asdf");
     });
+});
+
+$(function () {
+	alert("asdf");
+
+  	$('button').click();
 });
