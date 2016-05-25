@@ -1,0 +1,16 @@
+#btn {
+	/*margin-left: 815px;*/
+	height: 25px;
+	width: 80px;
+	font-size: 12px;
+	line-height: 0px;
+	border-radius: 30px;
+	outline: none;
+	background: white;
+	border: 1px solid black;
+}
+
+#btn:hover {
+	background: #5BC0DE;
+	color: white;
+}
