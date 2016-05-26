@@ -12,6 +12,7 @@ pre {
 	outline: none;
 	background: white;
 	border: 1px solid black;
+	font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 #btn:hover {

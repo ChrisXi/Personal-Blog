@@ -88,7 +88,13 @@ $('.dropdown .dropdown-menu').on({
     });
 })(jQuery);
 
-
+$('.leetcode').click(function(e) {
+    var txt = $(e.target).text();
+    var dir = "../leetcode/leetcode.html?name="+txt;
+    // var dir = "../leetcode/test.html";
+    // alert(dir);
+    $('#frame').attr('src', dir); 
+});
 
 
 
