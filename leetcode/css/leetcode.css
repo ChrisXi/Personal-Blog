@@ -2,10 +2,10 @@ pre {
 	margin-top: 30px;
 }
 
-#btn {
+.btn {
 	/*margin-left: 815px;*/
 	height: 25px;
-	width: 80px;
+	width: 75px;
 	font-size: 12px;
 	line-height: 0px;
 	border-radius: 30px;
@@ -15,7 +15,7 @@ pre {
 	font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
-#btn:hover {
+.btn:hover {
 	background: #5BC0DE;
 	color: white;
 }

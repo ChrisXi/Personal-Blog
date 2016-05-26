@@ -90,9 +90,11 @@ $('.dropdown .dropdown-menu').on({
 
 $('.leetcode').click(function(e) {
     var txt = $(e.target).text();
-    var dir = "../leetcode/leetcode.html?name="+txt;
-    // var dir = "../leetcode/test.html";
+    var href = $(e.target).attr('target');
+    var dir = "../leetcode/leetcode.html?name="+txt+"&"+"href="+href;
+
     // alert(dir);
+
     $('#frame').attr('src', dir); 
 });
 
