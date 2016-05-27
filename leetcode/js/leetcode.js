@@ -5,8 +5,7 @@ $(document).ready(function () {
  // $("#di").load("test.txt");
  	var url = window.location.search.substring(1); //get rid of "?" in querystring
     var qArray = url.split('&'); //get key-value pairs
-    for (var i = 0; i < qArray.length; i++) 
-    {
+    for (var i = 0; i < qArray.length; i++){
         var pArr = qArray[i].split('='); //split key and value
         if (pArr[0] == "name") 
         	param1 = pArr[1];
@@ -21,11 +20,14 @@ $(document).ready(function () {
 		var res = result.replace(/</g, "&lt;");
 		res = res.replace(/>/g, "&gt;");
 		$("#code").html(res);
-		// alert(res);
     }});
 
-
-
+    dir = "note/"+param1+".txt";
+ 	$.ajax({url: dir, success: function(result){
+		var res = result.replace(/</g, "&lt;");
+		res = res.replace(/>/g, "&gt;");
+		$("#note").html(res);
+    }});
 });
 
 window.onload = function() {
@@ -53,7 +55,15 @@ $('#highlight').click(function() {
 			var res = result.replace(/</g, "&lt;");
 			res = res.replace(/>/g, "&gt;");
 			$("#code").html(res);
+			$("#note").html("347.txt");
 			// alert(res);
+	    }});
+	    
+	    dir = "note/"+param1+".txt";
+	 	$.ajax({url: dir, success: function(result){
+			var res = result.replace(/</g, "&lt;");
+			res = res.replace(/>/g, "&gt;");
+			$("#note").html(res);
 	    }});
 		display = false;
 	}

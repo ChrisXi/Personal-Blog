@@ -1,5 +1,5 @@
 pre {
-	margin-top: 30px;
+	margin-top: 0px;
 }
 
 .btn {
@@ -19,3 +19,20 @@ pre {
 	background: #5BC0DE;
 	color: white;
 }
+
+#dcode {
+	display: inline-block; 
+	width: 60%;
+	margin-top: 25px;
+}
+
+#dnote {
+	display: inline-block; 
+	width: 39%; 
+	margin-top: 25px;
+	min-height: 100px;
+	background: #F0F0F0; 
+	vertical-align: top; 
+	/*font-family: "Comic Sans MS", cursive, sans-serif;*/
+}
+
