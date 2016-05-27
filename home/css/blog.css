@@ -255,6 +255,25 @@ html { height: 100%;}
   opacity: 0.8;
 }
 
+.sidebar-badge.badge-circle {
+  border-radius: 50%;
+  right: 20px;
+  top: 5px;
+  padding: 0 0px;
+  min-width: 15px;
+  height: 15px;
+  line-height: 15px;
+}
+
+.cred {
+  background-color: red;
+}
+.cyellow {
+  background-color: #F69C55;
+}
+.cgreen {
+  background-color: green;
+}
 /*-------------------------------*/
 /*       Hamburger-Cross         */
 /*-------------------------------*/
