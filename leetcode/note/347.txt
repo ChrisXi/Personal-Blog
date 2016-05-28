@@ -1,1 +1,7 @@
 /*Note*/
+/*Comparator*/
+/*Comparator for Map.Entry*/
+/*HashMap: putIfAbsent, computeIfPresent*/
+/*Functional Programming: 
+  computeIfPresent(return value, fp)
+  fp: a->f (a is the item in HashMap)*/
