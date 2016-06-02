@@ -1,0 +1,9 @@
+/*Note*/
+/*TreeSet: 
+  TreeSet provides an implementation of the Set interface that uses a tree for storage. Objects are stored in sorted, ascending order.
+
+  floor(): The floor(E e) method is used to return the greatest element in this set less than or equal to the given element, or null if there is no such element.
+  ceiling(): The floor(E e) method is used to return the smallest element in this set greater than or equal to the given element, or null if there is no such element.
+
+  http://www.tutorialspoint.com/java/java_treeset_class.htm
+*/
