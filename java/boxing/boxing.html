@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="css/boxing.css" rel=" stylesheet"> 
+    <link href="../../global/css/customizedScrollbar.css" rel=" stylesheet">
+</head>
+
+<body>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-info">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">Autoboxing & Unboxing</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <ul>
+                    <li>
+                        Autoboxing is the automatic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes.<br>
+                        Int -> Integer, double -> Double, ... <br>
+                    </li>
+                    <li>
+                        Converting an object of a wrapper type to its corresponding primitive value is called unboxing. <br>
+                        Integer -> Int, Double -> double, ...
+                    </li>
+                    <li>
+                        Example:<br>
+                        <code>ArrayList&ltInteger&gt nums = new ArrayList&ltInteger&gt();</code><br>
+                        <code>nums.add(1);</code> (autoboxing, int priitive to Integer object)<br>
+                        <code>int b = nums.get(1);</code> (unboxing, Integer object inner value)
+                    </li>
+                    <li>
+                        <a href="https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html">Official document with examples<a>
+                    </li>
+                </ul>    
+                <hr>
+                <small>Last Updated on: <time>Thursday, June 2, 2016</time></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- jQuery -->
+<script src="../../global/js/jquery.js"></script>
+<!-- Cutomize -->
+<!-- <script src="js/java-heap.js"></script> -->
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>
+
+
