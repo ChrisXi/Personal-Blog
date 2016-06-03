@@ -3,10 +3,6 @@ public class Solution {
         
         String strNum = Integer.toBinaryString(num);
         String s = strNum.replace("00", "");
-        if(s.equals("1")){
-            return true;
-        }
-        
-        return false;
+        return s.equals("1");
     }
 }
