@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="css/union-find.css" rel=" stylesheet"> 
+    <link href="../../global/css/customizedScrollbar.css" rel=" stylesheet">
+</head>
+
+<body>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-info">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">Union & Find</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <ul>
+                    <li>
+                        Given two graph: G1 and G2. <br>
+                        We want to find whether the node F1 and E2 are in the same graph. If they are not in the same graph, merge the graph they reside. (Find step)
+                         <pre>
+G1: ↪ A1 ← B1 ← C1 ← E1     G2: ↪ A2 ← B2 ← C2 ← E2 
+         ↖                           ↖
+           D1 ← F1                     D2 ← F2 
+
+    (↪: point to itself)</pre>
+                        First, we begin to find each top parent of the node F1 and E2.<br>
+                        The top parent of F1 is A1, the top parent of E2 is A2. Because F1 and E2 share different top parent, they are not in the same graph and we shall merge them.
+                    <li>
+                        Change the parent pointer of A2, pointing to A1, then we get the new graph G3. (Union Step)
+                        <pre>
+G3: ↪ A1 ← B1 ← C1 ← E1      
+         ↖                         
+           D1 ← F1
+         ↖  
+           A2 ← B2 ← C2 ← E2 
+              ↖
+                D2 ← F2</pre>
+                    </li>
+                    <li>
+                        The Find step takes O(n) time, Union step takes O(1) time.
+                    </li>
+                    <li>
+                        Suppose we get n graphs, and we want to check whether F1 and Fi (2<=i<=n) are in the same graph, if not, merge them into a single graph.
+                        <pre>
+G1: ↪ A1 ← B1 ← C1 ← E1     G2: ↪ A2 ← B2 ← C2 ← E2        Gn: ↪ An ← Bn ← Cn ← En 
+         ↖                           ↖               ...            ↖ 
+           D1 ← F1                     D2 ← F2                        Dn ← Fn</pre>  
+                        Everytime we find the top parent of F1 will take O(n) time. Are there any optimazations? <br>
+                        The answer is definitely: Yes. <br>
+                    </li>
+                    <li>
+                        Compressed Find: <br>
+                        After the first Find operation, we reconstruct the graph. We move every node's direct parent pointer to it's top parent. Therefore, the amortized runtime of Find will be O(1).
+                        <pre>
+G1: ↪ A1 ← B1 ← C1 ← E1
+         ↖
+           D1 
+         ↖
+           F1</pre>
+                    </li>
+                </ul>
+                <hr>
+                <small>Last Updated on: <time>Sunday, Jun 5, 2016</time></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="../../global/js/jquery.js"></script>
+<!-- Cutomize -->
+<script src="js/union-find.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>
