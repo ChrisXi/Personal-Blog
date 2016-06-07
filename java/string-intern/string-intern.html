@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="css/string-intern.css" rel=" stylesheet"> 
+    <link href="../../global/css/customizedScrollbar.css" rel=" stylesheet">
+</head>
+
+<body>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-info">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">String Intern</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <ul>
+                    <li> 
+                        What the different when the creating a string by using: <br>
+                        String str1 = new String("abc"); <br>
+                        String str2 = new String("abc"); <br> 
+                        String str3 = "abc"; // Compile-Time String Interning <br>
+                        String str4 = "abc"; // Same <br>
+                        String str5 = new String("abc").intern(); // Run-Time String Interning
+                        <pre>
+              -------------------  
+             |                   | (Heap)
+str1 ------------->  "abc"       | 
+             |                   |
+str2 ------------->  "abc"       |
+             |                   |
+             |-------------------|
+             |   (String Pool)   |
+             |                   |   
+str3, str4, -------> "abc"       |
+str5         |                   | 
+              -------------------    </pre>
+                    <li>
+                        Explain: <br>
+                        String pool is inside Heap. Intern will move string object from heap to String Pool.<br>
+                        All compile-time constant strings in Java are automatically interned. <br>
+                    </li>
+                    <li>
+                        str1 == str2;       // False <br>
+                        str1 == str3;       // False <br>
+                        str3 == str4;       // True <br>
+                        str3 == str5;       // True <br>
+                        str1.equals(str2);  // True <br>
+                        str1.equals(str3);  // True <br>
+                    </li>
+                    <li>
+                        Because str1, str2 and str3 reference different objects, so "==" operator return false. <br>
+                        Method "equals" will check the whether the fields "value" (char[]) in string equal.
+                    </li>
+                    <li>
+                        Because the literal "abc" is already of type String, using constructor will create an extra unnecessary object. Therefore, double quotes should be used if you just need to create a String. If you do need to create a new object in the heap, constructor should be used.
+                    </li>
+                    <li>
+                        <a href="http://www.programcreek.com/2014/03/create-java-string-by-double-quotes-vs-by-constructor/">Link to website<a>
+                    </li>
+                </ul>
+                <hr>
+                <small>Last Updated on: <time>Tuesday, June 6, 2016</time></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- jQuery -->
+<script src="../../global/js/jquery.js"></script>
+<!-- Cutomize -->
+<script src="js/string-intern.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>

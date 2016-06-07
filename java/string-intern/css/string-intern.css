@@ -1,0 +1,128 @@
+body {
+	background-color: #F5F5F5;
+}
+
+hr {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+p {
+	margin-bottom: 0px;
+}
+
+pre {
+	background-color: #fff;
+	border: none;
+	margin-bottom: 0px;
+}
+
+ul {
+	margin-bottom: 0px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#headline {
+	font-size: 24px;
+  	font-weight: 300;
+  	line-height: 1.1;
+  	color: #212121;
+	margin-top: 0px;
+	margin-bottom: 20px;
+  	font-family: "Comic Sans MS", cursive, sans-serif;
+  	background-color: red;
+}
+
+.panel {
+	font-family: "Comic Sans MS", cursive, sans-serif;	
+}
+
+.panel-body {
+	padding-bottom: 5px;
+}
+
+#accordion .panel-title > a {
+	display: block;
+	padding: 0.4em 0.6em;
+    outline: none;
+    font-weight:bold;
+    text-decoration: none;
+}
+
+#accordion .panel-title > a.accordion-toggle::before, #accordion a[data-toggle="collapse"]::before  {
+    /*font-family: 'Glyphicons Halflings'; 
+    content:"\e113";*/
+    float: left;
+	margin-right :1em;
+}
+#accordion .panel-title > a.accordion-toggle.collapsed::before, #accordion a.collapsed[data-toggle="collapse"]::before  {
+    /*content:"\e114";*/
+}
+.sen {
+	position:absolute;
+	font-size: 12px;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	background: transparent;
+	/*background: red;*/
+	display:none;
+	color: #5BC0DE;
+}
+
+#sen1 {
+    left: 35px;
+    top: 330px;
+	width: 95px;
+}
+
+#sen2 {
+    left: 128px;
+    top: 350px;
+	width: 150px;
+}
+
+#sen3 {
+    left: 280px;
+    top: 290px;
+	width: 180px;
+}
+
+#sen4 {
+    left: 470px;
+    top: 290px;
+	width: 235px;
+}
+
+#sen5 {
+    left: 713px;
+    top: 290px;
+	width: 175px;
+}
+
+#btn {
+	margin-left: 815px;
+	height: 25px;
+	width: 50px;
+	font-size: 12px;
+	line-height: 0px;
+	border-radius: 30px;
+	outline: none;
+	background: white;
+	border: 1px solid black;
+}
+
+#btn:hover {
+	background: #5BC0DE;
+	color: white;
+}
+
+#e1, #e2, #e3, #e4, #e5 {
+	color: #5BC0DE;
+}
