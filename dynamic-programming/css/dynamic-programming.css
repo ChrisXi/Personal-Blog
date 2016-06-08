@@ -1,0 +1,113 @@
+body {
+	background-color: #F5F5F5;
+}
+
+hr {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+pre {
+	/*background-color: #fff;*/
+	border: none;
+}
+
+ul {
+	padding-left: 0px;
+	margin-bottom: 0px;
+	list-style-type: none;
+}
+
+li {
+	margin-bottom: 2px;
+	background-color: #F5F5F5;
+}
+
+
+p.content {
+	margin-top: 5px;
+	padding-left: 15px;
+}
+
+a.red {
+	color: red;
+	text-decoration: none;
+}
+
+a.blue {
+	color: blue;
+	text-decoration: none;
+}
+
+a.green {
+	color: green;
+	text-decoration: none;
+}
+
+.title{
+	background: #F5F5F5;
+	margin-bottom: 0px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 10px;
+}
+
+#headline {
+	font-size: 24px;
+  	font-weight: 300;
+  	line-height: 1.1;
+  	color: #212121;
+	margin-top: 0px;
+	margin-bottom: 20px;
+  	font-family: "Comic Sans MS", cursive, sans-serif;
+  	background-color: red;
+}
+
+.panel {
+	font-family: "Comic Sans MS", cursive, sans-serif;	
+}
+
+.panel-body {
+	padding-bottom: 5px;
+}
+
+#accordion .panel-title > a {
+	display: block;
+	padding: 0.4em 0.6em;
+    outline: none;
+    font-weight:bold;
+    text-decoration: none;
+}
+
+#accordion .panel-title > a.accordion-toggle::before, #accordion a[data-toggle="collapse"]::before  {
+    /*font-family: 'Glyphicons Halflings'; 
+    content:"\e113";*/
+    float: left;
+	margin-right :1em;
+}
+#accordion .panel-title > a.accordion-toggle.collapsed::before, #accordion a.collapsed[data-toggle="collapse"]::before  {
+    /*content:"\e114";*/
+}
+
+.note {
+	word-wrap: break-word;
+	/*word-break:break-all;*/
+	display: inline-block; 
+	width: 55%; 
+	padding-left: 10px;
+	background: #F5F5F5; 
+	vertical-align: top; 
+	min-height: 110px;
+}
+
+.table {
+	overflow: hidden;
+	display: inline-block; 
+	width: 42%;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding-top: 1%;
+	padding-left: 2%;
+	padding-bottom: 0px;
+}
+

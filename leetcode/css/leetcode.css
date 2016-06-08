@@ -2,6 +2,10 @@ pre {
 	margin-top: 0px;
 }
 
+ul {
+	display: none;
+}
+	
 .btn {
 	/*margin-left: 815px;*/
 	height: 25px;
