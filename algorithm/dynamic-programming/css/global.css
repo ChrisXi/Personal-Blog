@@ -1,10 +1,5 @@
 body {
-	background-color: #F5F5F5;
-}
-
-hr {
-	margin-top: 10px;
-	margin-bottom: 5px;
+	font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 pre {
@@ -54,43 +49,6 @@ a.green {
 	padding-top: 3px;
 	padding-bottom: 3px;
 	padding-left: 10px;
-}
-
-#headline {
-	font-size: 24px;
-  	font-weight: 300;
-  	line-height: 1.1;
-  	color: #212121;
-	margin-top: 0px;
-	margin-bottom: 20px;
-  	font-family: "Comic Sans MS", cursive, sans-serif;
-  	background-color: red;
-}
-
-.panel {
-	font-family: "Comic Sans MS", cursive, sans-serif;	
-}
-
-.panel-body {
-	padding-bottom: 5px;
-}
-
-#accordion .panel-title > a {
-	display: block;
-	padding: 0.4em 0.6em;
-    outline: none;
-    font-weight:bold;
-    text-decoration: none;
-}
-
-#accordion .panel-title > a.accordion-toggle::before, #accordion a[data-toggle="collapse"]::before  {
-    /*font-family: 'Glyphicons Halflings'; 
-    content:"\e113";*/
-    float: left;
-	margin-right :1em;
-}
-#accordion .panel-title > a.accordion-toggle.collapsed::before, #accordion a.collapsed[data-toggle="collapse"]::before  {
-    /*content:"\e114";*/
 }
 
 .note {

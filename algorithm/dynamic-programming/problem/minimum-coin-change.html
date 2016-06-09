@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="../css/global.css" rel=" stylesheet"> 
+    <link href="../../../global/css/customizedScrollbar.css" rel=" stylesheet">
+</head>
+
+<body>
+
+
+<ul>
+    <li>
+        <div class="title">
+            Problem: Given a amount ‘A’ and n coins with different values. Write a pro­gram to find out min­i­mum num­bers of coins required to make the change for the amount ‘A’.<br>
+        </div>
+    </li>
+
+    <li>
+        <div class="title">
+            Coins set: {1,2,5}, amount: 10
+        </div>
+    </li>
+
+    <li>
+        <div class="note"> 
+            1. Initialization.<br>
+            <p class="content">
+                int[][] dp = new int[coins.length+1][amount+1]; <br>
+                <a class="red">dp[i][0] = -1;</a> <br> 
+                <a class="red">dp[0][j] = -1;</a> <br> 
+            </p>
+            
+        </div>
+        <pre class="table">
+  |  0  1  2  3  4  5  6  7  8  9  10
+--------------------------------------
+0 | <a class="red">-1 -1 -1 -1 -1 -1 -1 -1 -1 -1  -1</a>
+1 | <a class="red">-1</a> 
+2 | <a class="red">-1</a> 
+5 | <a class="red">-1</a></pre> 
+    </li>
+
+    <li>
+        <div class="note"> 
+            2. Compare current coin value with current amount (equal).<br>
+            <p class="content">
+                if (coins[i-1] > j) dp[i][j] = dp[i-1][j]; <br>
+                <a class="red">else if (coins[i-1] == j) dp[i][j] = 1; </a><br>
+                else ...
+            </p>
+        </div>
+        <pre class="table">
+  |  0  1  2  3  4  5  6  7  8  9  10
+--------------------------------------
+0 | -1 -1 -1 -1 -1 -1 -1 -1 -1 -1  -1
+1 | -1  <a class="red">1</a>
+2 | -1 
+5 | -1</pre> 
+    </li>
+
+    <li>
+        <div class="note"> 
+            3. Compare current coin value with current amount (smaller). Get the minimum coins number with current amount minus current coin value: <a class="blue">dp[i][j-coin[i-1]]</a>, the minimum coins number without current coin: <a class="green">dp[i-1][j]</a>.
+            <p class="content">
+                <a class="blue">int no1 = dp[i][j-coin[i-1]];</a> <br>
+                <a class="green">int no2 = dp[i-1][j];</a> <br>
+                <a class="red">dp[i][j] = (no1==-1 ? no:no+1);</a> <br>
+                <a class="red">dp[i][j] = (no2==-1 ? dp[i][j]:(dp[i][j]==-1 ? no2:min(dp[i][j], no2)));</a>
+            </p>
+        </div>
+        <pre class="table">
+  |  0  1  2  3  4  5  6  7  8  9  10
+--------------------------------------
+0 | -1 -1 <a class="green">-1</a> -1 -1 -1 -1 -1 -1 -1  -1
+1 | -1  <a class="blue">1</a>  <a class="red">2</a>
+2 | -1 
+5 | -1</pre> 
+    </li>
+
+   <li>
+        <div class="note"> 
+            4. Coninue to fill the following column.
+        </div>
+        <pre class="table">
+  |  0  1  2  3  4  5  6  7  8  9  10
+--------------------------------------
+0 | -1 -1 -1 -1 -1 -1 -1 -1 -1 -1  -1
+1 | -1  1  2  <a class="red">3  4  5  6  7  8  9  10</a>
+2 | -1  
+5 | -1
+    </li>
+
+   <li>
+        <div class="note"> 
+            5. Compare current coin value with current amount (larger). The new added coin is useless, so copy the value from top: <a class="blue">dp[i-1][j]</a>
+            <p class="content">
+                <a class="red">if (coins[i-1] > j) dp[i][j] = dp[i-1][j];</a><br>
+                else if ...
+            </p>
+        </div>
+        <pre class="table">
+  |  0  1  2  3  4  5  6  7  8  9  10
+--------------------------------------
+0 | -1 -1 -1 -1 -1 -1 -1 -1 -1 -1  -1
+1 | -1  <a class="blue">1</a>  2  3  4  5  6  7  8  9  10
+2 | -1  <a class="red">1</a>
+5 | -1
+    </li>
+
+    <li>
+        <div class="note"> 
+            6. Compare current coin value with current amount (equal).<br>
+            <p class="content">
+                if (coins[i-1] > j) dp[i][j] = dp[i-1][j]; <br>
+                <a class="red">else if (coins[i-1] == j) dp[i][j] = 1; </a><br>
+                else ...
+            </p>
+        </div>
+        <pre class="table">
+  |  0  1  2  3  4  5  6  7  8  9  10
+--------------------------------------
+0 | -1 -1 -1 -1 -1 -1 -1 -1 -1 -1  -1
+1 | -1  1  2  3  4  5  6  7  8  9  10
+2 | -1  1  <a class="red">1</a>
+5 | -1</pre> 
+    </li>
+
+    <li>
+        <div class="note"> 
+            7. Compare current coin value with current amount (smaller).
+            <p class="content">
+                <a class="blue">int no1 = dp[i][j-coin[i-1]];</a> <br>
+                <a class="green">int no2 = dp[i-1][j];</a> <br>
+                <a class="red">dp[i][j] = (no1==-1 ? no:no+1);</a> <br>
+                <a class="red">dp[i][j] = (no2==-1 ? dp[i][j]:(dp[i][j]==-1 ? no2:min(dp[i][j], no2)));</a>
+            </p>
+        </div>
+        <pre class="table">
+  |  0  1  2  3  4  5  6  7  8  9  10
+--------------------------------------
+0 | -1 -1 -1 -1 -1 -1 -1 -1 -1 -1  -1
+1 | -1  1  2  <a class="green">3</a>  4  5  6  7  8  9  10
+2 | -1  <a class="blue">1</a>  1  <a class="red">2</a>
+5 | -1</pre> 
+    </li>
+
+    <li>
+        <div class="note"> 
+            8. Coninue to fill the following column.
+        </div>
+        <pre class="table">
+  |  0  1  2  3  4  5  6  7  8  9  10
+--------------------------------------
+0 | -1 -1 -1 -1 -1 -1 -1 -1 -1 -1  -1
+1 | -1  1  2  3  4  5  6  7  8  9  10
+2 | -1  1  1  2  <a class="red">2  3  3  4  4  5   5</a>
+5 | -1
+    </li>
+
+    <li>
+        <div class="note"> 
+            9. Coninue to fill the following row.
+        </div>
+        <pre class="table">
+  |  0  1  2  3  4  5  6  7  8  9  10
+--------------------------------------
+0 | -1 -1 -1 -1 -1 -1 -1 -1 -1 -1  -1
+1 | -1  1  2  3  4  5  6  7  8  9  10
+2 | -1  1  1  2  2  3  3  4  4  5   5
+5 | -1  <a class="red">1  1  2  2  1  2  2  2  2   2</a>
+    </li>
+
+</ul>
+                
+
+
+
+<!-- jQuery -->
+<script src="../../../global/js/jquery.js"></script>
+<!-- Cutomize -->
+<script src="../js/dynamic-programming.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>
