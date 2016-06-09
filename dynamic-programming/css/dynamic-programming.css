@@ -27,6 +27,7 @@ li {
 p.content {
 	margin-top: 5px;
 	padding-left: 15px;
+	/*white-space:pre-wrap;*/
 }
 
 a.red {

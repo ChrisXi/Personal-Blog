@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="css/dynamic-programming.css" rel=" stylesheet"> 
+    <link href="../global/css/customizedScrollbar.css" rel=" stylesheet">
+</head>
+
+<body>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-info">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">Maximum product cutting rod</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <ul>
+                    <li>
+                        <div class="title">
+                            Problem:  Given a rope of length n meters, write an algo­rithm to cut the rope in such a way that prod­uct of dif­fer­ent lengths of rope is max­i­mum. At least one cut has to be made. (Assume that the length of rope is more than 2 meters, since at least one cut has to be made.)<br>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="title">
+                            rod length: 10 (len), maximum length of the rod you cutting is 5 (num).
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            1. Initialization.<br>
+                            <p class="content">
+                                <a class="red">
+                                int[] dp = new int[len+1]; <br>
+                                for (int i=0; i<=len; i++) <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           dp[0][i] = 1;</a>
+                            </p>
+                        </div>
+                        <pre class="table">
+  | 0  1  2  3  4  5  6  7  8  9  10
+------------------------------------
+1 | <a class="red">1  1  1  1  1  1  1  1  1  1   1</a>
+  |</pre>
+                    </li>
+
+                   <li>
+                        <div class="note"> 
+                            2. Start from new added cutting length.<br>
+                            <p class="content">
+                                for (int i=2; i<=num; i++)  <a class="green">//i=2</a><br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           for (int j=i; j&ltlen; j++) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        <a class="green">int no1 = dp[j];</a><br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        <a class="blue">int no2 = dp[j-i];</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        <a class="red">dp[j] = Math.max(no1, no2*i);</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           } <br>
+                            </p>
+                            
+                        </div>
+                        <pre class="table">
+  | 0  1  2  3  4  5  6  7  8  9  10
+------------------------------------
+1 | 1  1  <a class="green"><strike>1</strike></a>  1  1  1  1  1  1  1   1
+2 | <a class="blue">1</a>  1  <a class="red">2 </a></pre>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            3. Coninue to fill the following column.<br>
+                            <p class="content">
+                                for (int i=2; i<=num; i++)  <a class="green">//i=2</a><br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           <a class="red">for (int j=i; j&ltlen; j++) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        int no1 = dp[j];<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        tnt no2 = dp[j-i];<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        dp[j] = Math.max(no1, no2*i); <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           } </a><br>
+                            </p>
+                            
+                        </div>
+                        <pre class="table">
+  | 0  1  2  3  4  5  6  7  8  9  10
+------------------------------------
+1 | <strike>1  1  1  1  1  1  1  1  1  1   1</strike>
+2 | 1  1  2  <a class="red">2  4  4  8  8 16 16  32</a></pre>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            4. Coninue to fill the following column.<br>
+                            <p class="content">
+                                for (int i=2; i<=num; i++)  <a class="green">//i=3</a><br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           <a class="red">for (int j=i; j&ltlen; j++) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        int no1 = dp[j];<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        tnt no2 = dp[j-i];<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        dp[j] = Math.max(no1, no2*i); <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           } </a><br>
+                            </p>
+                            
+                        </div>
+                        <pre class="table">
+  | 0  1  2  3  4  5  6  7  8  9  10
+------------------------------------
+1 | <strike>1  1  1  1  1  1  1  1  1  1   1</strike>
+2 | <strike>1  1  2  2  4  4  8  8 16 16  32</strike>
+3 | 1  1  2  <a class="red">3  4  6  9 12 18 27  36</a></pre>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            5. Coninue to fill the following column.<br>
+                            <p class="content">
+                                for (int i=2; i<=num; i++)  <a class="green">//i=4</a><br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           <a class="red">for (int j=i; j&ltlen; j++) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        int no1 = dp[j];<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        tnt no2 = dp[j-i];<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        dp[j] = Math.max(no1, no2*i); <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           } </a><br>
+                            </p>
+                            
+                        </div>
+                        <pre class="table">
+  | 0  1  2  3  4  5  6  7  8  9  10
+------------------------------------
+1 | <strike>1  1  1  1  1  1  1  1  1  1   1</strike>
+2 | <strike>1  1  2  2  4  4  8  8 16 16  32</strike>
+3 | <strike>1  1  2  3  4  6  9 12 18 27  36</strike>
+4 | 1  1  2  3  <a class="red">4  6  9 12 18 27  36</a></pre>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            6. Coninue to fill the following column.<br>
+                            <p class="content">
+                                for (int i=2; i<=num; i++)  <a class="green">//i=5</a><br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           <a class="red">for (int j=i; j&ltlen; j++) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        int no1 = dp[j];<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        tnt no2 = dp[j-i];<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+                                        dp[j] = Math.max(no1, no2*i); <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           } </a><br>
+                            </p>
+                            
+                        </div>
+                        <pre class="table">
+  | 0  1  2  3  4  5  6  7  8  9  10
+------------------------------------
+1 | <strike>1  1  1  1  1  1  1  1  1  1   1</strike>
+2 | <strike>1  1  2  2  4  4  8  8 16 16  32</strike>
+3 | <strike>1  1  2  3  4  6  9 12 18 27  36</strike>
+4 | <strike>1  1  2  3  4  6  9 12 18 27  36</strike>
+5 | 1  1  2  3  4  <a class="red">6  9 12 18 27  36</a></pre>
+                    </li>
+
+                </ul>
+                <hr>
+                <small>Last Updated on: <time>Wenesday, June 8, 2016</time></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- jQuery -->
+<script src="../global/js/jquery.js"></script>
+<!-- Cutomize -->
+<script src="js/dynamic-programming.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>
