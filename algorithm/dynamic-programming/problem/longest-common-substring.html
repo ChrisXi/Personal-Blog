@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="../css/global.css" rel=" stylesheet"> 
+    <link href="../../../global/css/customizedScrollbar.css" rel=" stylesheet">
+</head>
+
+<body>
+
+<ul>
+    <li>
+        <div class="title">
+            Check all the sub­strings from first string with sec­ond string anxd keep track of the maximum.
+        </div>
+    </li>
+
+    <li>
+        <div class="title">
+            String str1 = "abcxyzay";<br>
+            String str2 = "xyzabcb";
+        </div>
+    </li>
+
+    <li>
+        <div class="note"> 
+            1. Initialization.<br>
+            <p class="content">
+                <a class="red">
+                int len1 = str1.length()+1, len2 = str2.length()+1; <br>
+                int[][] dp = new int[len1][len2]; <br>
+                dp[0][j] = 0;<br> 
+                dp[i][0] = 0;</a>
+            </p>
+        </div>
+        <pre class="table">
+      |  0   1(a)  2(b)  3(c)  4(x)  5(y)  6(z)  7(a)  8(y)
+ ----------------------------------------------------------
+ 0    |  <a class="red">0    0     0     0     0     0     0     0     0</a>
+ 1(x) |  <a class="red">0</a>    
+ 2(y) |  <a class="red">0</a>
+ 3(z) |  <a class="red">0</a>
+ 4(a) |  <a class="red">0</a>
+ 5(b) |  <a class="red">0</a>
+ 6(c) |  <a class="red">0</a>
+ 7(b) |  <a class="red">0</a></pre>
+    </li>
+
+    <li>
+        <div class="note"> 
+            2. Condition1 <a class="green">(c1!=c2)</a>.<br>
+            <p class="content">
+                for (int i=1; i<=len1; i++)  <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp for (int j=1; j<=len2; j++) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp char c1 = str.charAt(i-1); <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp char c2 = str.charAt(j-1); <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="red">dp[i][j] = (c1==c2 ? dp[i-1][j-1]+1:0);</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp }
+            </p>
+        </div>
+        <pre class="table">
+      |  0   1(a)  2(b)  3(c)  4(x)  5(y)  6(z)  7(a)  8(y)
+ ----------------------------------------------------------
+ 0    |  0    0     0     0     0     0     0     0     0
+ 1(x) |  0    <a class="red">0     0     0     </a>       
+ 2(y) |  0
+ 3(z) |  0
+ 4(a) |  0
+ 5(b) |  0
+ 6(c) |  0
+ 7(b) |  0</pre>
+    </li>
+
+    <li>
+        <div class="note"> 
+            3. Condition2 <a class="green">(c1==c2)</a>.<br>
+            <p class="content">
+                for (int i=1; i<=len1; i++)  <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp for (int j=1; j<=len2; j++) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="fuchsia">char c1 = str.charAt(i-1);</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="fuchsia">char c2 = str.charAt(j-1);</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="red">dp[i][j] = (c1==c2 ? dp[i-1][j-1]+1:0);</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp }
+            </p>
+        </div>
+        <pre class="table">
+      |  0   1(a)  2(b)  3(c)  4(<a class="fuchsia">x</a>)  5(y)  6(z)  7(a)  8(y)
+ ----------------------------------------------------------
+ 0    |  0    0     0     0     0     0     0     0     0
+ 1(<a class="fuchsia">x</a>) |  0    0     0     0     <a class="red">1</a>       
+ 2(y) |  0
+ 3(z) |  0
+ 4(a) |  0
+ 5(b) |  0
+ 6(c) |  0
+ 7(b) |  0</pre>
+    </li>
+
+    <li>
+        <div class="note"> 
+            4. Continue to fill the following column and row.<br>
+            <p class="content">
+                for (int i=1; i<=len1; i++)  <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp for (int j=1; j<=len2; j++) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="fuchsia">char c1 = str.charAt(i-1);</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="fuchsia">char c2 = str.charAt(j-1);</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="red">dp[i][j] = (c1==c2 ? dp[i-1][j-1]+1:0);</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp }
+            </p>
+        </div>
+        <pre class="table">
+      |  0   1(a)  2(b)  3(c)  4(x)  5(y)  6(z)  7(a)  8(y)
+ ----------------------------------------------------------
+ 0    |  0    0     0     0     0     0     0     0     0
+ 1(x) |  0    0     0     0     1     <a class="red">0     0     0     0 </a>         
+ 2(y) |  0    <a class="red">0     0     0     0     2     0     0     0</a>
+ 3(z) |  0    <a class="red">0     0     0     0     0     3     0     0</a>
+ 4(a) |  0    <a class="red">1     0     0     0     0     0     4     0</a>
+ 5(b) |  0    <a class="red">0     2     0     0     0     0     0     0</a>
+ 6(c) |  0    <a class="red">0     0     3     0     0     0     0     0</a>
+ 7(b) |  0    <a class="red">0     1     0     0     0     0     0     0</a>    </pre>
+    </li>
+
+
+
+</ul>
+
+
+
+<!-- jQuery -->
+<script src="../../../global/js/jquery.js"></script>
+<!-- Cutomize -->
+<script src="../js/dynamic-programming.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>
