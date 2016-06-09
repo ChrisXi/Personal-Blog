@@ -43,6 +43,11 @@ a.green {
 	text-decoration: none;
 }
 
+a.fuchsia {
+	color: fuchsia;
+	text-decoration: none;
+}
+
 .title{
 	background: #F5F5F5;
 	margin-bottom: 0px;

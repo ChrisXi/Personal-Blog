@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="../css/global.css" rel=" stylesheet"> 
+    <link href="../../../global/css/customizedScrollbar.css" rel=" stylesheet">
+</head>
+
+<body>
+
+<ul>
+    <li>
+        <div class="title">
+            Given two string sequences, write an algo­rithm to find the length of longest sub­se­quence present in both of them.
+        </div>
+    </li>
+
+    <li>
+        <div class="title">
+            String str1 = "acbaed";<br>
+            String str2 = "abcadf";
+        </div>
+    </li>
+
+    <li>
+        <div class="note"> 
+            1. Initialization.<br>
+            <p class="content">
+                <a class="red">
+                int len1 = str1.length()+1, len2 = str2.length()+1; <br>
+                int[][] dp = new int[len1][len2]; <br>
+                dp[0][j] = 0;<br> 
+                dp[i][0] = 0;</a>
+            </p>
+        </div>
+        <pre class="table">
+      |  0   1(a)  2(c)  3(b)  4(a)  5(e)  6(d)
+ ----------------------------------------------
+ 0    |  0    0     0     0     0     0     0
+ 1(a) |  0    1
+ 2(b) |  0
+ 3(c) |  0
+ 4(d) |  0
+ 5(f) |  0
+    </li>
+
+    <li>
+        <div class="note"> 
+            2. Condition1.<br>
+            <p class="content">
+                for (int i=1; i<=len1; i++)  <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp for (int j=1; j<=len2; j++) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="fuchsia">char c1 = str.charAt(i-1);</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="fuchsia">char c2 = str.charAt(j-1);</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="green">int up = dp[i-1][j];</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="blue">int left = dp[i][j-1];</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="red">dp[i][j] = (c1==c2 ? dp[i-1][j-1]+1:Math.max(up, left));</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp }
+            </p>
+        </div>
+        <pre class="table">
+      |  0   1(<a class="fuchsia">a</a>)  2(c)  3(b)  4(a)  5(e)  6(d)
+ ----------------------------------------------
+ 0    |  0     <a class="green">0</a>     0     0     0     0     0
+ 1(<a class="fuchsia">a</a>) |  <a class="blue">0</a>     <a class="red">1</a>
+ 2(b) |  0
+ 3(c) |  0
+ 4(d) |  0
+ 5(f) |  0
+    </li>
+
+    <li>
+        <div class="note"> 
+            3. Continue to fill the following column and row.<br>
+            <p class="content">
+                char c1 = str.charAt(i-1); <br>
+                char c2 = str.charAt(j-1); <br>
+                int up = dp[i-1][j]; <br>
+                int left = dp[i][j-1]; <br>
+                <a class="red">dp[i][j] = (c1==c2 ? dp[i-1][j-1]+1:Math.max(up, left));</a> <br>
+            </p>
+        </div>
+        <pre class="table">
+      |  0   1(a)  2(c)  3(b)  4(a)  5(e)  6(d)
+ ----------------------------------------------
+ 0    |  0    0     0     0     0     0     0
+ 1(a) |  0    1     <a class="red">1     1     1     1     1</a>
+ 2(b) |  0    <a class="red">1     1</a>
+ 3(c) |  0
+ 4(d) |  0
+ 5(f) |  0
+    </li>    
+
+    <li>
+        <div class="note"> 
+            4. Condition1.<br>
+            <p class="content">
+                <a class="fuchsia">char c1 = str.charAt(i-1);</a> <br>
+                <a class="fuchsia">char c2 = str.charAt(j-1);</a> <br>
+                <a class="green">int up = dp[i-1][j];</a> <br>
+                <a class="blue">int left = dp[i][j-1];</a> <br>
+                <a class="red">dp[i][j] = (c1==c2 ? dp[i-1][j-1]+1:Math.max(up, left));</a>
+            </p>
+        </div>
+        <pre class="table">
+      |  0   1(a)  2(c)  3(<a class="fuchsia">b</a>)  4(a)  5(e)  6(d)
+ ----------------------------------------------
+ 0    |  0    0     0     0     0     0     0
+ 1(a) |  0    1     1     <a class="green">1</a>     1     1     1
+ 2(<a class="fuchsia">b</a>) |  0    1     <a class="blue">1</a>     <a class="red">2</a>
+ 3(c) |  0
+ 4(d) |  0
+ 5(f) |  0
+    </li>  
+
+    <li>
+        <div class="note"> 
+            5. Continue to fill the following column and row.<br>
+            <p class="content">
+                <a class="red">dp[i][j] = (c1==c2 ? dp[i-1][j-1]+1:Math.max(up, left));</a>
+            </p>
+        </div>
+        <pre class="table">
+      |  0   1(a)  2(c)  3(b)  4(a)  5(e)  6(d)
+ ----------------------------------------------
+ 0    |  0    0     0     0     0     0     0
+ 1(a) |  0    1     1     1     1     1     1
+ 2(b) |  0    1     1     2     <a class="red">2     2     2</a>
+ 3(c) |  0    <a class="red">1     2     2     2     2     2</a>
+ 4(d) |  0    <a class="red">1     2     2     2     2     3</a>
+ 5(f) |  0    <a class="red">1     2     2     2     2     3</a>
+    </li>  
+
+</ul>
+
+
+
+<!-- jQuery -->
+<script src="../../../global/js/jquery.js"></script>
+<!-- Cutomize -->
+<script src="../js/dynamic-programming.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>
