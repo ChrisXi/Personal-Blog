@@ -80,7 +80,7 @@
                                 <a class="blue">int no1 = dp[i][j-coin[i-1]];</a> <br>
                                 <a class="green">int no2 = dp[i-1][j];</a> <br>
                                 <a class="red">dp[i][j] = (no1==-1 ? no:no+1);</a> <br>
-                                <a class="red">dp[i][j] = (no2==-1 ? dp[i][j]:min(dp[i][j], no2));</a>
+                                <a class="red">dp[i][j] = (no2==-1 ? dp[i][j]:(dp[i][j]==-1 ? no2:min(dp[i][j], no2)));</a>
                             </p>
                         </div>
                         <pre class="table">
@@ -147,7 +147,7 @@
                                 <a class="blue">int no1 = dp[i][j-coin[i-1]];</a> <br>
                                 <a class="green">int no2 = dp[i-1][j];</a> <br>
                                 <a class="red">dp[i][j] = (no1==-1 ? no:no+1);</a> <br>
-                                <a class="red">dp[i][j] = (no2==-1 ? dp[i][j]:min(dp[i][j], no2));</a>
+                                <a class="red">dp[i][j] = (no2==-1 ? dp[i][j]:(dp[i][j]==-1 ? no2:min(dp[i][j], no2)));</a>
                             </p>
                         </div>
                         <pre class="table">
@@ -187,7 +187,7 @@
 
                 </ul>
                 <hr>
-                <small>Last Updated on: <time>Wenesday, June 8, 2016</time></small>
+                <small>Last Updated on: <time>Wednesday, June 8, 2016</time></small>
             </div>
         </div>
     </div>

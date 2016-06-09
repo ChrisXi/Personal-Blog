@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="css/dynamic-programming.css" rel=" stylesheet"> 
+    <link href="css/maximum-sub-square.css" rel=" stylesheet">
+    <link href="../global/css/customizedScrollbar.css" rel=" stylesheet">
+</head>
+
+<body>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-info">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">Minimum Coin Change Problem</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <ul>
+                    <li>
+                        <div class="title">
+                            Problem:  Given a matrix of 0’s and 1’s (binary matrix). Find out Max­i­mum size square sub-matrix with all 1’s.<br>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="title">
+                            matrix:
+                            <table>
+                                <tr><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+                                <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+                                <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+                                <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+                            </table>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            1. Initialization.<br>
+                            <p class="content">
+                                <a class="red">int[][] dp = new int[h][w];</a> <br>
+                                <a class="red">dp[i][0] = matrix[i][0];</a> <br> 
+                                <a class="red">dp[0][j] = matrix[0][j];</a> <br> 
+                            </p>
+                            
+                        </div>
+                        <div class="table">
+                            <table>
+                                <tr><td><a class="red">0</a></td><td><a class="red">1</a></td><td><a class="red">1</a></td><td><a class="red">1</a></td><td><a class="red">0</a></td><td><a class="red">1</a></td></tr>
+                                <tr><td><a class="red">1</a></td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+                                <tr><td><a class="red">1</a></td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+                                <tr><td><a class="red">0</a></td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+                                <tr><td><a class="red">1</a></td><td> </td><td> </td><td> </td><td> </td><td> </td></tr></a>
+                            </table> 
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            2. Condition 1.<br>
+                            <p class="content">
+                                for (int i=1; i&lth; i++) <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           for (int j=1; j&ltw; j++) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp if (dp[i][j] == 0) dp[i][j] = 0; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp else { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="green">int up = dp[i-1][j];</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="blue">int left = dp[i][j-1];</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp if (up == left) <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="red">dp[i][j] = (matrix[i-up][j-up]==0 ? dp[up]:dp[up]+1); </a><br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp else <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp dp[i][j] = Math.min(up, left)+1;<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp }<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       }
+                            </p>
+                            
+                        </div>
+                        <div class="table">
+                            <table>
+                                <tr><td>0</td><td><a class="green">1</a></td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td><a class="blue">1</a></td><td><a class="red">1</a></td><td> </td><td> </td><td> </td><td> </td></tr>
+                                <tr><td>1</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+                                <tr><td>0</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+                                <tr><td>1</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr></a>
+                            </table> 
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            3. Condition 2.<br>
+                            <p class="content">
+                                <a class="green">int up = dp[i-1][j];</a> <br>
+                                <a class="blue">int left = dp[i][j-1];</a> <br>
+                                if (up == left) <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       <a class="red">dp[i][j] = (matrix[i-up][j-up]==0 ? dp[up]:dp[up]+1); </a><br>
+                                else <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       dp[i][j] = Math.min(up, left)+1;<br>
+                            </p>
+                            
+                        </div>
+                        <div class="table">
+                            <table>
+                                <tr><td>0</td><td>1</td><td><a class="green">1</a></td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>1</td><td><a class="blue">1</a></td><td><a class="red">2</a></td><td> </td><td> </td><td> </td></tr>
+                                <tr><td>1</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+                                <tr><td>0</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+                                <tr><td>1</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr></a>
+                            </table> 
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            4. Continue to fill the following column and row.<br>
+                        </div>
+                        <div class="table">
+                            <table>
+                                <tr><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>1</td><td>1</td><td>2</td><td><a class="red">0</a></td><td><a class="red">1</a></td><td><a class="red">0</a></td></tr>
+                                <tr><td>1</td><td><a class="red">2</a></td><td> </td><td> </td><td> </td><td> </td></tr>
+                                <tr><td>0</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+                                <tr><td>1</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr></a>
+                            </table> 
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            5. Condition 1.<br>
+                           <p class="content">
+                                <a class="green">int up = dp[i-1][j];</a> <br>
+                                <a class="blue">int left = dp[i][j-1];</a> <br>
+                                if (up == left) <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       <a class="red">dp[i][j] = (matrix[i-up][j-up]==0 ? dp[up]:dp[up]+1); </a><br>
+                                else <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       dp[i][j] = Math.min(up, left)+1;<br>
+                            </p>
+                            
+                        </div>
+                        <div class="table">
+                            <table>
+                                <tr><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>1</td><td>1</td><td><a class="green">2</a></td><td>0</td><td>1</td><td>0</td></tr>
+                                <tr><td>1</td><td><a class="blue">2</a></td><td><a class="red">2</a></td><td> </td><td> </td><td> </td></tr>
+                                <tr><td>0</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+                                <tr><td>1</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr></a>
+                            </table> 
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            6. Continue to fill the following column and row.<br>
+                        </div>
+                        <div class="table">
+                            <table>
+                                <tr><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>1</td><td>1</td><td>2</td><td>0</td><td>1</td><td>0</td></tr>
+                                <tr><td>1</td><td>2</td><td>2</td><td><a class="red">1</a></td><td><a class="red">1</a></td><td><a class="red">0</a></td></tr>
+                                <tr><td>0</td><td><a class="red">0</a></td><td> </td><td> </td><td> </td><td> </td></tr>
+                                <tr><td>1</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr></a>
+                            </table> 
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            7. Condition 3.<br>
+                           <p class="content">
+                                <a class="green">int up = dp[i-1][j];</a> <br>
+                                <a class="blue">int left = dp[i][j-1];</a> <br>
+                                if (up == left) <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           dp[i][j] = (matrix[i-up][j-up]==0 ? dp[up]:dp[up]+1);<br>
+                                else <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp           <a class="red">dp[i][j] = Math.min(up, left)+1;</a><br>
+                            </p>
+                            
+                        </div>
+                        <div class="table">
+                            <table>
+                                <tr><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>1</td><td>1</td><td>2</td><td>0</td><td>1</td><td>0</td></tr>
+                                <tr><td>1</td><td>2</td><td>2</td><td>1</td><td>1</td><td>0</td></tr>
+                                <tr><td>0</td><td>0</td><td><a class="red">1</a></td><td> </td><td> </td><td> </td></tr>
+                                <tr><td>1</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr></a>
+                            </table> 
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="note"> 
+                            8. Continue to fill the following column and row.<br>
+                        </div>
+                        <div class="table">
+                            <table>
+                                <tr><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>1</td><td>1</td><td>2</td><td>0</td><td>1</td><td>0</td></tr>
+                                <tr><td>1</td><td>2</td><td>2</td><td>1</td><td>1</td><td>0</td></tr>
+                                <tr><td>0</td><td>0</td><td>1</td><td><a class="red">2</a></td><td><a class="red">2</a></td><td><a class="red">0</a></td></tr>
+                                <tr><td>1</td><td><a class="red">1</a></td><td><a class="red">1</a></td><td><a class="red">2</a></td><td><a class="red">3</a></td><td><a class="red">1</a></td></tr></a>
+                            </table> 
+                        </div>
+                    </li>
+
+                </ul>
+                <hr>
+                <small>Last Updated on: <time>Thursday, June 9, 2016</time></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- jQuery -->
+<script src="../global/js/jquery.js"></script>
+<!-- Cutomize -->
+<script src="js/dynamic-programming.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>
