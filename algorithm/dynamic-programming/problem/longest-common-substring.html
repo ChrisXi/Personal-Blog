@@ -108,8 +108,8 @@
             <p class="content">
                 for (int i=1; i<=len1; i++)  <br>
 &nbsp&nbsp&nbsp&nbsp&nbsp for (int j=1; j<=len2; j++) { <br>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="fuchsia">char c1 = str.charAt(i-1);</a> <br>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="fuchsia">char c2 = str.charAt(j-1);</a> <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp char c1 = str.charAt(i-1);<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp char c2 = str.charAt(j-1);<br>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="red">dp[i][j] = (c1==c2 ? dp[i-1][j-1]+1:0);</a> <br>
 &nbsp&nbsp&nbsp&nbsp&nbsp }
             </p>
@@ -124,11 +124,8 @@
  4(a) |  0    <a class="red">1     0     0     0     0     0     4     0</a>
  5(b) |  0    <a class="red">0     2     0     0     0     0     0     0</a>
  6(c) |  0    <a class="red">0     0     3     0     0     0     0     0</a>
- 7(b) |  0    <a class="red">0     1     0     0     0     0     0     0</a>    </pre>
+ 7(b) |  0    <a class="red">0     1     0     0     0     0     0     0</a></pre>
     </li>
-
-
-
 </ul>
 
 
