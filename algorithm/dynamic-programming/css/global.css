@@ -48,6 +48,16 @@ a.fuchsia {
 	text-decoration: none;
 }
 
+a.teal {
+	color: teal;
+	text-decoration: none;
+}
+
+a.maroon {
+	color: maroon;
+	text-decoration: none;
+}
+
 .title{
 	background: #F5F5F5;
 	margin-bottom: 0px;

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="../css/global.css" rel=" stylesheet"> 
+    <link href="../../../global/css/customizedScrollbar.css" rel=" stylesheet">
+</head>
+
+<body>
+
+
+<ul>
+    <li>
+        <div class="title">
+            Problem: Implement regular expression matching with support for '.' and '*'. &nbsp&nbsp&nbsp&nbsp&nbsp(<a href="https://leetcode.com/problems/regular-expression-matching/" target="_blank">Link to problem</a>)
+        </div>
+    </li>
+
+    <li>
+        <div class="title">
+            str1="aaca", str2="d*ab*a*c*a"
+        </div>
+    </li>
+
+    <li>
+        <div class="note"> 
+            1. Initialization.<br>
+            <p class="content">
+                <a class="red">
+                int[][] dp = new int[str1.length()+1][str2.length()+1]; <br>
+                dp[0][0] = 1; <br>
+                int num=0; <br>
+                for (int i=1; i<=str2.length(); i++)  <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                    if (str2.charAt(i-1) == '*') { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                        dp[0][i] = 1; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                        num --; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                    } else { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                        if (++num > 1) break; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                    } </a>
+            </p>
+            
+        </div>
+        <pre class="table">
+    | 0 1(d) 2(*) 3(a) 4(b) 5(*) 6(a) 7(*) 8(c) 9(*) 10(a)
+----------------------------------------------------------
+0   | <a class="red">1  0    1    0    0    0    0    0    0    0    0</a>
+1(a)| <a class="red">0</a> 
+2(a)| <a class="red">0</a> 
+3(c)| <a class="red">0</a> 
+4(a)| <a class="red">0</a></pre>
+    </li>
+
+    <li>
+        <div class="note"> 
+            2. Condition1. <a class="green">(str2.charAt(j-1) != '*') no match</a><br>
+            <p class="content">
+                for (int i=1; i<=str1.length(); i++) <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                    for (int j=1; j<=str2.length(); j++) {<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                        if (<a class="teal">str2.charAt(i-1)</a> == '*') {<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            if (dp[i][j-1]==1 || dp[i][j-2]==1)<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                                dp[i][j] = 1;<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            if (dp[i-1][j]==1 && str1.charAt(i-1)==str2.charAt(j-2))<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                                dp[i][j] = 1;<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                        } else {<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            if (<a class="fuchsia">str1.charAt(i-1)</a>==<a class="teal">str2.charAt(j-1)</a> || <a class="teal">str2.charAt(j-1)</a> == '.')<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                                dp[i][j] = dp[i-1][j-1];<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                        }<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                    }                
+            </p>
+            
+        </div>
+        <pre class="table">
+    | 0 1(<a class="teal">d</a>) 2(*) 3(a) 4(b) 5(*) 6(a) 7(*) 8(c) 9(*) 10(a)
+----------------------------------------------------------
+0   | 1  0    1    0    0    0    0    0    0    0    0
+1(<a class="fuchsia">a</a>)| 0  <a class="red">0  </a>
+2(a)| 0 
+3(c)| 0 
+4(a)| 0</pre>
+    </li>
+
+    <li>
+        <div class="note"> 
+            3. Condition2. <a class="green">(str2.charAt(j-1) == '*') no match</a><br>
+            <p class="content">
+                        if (<a class="teal">str2.charAt(i-1)</a> == '*') {<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                            if (<a class="blue">dp[i][j-1]</a>==1 || <a class="blue">dp[i][j-2]</a>==1)<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                                dp[i][j] = 1;<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                            if (<a class="green">dp[i-1][j]</a>==1 && <a class="fuchsia">str1.charAt(i-1)</a>==<a class="maroon">str2.charAt(j-2)</a>)<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                                dp[i][j] = 1;<br>
+                        } else { ... }
+            </p>
+            
+        </div>
+        <pre class="table">
+    | 0 1(<a class="maroon">d</a>) 2(<a class="teal">*</a>) 3(a) 4(b) 5(*) 6(a) 7(*) 8(c) 9(*) 10(a)
+----------------------------------------------------------
+0   | 1  0    <a class="green">1</a>    0    0    0    0    0    0    0    0
+1(<a class="fuchsia">a</a>)| <a class="blue">0  0</a>    <a class="red">0    </a>
+2(a)| 0 
+3(c)| 0 
+4(a)| 0</pre>
+    </li>
+
+    <li>
+        <div class="note"> 
+            4. Condition3. <a class="green">(str2.charAt(j-1) != '*') match!</a><br>
+            <p class="content">
+                        if (<a class="teal">str2.charAt(i-1)</a> == '*') {<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                            ...<br>
+                        } else {<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                            if (<a class="fuchsia">str1.charAt(i-1)</a>==<a class="teal">str2.charAt(j-1)</a> || str2.charAt(j-1) == '.')<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                                <a class="red">dp[i][j]</a> = <a class="blue">dp[i-1][j-1]</a>;<br>
+                        }<br>
+            </p>
+            
+            
+        </div>
+        <pre class="table">
+    | 0 1(d) 2(*) 3(<a class="teal">a</a>) 4(b) 5(*) 6(a) 7(*) 8(c) 9(*) 10(a)
+----------------------------------------------------------
+0   | 1  0    <a class="blue">1</a>    0    0    0    0    0    0    0    0
+1(<a class="fuchsia">a</a>)| 0  0    0    <a class="red">1</a> 
+2(a)| 0 
+3(c)| 0 
+4(a)| 0</pre>
+    </li>
+
+    <li>
+        <div class="note"> 
+            5. Condition4. <a class="green">(str2.charAt(j-1) == '*') match!</a><br>
+            <p class="content">
+                        if (<a class="teal">str2.charAt(i-1)</a> == '*') {<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                            if (<a class="blue">dp[i][j-1]</a>==1 || <a class="blue">dp[i][j-2]</a>==1)<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                                <a class="red">dp[i][j]</a> = 1;<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                            if (dp[i-1][j]==1 && str1.charAt(i-1)==str2.charAt(j-2))<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                                dp[i][j] = 1;<br>
+                        } else { ... }
+            </p>
+        </div>
+        <pre class="table">
+    | 0 1(d) 2(*) 3(a) 4(b) 5(<a class="teal">*</a>) 6(a) 7(*) 8(c) 9(*) 10(a)
+----------------------------------------------------------
+0   | 1  0    1    0    0    0    0    0    0    0    0
+1(<a class="fuchsia">a</a>)| 0  0    0    <a class="blue">1</a>    0    <a class="red">1</a> 
+2(a)| 0  
+3(c)| 0 
+4(a)| 0</pre>
+    </li>
+
+    <li>
+        <div class="note"> 
+            6. Continue to fill the following column and row.
+        </div>
+        <pre class="table">
+    | 0 1(d) 2(*) 3(a) 4(b) 5(*) 6(a) 7(*) 8(c) 9(*) 10(a)
+----------------------------------------------------------
+0   | 1  0    1    0    0    0    0    0    0    0    0
+1(a)| 0  0    0    1    0    1    <a class="red">0    0    0    0    0</a>
+2(a)| 0  <a class="red">0    0    0    0    0    1    1    0    1    0</a>
+3(c)| 0  <a class="red">0    0    0    0    0    0    0    1    1    0</a>
+4(a)| 0  <a class="red">0    0    0    0    0    0    0    0    0    1</a></pre>
+    </li>
+
+
+</ul>
+                
+
+
+
+<!-- jQuery -->
+<script src="../../../global/js/jquery.js"></script>
+<!-- Cutomize -->
+<script src="../js/dynamic-programming.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>
