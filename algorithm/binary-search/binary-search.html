@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="css/binary-search.css" rel=" stylesheet"> 
+    <link href="../../global/css/customizedScrollbar.css" rel=" stylesheet">
+</head>
+
+<body>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-info">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">Binary Search</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <ul>
+                    <li>
+                    The basic binary search, find the given target occurance (if there duplicate exists, it will return the first index). <br>
+                    int binarySearch(int[] nums, int target) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        int l=0, h=nums.length-1; <a class="green">//initial low, high pointers</a><br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        while (l <= h) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            int m = l+((h-l)>>1); <a class="green">//get medan pointer</a><br> 
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            if (target <= nums[m]) h = m-1; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            else l = m+1; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        } <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        return l<=nums.length-1&&num[l]==target ? l:-1;<br>
+                    }
+                    <pre>
+Example:
+target: 1
+|  1  2 |   1   2 |    1  2 |
+|  ↑  ↑ |   ↑   ↑ | ↑  ↑    |
+| l/m h | l/m/h   | h  l    |
+
+target: 2
+|  1  2 | 1   2   | 1  2 |
+|  ↑  ↑ |     ↑   | ↑  ↑ |
+| l/m h |   l/m/h | h  l |
+
+target: 3
+| 1  2  3  3  4 |  1  2  3  3  4 | 1   2  3  3  4 | 1  2  3  3  4 |
+| ↑     ↑     ↑ |  ↑  ↑          |     ↑          |    ↑  ↑       |
+| l     m     h | l/m h          |   l/h/m        |    h  l       |</pre>
+                    Note: <a class="red">After the end of while loop, the high pointer will be always in the front of the low pointer (l = h+1)</a>. We will use this feature to solve the coming up problems.
+                    </li>
+                    <li>
+                    Find the last occurance of given target. <br>
+                    int binarySearch(int[] nums, int target) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        int l=0, h=nums.length-1; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        while (l <= h) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            int m = l+((h-l)>>1); <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            if (<a class="red">target+1</a> <= nums[m]) h = m-1; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            else l = m+1; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        } <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        return 0<=h&&num[h]==target ? h:-1;<br>
+                    }
+                    </li>
+                    <li>
+                    Find the occurance of the item which was smallest among those items that are larger than the given target. <br>
+                    int binarySearch(int[] nums, int target) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        int l=0, h=nums.length-1; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        while (l <= h) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            int m = l+((h-l)>>1); <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            if (<a class="red">target+1</a> <= nums[m]) h = m-1; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            else l = m+1; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        } <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        return l<=nums.length-1 ? h:-1;<br>
+                    }
+                    </li>
+                    <li>
+                    Find the occurance of the item which was largest among those items that are smaller than the given target. <br>
+                    int binarySearch(int[] nums, int target) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        int l=0, h=nums.length-1; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        while (l <= h) { <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            int m = l+((h-l)>>1); <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            if (target <= nums[m]) h = m-1; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                            else l = m+1; <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        } <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                        return h;<br>
+                    }
+                    </li>
+                </ul>
+                <hr>
+                <small>Last Updated on: <time>Wednesday, Jun 15, 2016</time></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="../../global/js/jquery.js"></script>
+<!-- Cutomize -->
+<!-- <script src="js/binary-search.js"></script> -->
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>
