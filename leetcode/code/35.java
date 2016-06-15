@@ -6,14 +6,12 @@ public class Solution {
         
         while (l<=h) {
             
-            int mid = (h+l)/2;
+            int mid = l+((h-l)>>1);
             
-            if (nums[mid] < target) {
-                l = mid+1;
-            } else if (nums[mid] == target) { 
-                return mid;
-            } else {
+            if (target <= nums[mid]) {
                 h = mid-1;
+            } else {
+                l = mid+1;
             }
             
         }
