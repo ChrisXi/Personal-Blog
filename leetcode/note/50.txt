@@ -1,0 +1,3 @@
+Pow(x, n)
+/*Note*/
+/*Need Review and Practice*/
