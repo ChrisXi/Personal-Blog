@@ -1,0 +1,3 @@
+Merge Intervals
+/*Note*/
+/*instead of use priority queue: Collections.sort(intervals, new IntervalComparator());*/
