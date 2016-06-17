@@ -1,32 +1,28 @@
 public class Solution {
-    
     public String getPermutation(int n, int k) {
         
-        List<Integer> lst = new ArrayList<Integer>();
-        for(int i=1; i<=n; i++) {
-            lst.add(i);
-        }
         
-        String ans = "";
-        k--;
-        while(n != 0) {
-            int num = comNum(n);
-            int p = k/num;
-            ans += lst.get(p);
-            lst.remove(p);
-            k = k - (k/num)*num;
-            n--;
-        }
+        List<Integer> nums = new ArrayList<Integer>();
+        for (int i=1; i<=n; i++) 
+            nums.add(i);
         
-        return ans;
+        StringBuilder str = new StringBuilder("");
+        k --;    
+        while (n > 0) {
+            int com = combineNum(--n);
+            int m = k/com;
+            str.append(nums.get(m));
+            nums.remove(m);
+            k -= m*com;
+        }
+            
+        return str.toString();
     }
     
-    int comNum(int n) {
-        int product = 1;
-        for(int i=1; i<n; i++) {
-            product*=i;
-        }
-        return product;
-    }   
-  
+    int combineNum (int n) {
+        int ans = 1;
+        for (int i=2; i<=n; i++)
+            ans *= n;
+        return ans;
+    } 
 }
