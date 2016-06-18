@@ -22,7 +22,7 @@ u.error {
     text-decoration: none;
 }
 
-pre.content {
+.content {
    /*font-family: "courier new";*/
    font-family: "Lucida Console";
    font-size: 12px;
@@ -43,18 +43,9 @@ pre.error {
    margin: 0px;
 }
 
-div.circleDiv {
-  position: absolute;
-  border-radius: 50%;
-  top: 10%;
-  left: 42%;
-  width: 20%;
-  min-width: 90px;
-  max-width: 120px;
-  padding: 5px;
-  background-color: white;
-  border: 1px solid #D3E0E9;
-  z-index: 10;
+.circleDiv {
+  width: 120px;
+  height: 120px;
 }
 
 .tooltip-inner {
@@ -84,14 +75,34 @@ button.enter {
   left: 50px;
 }
 
+#divheader {
+  border: 1px solid #D3E0E9;
+  border-radius: 1%;
+  height: 220px;
+}
+
+#avatar {
+  position: absolute;
+  border-radius: 50%;
+  top: 180px;
+  left: 42%;
+  width: 20%;
+  min-width: 90px;
+  max-width: 120px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid #D3E0E9;
+  z-index: 10;
+}
+
+
 </style>
 
 </head>
 
 <body>
 
-<div style="border: 1px solid #D3E0E9;
-            border-radius: 1%;" >           
+<div id="divheader" >           
   <img src="https://dl.dropboxusercontent.com/s/ndl01divb3vgsdm/header.jpg?dl=0" class="img-responsive" height="800" id="header" > 
 </div>
 
@@ -168,11 +179,16 @@ $(document).ready(function(){
 $(window).resize(function() {
   var top = $("#header").height() - $("#avatar").height()/2; 
   $("#avatar").css({top: top, position:'absolute'});
+  $("#divheader").css({"height": $("#header").height()});
+  // $("#avatar").css({"height":"", "width":""});
+  $("#avatar").removeAttr("class");
 });
 
 $(window).load(function() {
   var top = $("#header").height() - $("#avatar").height()/2; 
-  $("#avatar").css({top: top, position:'absolute'});
+  // $("#avatar").css({top: top, position:'absolute'});
+  $("#avatar").animate({top: top}, 500);
+  $("#divheader").css({"height": $("#header").height()});
 });
 
 $('#avatar').css('cursor', 'pointer');
