@@ -1,26 +1,20 @@
 public class Solution {
-    
-    int[] nt;
     public int numTrees(int n) {
         
-        nt = new int[n+1];
-        nt[0] = 1;
-        nt[1] = 1;
+        int[] dp = new int[n+1];
+        dp[0] = dp[1] = 1;
         
-        return getNum(n);
+        return getNum(dp, n);
     }
     
-    int getNum(int n) {
+    int getNum(int[] dp, int n) {
         
-        if(nt[n] != 0) {return nt[n];}
+        if (dp[n] != 0) return dp[n];
         
-        int ans = 0;
-        n --;
-        for(int i=0; i<=n; i++) {
-            ans += (getNum(i)*getNum(n-i));
+        for (int i=0; i<=n-1; i++) {
+            dp[n] += (getNum(dp, i)*getNum(dp, n-1-i));
         }
-        nt[n+1] = ans;
-          
-        return ans;
+        
+        return dp[n];
     }
 }  
