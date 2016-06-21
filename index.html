@@ -44,6 +44,7 @@ pre.error {
 }
 
 .circleDiv {
+  /*position:relative;*/
   width: 120px;
   height: 120px;
 }
@@ -83,26 +84,30 @@ button.enter {
 
 #avatar {
   position: absolute;
-  border-radius: 50%;
+  /*border-radius: 50%;*/
   top: 180px;
   left: 42%;
   width: 20%;
   min-width: 90px;
   max-width: 120px;
   padding: 5px;
-  background-color: white;
-  border: 1px solid #D3E0E9;
+  background-color: transparent;
+  /*border: 1px solid #D3E0E9;*/
   z-index: 10;
 }
 
-#myimg {
-  content: url("https://dl.dropboxusercontent.com/s/8gimj3ae8pkazgh/avatar.png?dl=0");
-  transition: all 1s ease;
+a img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: 1px solid #D3E0E9;
+  border-radius: 50%;
+  /*padding: 3px;*/
 }
 
-#myimg:hover {
-  content: url("https://dl.dropboxusercontent.com/s/28lyt2dk6j4bxwz/avatar1.png?dl=0");
-  transition: all 1s ease;
+#myimg1:hover{
+  opacity:0;
+  transition: all 0.5s ease-in-out 0s;
 }
 
 </style>
@@ -119,7 +124,8 @@ button.enter {
   <!-- <img src="./pic/avatar.png" class="img-responsive">  -->
   <a href="./home/blog.html">
     <!-- <img id="myimg" class="img-responsive" src="https://dl.dropboxusercontent.com/s/8gimj3ae8pkazgh/avatar.png?dl=0" onmouseover="this.src='https://dl.dropboxusercontent.com/s/28lyt2dk6j4bxwz/avatar1.png?dl=0'" onmouseout="this.src='https://dl.dropboxusercontent.com/s/8gimj3ae8pkazgh/avatar.png?dl=0'">  -->
-    <img id="myimg" class="img-responsive"> 
+    <img id="myimg2" class="img-responsive" src="https://dl.dropboxusercontent.com/s/28lyt2dk6j4bxwz/avatar1.png?dl=0"> 
+    <img id="myimg1" class="img-responsive" src="https://dl.dropboxusercontent.com/s/8gimj3ae8pkazgh/avatar.png?dl=0"> 
   </a>
 </div>
 
@@ -190,8 +196,8 @@ $(window).resize(function() {
   var top = $("#header").height() - $("#avatar").height()/2; 
   $("#avatar").css({top: top, position:'absolute'});
   $("#divheader").css({"height": $("#header").height()});
-  // $("#avatar").css({"height":"", "width":""});
-  $("#avatar").removeAttr("class");
+
+  // $("#avatar").removeAttr("class");
 });
 
 $(window).load(function() {
@@ -199,6 +205,8 @@ $(window).load(function() {
   // $("#avatar").css({top: top, position:'absolute'});
   $("#avatar").animate({top: top}, 500);
   $("#divheader").css({"height": $("#header").height()});
+  $("#myimg1").css({"padding": "3px"});
+  $("#myimg2").css({"padding": "3px"});
 });
 
 $('#avatar').css('cursor', 'pointer');
