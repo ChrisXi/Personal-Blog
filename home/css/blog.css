@@ -420,7 +420,7 @@ html { height: 100%;}
   font-size: 12px;
   line-height: 1.428571429;
   border-radius: 15px;
-  background-color: green;
+  background-color: #5CB85C;
   visibility: hidden;
   border: none;
 }
@@ -428,6 +428,7 @@ html { height: 100%;}
 .btn-autoclosed:hover {
   opacity: 0.8;
   outline: none;
+  transition: all 0.5s ease-in-out 0s;
 }
 
 .btn-autoclosed:active,
