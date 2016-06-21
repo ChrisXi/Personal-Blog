@@ -408,3 +408,32 @@ html { height: 100%;}
   z-index: 1;
 }
 
+.btn-autoclosed {
+  position: absolute;
+  opacity: .05;
+  top: 600px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  background-color: green;
+  visibility: hidden;
+  border: none;
+}
+
+.btn-autoclosed:hover {
+  opacity: 0.8;
+  outline: none;
+}
+
+.btn-autoclosed:active,
+.btn-autoclosed:focus {
+  outline: none;
+  border: none;
+}
+
+

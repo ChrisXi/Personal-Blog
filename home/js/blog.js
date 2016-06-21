@@ -4,7 +4,8 @@ $(document).ready(function () {
   $('html, body').animate({scrollTop: 55}, 500);
 
   var trigger = $('.hamburger'),
-      overlay = $('.overlay');
+      overlay = $('.overlay'),
+      autoclosed = $('.btn-autoclosed');
   isClosed = false;
 
   trigger.click(function () {
@@ -17,11 +18,13 @@ $(document).ready(function () {
       overlay.hide();
       trigger.removeClass('is-open');
       trigger.addClass('is-closed');
+      autoclosed.css({"visibility": "hidden"});
       isClosed = false;
     } else {   
       overlay.show();
       trigger.removeClass('is-closed');
       trigger.addClass('is-open');
+      autoclosed.css({"visibility": "visible"});
       isClosed = true;
     }
   }
@@ -98,5 +101,24 @@ $('.leetcode').click(function(e) {
     $('#frame').attr('src', dir); 
 });
 
+var autoclosed = false;
+$('#autoclosed').click(function(e) {
+
+    if (autoclosed) {
+      $('.fa').removeClass('fa-check');
+      $('.fa').addClass('fa-times');
+    } else {
+      $('.fa').removeClass('fa-times');
+      $('.fa').addClass('fa-check');
+    }
+    
+    autoclosed =! autoclosed;
+});
+
+$('li li').click(function(e) {
+    if (autoclosed) {
+      $('.hamburger').trigger( "click" );
+    }   
+});
 
 
