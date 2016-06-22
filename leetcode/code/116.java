@@ -9,31 +9,19 @@
 public class Solution {
     public void connect(TreeLinkNode root) {
         
-        if (root == null) return;
+        TreeLinkNode pre = root, cur = null;
         
-        Queue<TreeLinkNode> queue = new LinkedList<TreeLinkNode>();
-        queue.offer(root);
-        
-        int num = 1;
-        int childCount = 0;
-        TreeLinkNode pre = null;
-        while (!queue.isEmpty()) {
+        while (pre != null && pre.left != null) {
+            cur = pre;
             
-            TreeLinkNode node = queue.poll();
-            
-            if (pre != null) 
-                pre.next = node; 
-            pre = node;
-            
-            if (node.left != null) { queue.offer(node.left); childCount ++; }
-            if (node.right != null) { queue.offer(node.right); childCount ++; }
-            
-            num --;
-            if (num == 0) {
-                num = childCount;
-                childCount = 0;
-                pre = null;
+            while (cur != null) {
+                cur.left.next = cur.right;
+                if (cur.next != null)
+                    cur.right.next = cur.next.left;
+                cur = cur.next;
             }
+            
+            pre = pre.left;
         }
     }
 }
