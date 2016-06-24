@@ -1,44 +1,38 @@
 public class Solution {
-    
-    List<List<String>> ans;
     public List<List<String>> partition(String s) {
         
-        ans = new ArrayList<List<String>>();    
-        getPalindrome(new ArrayList<String>(), s);
+        List<List<String>> ans = new ArrayList<List<String>>();
+        
+        add(ans, new ArrayList<String>(), s);
         
         return ans;
     }
     
-    void getPalindrome(ArrayList<String> lst, String str) {
+    void add(List<List<String>> ans, List<String> lst, String s) {
         
-        if(str.length() == 0) {
-            this.ans.add(new ArrayList<String>(lst));
+        if (s.length() == 0) {
+            ans.add(new ArrayList<String>(lst));
             return;
         }
         
-        for(int i=1; i<=str.length(); i++) {
-            
-            String t = str.substring(0, i);
-            if(isPalindrome(t)) {
-                lst.add(t);
-                getPalindrome(lst, str.substring(i));
+        for (int i=0; i<s.length(); i++) {
+            String str = s.substring(0, i+1);
+            if (isPalindrome(str)) {
+                lst.add(str);
+                add(ans, lst, s.substring(i+1));
                 lst.remove(lst.size()-1);
             }
-        }    
+        }
     }
     
-    boolean isPalindrome(String str) { //length of str >= 1
+    boolean isPalindrome(String str) {
+        
         int s=0, e=str.length()-1;
         
-        do {
-            if (str.charAt(s) == str.charAt(e)) {
-                s++;
-                e--;
-            } else {
+        while(s < e) {
+            if (str.charAt(s++) != str.charAt(e--))
                 return false;
-            }
-        } while (s<e);
-        
+        }
         return true;
     }
 }
