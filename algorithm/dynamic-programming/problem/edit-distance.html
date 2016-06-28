@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="../css/global.css" rel=" stylesheet"> 
+    <link href="../../../global/css/customizedScrollbar.css" rel=" stylesheet">
+</head>
+
+<body>
+
+
+<ul>
+    <li>
+        <div class="title">
+            Problem: Given two words <i>word1</i> and <i>word2</i>, find the minimum number of step required to convert <i>word1</i> to <i>word2</i>.<br>
+            1) Insert a character<br>
+            2) Delete a character<br>
+            3) Replace a character<br>
+        </div>
+    </li>
+
+    <li>
+        <div class="title">
+            str1="bcddad", str2="cdddab"
+        </div>
+    </li>
+
+    <li>
+        <div class="note"> 
+            1. Initialization. <br>
+            Note: It will cost "bc" for deleting two characters to become "". And it will cost "" for inserting three characters to become "cdd". <br>
+            <p class="content">
+                <a class="red">
+                int[][] dp = new int[str1.length()+1][str2.length()+1]; <br>
+                for (int i=0; i<=h; i++)  <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                    dp[i][0] = i; <br>
+                for (int j=1; j<=w; j++)  <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp                    dp[0][j] = j; <br>
+               </a>
+            </p>
+            
+        </div>
+        <pre class="table">
+    | 0  1(c) 2(d) 3(d) 4(d) 5(a) 6(b) 
+-------------------------------------
+0   | <a class="red">0   1    2    3    4    5    6</a>
+1(b)| <a class="red">1</a> 
+2(c)| <a class="red">2</a> 
+3(d)| <a class="red">3</a> 
+4(d)| <a class="red">4</a>
+5(a)| <a class="red">5</a>
+6(d)| <a class="red">6</a></pre>
+    </li>
+
+    <li>
+        <div class="note"> 
+            2. Condition1: dp[i-1][j-1] is smallest, we choose the directly replace '<a class="green">b</a>' with '<a class="blue">c</a>'.
+            <p class="content">
+                
+                for (int i=1; i<=h; i++) <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp   for (int j=1; j<=w; j++) {<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       if (<a class="green">word1.charAt(i-1)</a> == <a class="blue">word2.charAt(j-1)</a>)<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  dp[i][j] = dp[i-1][j-1];<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       else <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  <a class="red">dp[i][j]</a> = Math.min(<a class="fuchsia">dp[i-1][j-1]</a>, Math.min(<a class="teal">dp[i-1][j]</a>, <a class="maroon">dp[i][j-1]</a>))+1;<br>
+                    }
+               
+            </p>
+            
+        </div>
+        <pre class="table">
+    | 0  1(<a class="blue">c</a>) 2(d) 3(d) 4(d) 5(a) 6(b) 
+-------------------------------------
+0   | <a class="fuchsia">0</a>   <a class="teal">1</a>    2    3    4    5    6
+1(<a class="green">b</a>)| <a class="maroon">1</a>   <a class="red">1</a>
+2(c)| 2 
+3(d)| 3 
+4(d)| 4
+5(a)| 5
+6(d)| 6</pre>
+    </li>
+
+    <li>
+        <div class="note"> 
+            3. keep insert following characters.
+            <p class="content">
+                
+                for (int i=1; i<=h; i++) <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp   for (int j=1; j<=w; j++) {<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       if (word1.charAt(i-1) == word2.charAt(j-1))<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  dp[i][j] = dp[i-1][j-1];<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       else <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  dp[i][j] = Math.min(dp[i-1][j-1], Math.min(dp[i-1][j], dp[i][j-1]))+1;<br>
+                    }
+            </p>
+            
+        </div>
+        <pre class="table">
+    | 0  1(c) 2(d) 3(d) 4(d) 5(a) 6(b) 
+-------------------------------------
+0   | 0   1    2    3    4    5    6
+1(b)| 1   1    <a class="red">2    3    4    5</a>
+2(c)| 2   
+3(d)| 3 
+4(d)| 4
+5(a)| 5
+6(d)| 6</pre>
+    </li>
+
+    <li>
+        <div class="note"> 
+            4. Conidition2: the characters are equal.
+            <p class="content">
+                
+                for (int i=1; i<=h; i++) <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp   for (int j=1; j<=w; j++) {<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       if (<a class="green">word1.charAt(i-1)</a> == <a class="blue">word2.charAt(j-1)</a>)<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  <a class="red">dp[i][j]</a> = <a class="fuchsia">dp[i-1][j-1]</a>;<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       else <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  dp[i][j] = Math.min(dp[i-1][j-1], Math.min(dp[i-1][j], dp[i][j-1]))+1;<br>
+                    }
+            </p>
+            
+        </div>
+        <pre class="table">
+    | 0  1(c) 2(d) 3(d) 4(d) 5(a) 6(<a class="blue">b</a>) 
+-------------------------------------
+0   | 0   1    2    3    4    <a class="fuchsia">5</a>    6
+1(<a class="green">b</a>)| 1   1    2    3    4    5    <a class="red">5</a>
+2(c)| 2   
+3(d)| 3 
+4(d)| 4
+5(a)| 5
+6(d)| 6</pre>
+    </li>
+
+    <li>
+        <div class="note"> 
+            5. Continue to fill the following rows and columns
+            <p class="content">
+                
+                for (int i=1; i<=h; i++) <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp   for (int j=1; j<=w; j++) {<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       if (word1.charAt(i-1) == word2.charAt(j-1))<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  dp[i][j] = dp[i-1][j-1];<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp       else <br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  dp[i][j] = Math.min(dp[i-1][j-1], Math.min(dp[i-1][j], dp[i][j-1]))+1;<br>
+                    }
+            </p>
+            
+        </div>
+        <pre class="table">
+    | 0  1(c) 2(d) 3(d) 4(d) 5(a) 6(b) 
+-------------------------------------
+0   | 0   1    2    3    4    5    6
+1(b)| 1   1    2    3    4    5    5
+2(c)| 2   <a class="red">1    2    3    4    5    6</a>
+3(d)| 3   <a class="red">2    1    2    3    4    5</a>
+4(d)| 4   <a class="red">3    2    1    2    3    4</a>
+5(a)| 5   <a class="red">4    3    2    3    2    4</a>
+6(d)| 6   <a class="red">5    4    3    2    3    3</a></pre>
+    </li>
+
+</ul>
+                
+
+
+
+<!-- jQuery -->
+<script src="../../../global/js/jquery.js"></script>
+<!-- Cutomize -->
+<script src="../js/dynamic-programming.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>
