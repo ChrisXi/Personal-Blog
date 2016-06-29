@@ -98,6 +98,10 @@ html { height: 100%;}
   margin-bottom: 20px;
 }
 
+.sidebar-brand #name:hover {
+  color:white;
+}
+
 .sidebar-brand #name {
   margin-top: 20px;
   margin-right: 10px;
@@ -124,8 +128,12 @@ html { height: 100%;}
   margin-left: 5px;
   color: #ddd;
   overflow: hidden;
-  
 }
+
+.sidebar-brand b:hover {
+  color:white;
+}
+
 
 /*.caret.collapsed {
   color: #ddd;
