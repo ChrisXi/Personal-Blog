@@ -120,10 +120,16 @@ html { height: 100%;}
 .sidebar-brand b {
   /*display: inline-block;*/
   margin-top: 40px;
+  padding-bottom: 40px;
   margin-left: 5px;
   color: #ddd;
   overflow: hidden;
+  
 }
+
+/*.caret.collapsed {
+  color: #ddd;
+}*/
 
 .sidebar-brand #link {
   clear: both;
@@ -139,6 +145,7 @@ html { height: 100%;}
 .sidebar-brand b:hover {
   cursor: pointer;
 }
+
 
 
 /*-------------------------------*/
@@ -494,4 +501,5 @@ html { height: 100%;}
   outline: none;
   border: none;
 }
+
 
