@@ -73,8 +73,15 @@ html { height: 100%;}
 /*   Profile user pic styles     */
 /*-------------------------------*/
 
+.sidebar-brand {
+  border-bottom: 2px solid #ddd; 
+}
+
 .sidebar-brand img {
+  /*display: inline-block;*/
   float: left;
+  margin-top: 10px;
+  margin-left: 20px;
   margin-right: 20px;
   width: 70px;
   height: 70px;
@@ -83,6 +90,32 @@ html { height: 100%;}
   border-radius: 50% !important;
 }
 
+.sidebar-brand #name {
+  margin-top: 20px;
+  margin-right: 10px;
+  color: #ddd;
+  float: left;
+  line-height: 1.2;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.sidebar-brand a {
+  text-decoration: none;
+  color: #ddd;
+  font-size: 16px;
+}
+
+.sidebar-brand b {
+  /*display: inline-block;*/
+  /*float: left;*/
+  margin-top: 20px;
+  margin-left: 5px;
+  color: #ddd;
+}
+
+.sidebar-brand b:hover {
+  cursor: pointer;
+}
 /*-------------------------------*/
 /*     Sidebar nav styles        */
 /*-------------------------------*/
