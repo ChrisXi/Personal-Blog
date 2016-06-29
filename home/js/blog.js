@@ -13,6 +13,7 @@ $(document).ready(function () {
   });
 
   function hamburger_cross() {
+
     $('html, body').animate({scrollTop: 55}, 500);
     if (isClosed == true) {          
       overlay.hide();

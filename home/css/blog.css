@@ -74,6 +74,9 @@ html { height: 100%;}
 /*-------------------------------*/
 
 .sidebar-brand {
+  min-height: 90px;
+  width: 220px;
+  font-size: 20px;
   border-bottom: 2px solid #ddd; 
 }
 
@@ -97,6 +100,7 @@ html { height: 100%;}
   float: left;
   line-height: 1.2;
   font-family: "Comic Sans MS", cursive, sans-serif;
+  overflow: hidden;
 }
 
 .sidebar-brand a {
@@ -107,10 +111,15 @@ html { height: 100%;}
 
 .sidebar-brand b {
   /*display: inline-block;*/
-  /*float: left;*/
-  margin-top: 20px;
+  margin-top: 40px;
   margin-left: 5px;
   color: #ddd;
+  overflow: hidden;
+}
+
+.sidebar-brand #link {
+  clear: both;
+  color: red;
 }
 
 .sidebar-brand b:hover {
@@ -121,7 +130,7 @@ html { height: 100%;}
 /*-------------------------------*/
 
 .sidebar-nav {
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
     width: 220px;
     margin: 0;
