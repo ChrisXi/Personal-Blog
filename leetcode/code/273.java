@@ -1,49 +1,32 @@
 public class Solution {
     public String numberToWords(int num) {
-
+        if (num == 0) return "Zero";
+        
+        String[] levels = {"", "Thousand", "Million", "Billion"};
+        int l = 0;
         String ans = "";
-        String str = new StringBuilder(num+"").reverse().toString();
-        String[] levels = {" ", "Thousand", "Million", "Billion"};
         
-        int s = 0, l = 0;
-        
-        while (s < str.length()) {
-            int e = s+Math.min(str.length()-s, 3);
-            String n = str.substring(s, e);
-            if (n.equals("000") && str.length()-e>=1) {
-                l ++;
-            } else {
-                ans = getNum(n) + " " + levels[l++] + ans;    
-            }
-            
-            s = e;
+        while(num > 0) {
+            if (num%1000 != 0)
+                ans = get(num%1000).trim()+" "+levels[l]+" "+ans;
+            num /= 1000;
+            l++;
         }
         
         return ans.trim();
     }
     
-    String getNum(String nums) {
-        String[] strs1 = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}; 
-        String[] strs2 = {"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
-        String[] strs3 = {"Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen","Nineteen"};
+    String get(int num) {
+        String[] strs1 = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+        String[] strs2 = {"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
         
-        String ans = "";
-        if (nums.length() == 3 && nums.charAt(2) != '0') 
-            ans = ans + " " +strs1[(nums.charAt(2)-'0')] + " Hundred";
-        
-        if (nums.length() >= 2 && nums.charAt(1) != '0') {
-            if (nums.charAt(1) == '1' && nums.charAt(0) != '0')
-                ans = ans + " " + strs3[(nums.charAt(0)-'1')];
-            else {
-                ans = ans + " " + strs2[(nums.charAt(1)-'0')];
-                if (nums.charAt(0) != '0')
-                    ans = ans + " " + strs1[(nums.charAt(0)-'0')];    
-            }
-        }
-        
-        if ((nums.length() >= 2 && nums.charAt(1) == '0' && nums.charAt(0) != '0') || nums.length() == 1) 
-            ans = ans + " " + strs1[(nums.charAt(0)-'0')];    
-        
-        return ans;
+        if (num >= 100) 
+            return get(num/100)+"Hundred "+get(num%100)+" ";
+        else if (num%100 >= 20) 
+            return strs2[(num%100)/10]+" "+get(num%10)+" ";
+        else if (num%100 > 0) 
+            return strs1[num%100]+" ";
+        else     
+            return "";
     }
 }
