@@ -32,6 +32,35 @@ public class Solution {
         
         return max;
     }
-    
-    
+}
+
+/* Manacher's Algorithm */
+public class Solution {
+    public String longestPalindrome(String s) {
+        
+        s = "@"+s.replace("", "$")+"&";
+        int[] palin = new int[s.length()];
+        
+        int c = 1, r = 1, max = 0, ans = 0;
+        for (int i=1; i<s.length()-1; i++) {
+            int mir = 2*c - r; // c-(r-c);
+            
+            if (i < r) 
+                palin[i] = Math.min(r-i, palin[mir]);
+            
+            while (s.charAt(i+palin[i]+1) == s.charAt(i-palin[i]-1)) {
+                palin[i] ++;
+            }
+            
+            if (i+palin[i] > r) {
+                c = i;
+                r = i+palin[i]; 
+            }
+            
+            ans = (max<palin[i] ? i:ans);
+            max = Math.max(max, palin[i]);
+        }
+        
+        return s.substring(ans-(palin[ans]-1), ans+(palin[ans]-1)+1).replace("$", "");
+    }
 }
