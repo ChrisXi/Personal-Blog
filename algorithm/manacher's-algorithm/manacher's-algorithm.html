@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../global/css/bootstrap.css" rel="stylesheet">
+    <link href="../../global/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS --> 
+    <link href="css/manacher's-algorithm.css" rel=" stylesheet"> 
+    <link href="../../global/css/customizedScrollbar.css" rel=" stylesheet">
+</head>
+
+<body>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-info">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">Manacher's Algorithm</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body">
+                <ul>
+                    <h4>The work flow of Manacher's algorithm: </h4>
+                    <li>
+                    Suppose we have a string: "abaxabaxabybaxabyb"<br>
+
+                    </li>
+                    <li>
+                    First, insert '$' at the start, end of string and between every character: <br>
+                    "abaxabaxabybaxabyb"  -> "$a$b$a$x$a$b$a$x$a$b$y$b$a$x$a$b$y$b$" <br>
+                    Then, insert '@' at the start, '&' at the end: <br>
+                    "$a$b$a$x$a$b$a$x$a$b$y$b$a$x$a$b$y$b$" -> "@$a$b$a$x$a$b$a$x$a$b$y$b$a$x$a$b$y$b$&" <br>
+                    </li>
+                    <li>
+                    C: the center of the last palidrome <br>
+                    R: the right edge of the last palidrome<br> 
+                    M: the mirror character position on the left side of center<br>
+                    i: loop index 
+<pre>
+0  <a class="red">0</a>
+@  <a class="fuchsia">$</a>  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+   ↑
+ <a class="red">C/R/i</a>
+
+0  0   
+@  $  <a class="fuchsia">a</a>  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+   ↑  ↑
+  <a class="red">C/R i</a>
+
+0  0  <a class="red">1</a>
+@  <a class="fuchsia">$  a  $</a>  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+      ↑
+  C/R <a class="red">i</a>
+
+0  0  1  <a class="red">0</a>
+@  $  a  <a class="fuchsia">$</a>  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+      ↑  ↑
+      <a class="red">C R/i</a>
+
+0  0  1  0   
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+      ↑  ↑  ↑
+      C  R  <a class="red">i</a>
+
+0  0  1  0  <a class="red">3</a> 
+@  <a class="fuchsia">$  a  $  b  $  a  $</a>  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+      ↑  ↑  ↑
+      C  R  <a class="red">i</a>
+
+0  0  1  0  3 
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+            ↑  ↑     ↑
+            <a class="red">C  i     R</a>
+
+0  0  1  0  3  <a class="red">0</a>
+@  $  a  $  b  <a class="fuchsia">$</a>  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+            ↑  ↑     ↑
+            C  <a class="red">i</a>     R
+
+0  0  1  0  3  0  
+@  $  a  $  b  $  <a class="fuchsia">a</a>  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+            ↑     ↑  ↑
+            C     <a class="red">i</a>  R
+
+0  0  1  0  3  0  <a class="red">1</a>
+@  $  a  $  b  <a class="fuchsia">$  a  $</a>  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+      ↑     ↑     ↑  ↑
+      <a class="blue">M</a>     C     i  R
+
+0  0  1  0  3  0  1  
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+            ↑        ↑
+            C       R/<a class="red">i</a>
+
+0  0  1  0  3  0  1  <a class="red">0</a>
+@  $  a  $  b  $  a  <a class="fuchsia">$</a>  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+            ↑        ↑
+            C       R/i
+
+0  0  1  0  3  0  1  0  <a class="red">7</a>
+@  <a class="fuchsia">$  a  $  b  $  a  $  x  $  a  $  b  $  a</a>  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+            ↑        ↑  ↑
+            C        R  <a class="red">i</a>
+
+0  0  1  0  3  0  1  0  7  
+@  $  a  $  b  $  a  $  x  $</a>  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                        ↑  ↑              ↑
+                        <a class="red">C  i              R</a>
+
+0  0  1  0  3  0  1  0  7  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  <a class="fuchsia">$</a>  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                     ↑  ↑  ↑              ↑
+                     <a class="blue">M</a>  C  i              R
+
+0  0  1  0  3  0  1  0  7  0
+@  $  a  $  b  $  a  $  x  <a class="fuchsia">$  a  $</a>  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                  ↑     ↑     ↑           ↑
+                  <a class="blue">M</a>     C     <a class="red">i</a>           R
+
+0  0  1  0  3  0  1  0  7  0  <a class="red">1</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                        ↑        ↑        ↑
+                        C        <a class="red">i</a>        R
+
+0  0  1  0  3  0  1  0  7  0  1  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  <a class="fuchsia">$</a>  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+               ↑        ↑        ↑        ↑
+               <a class="blue">M</a>        C        i        R
+  
+0  0  1  0  3  0  1  0  7  0  1  0  <a class="red">2</a>
+@  $  a  $  b  $  a  $  x  $  <a class="fuchsia">a  $  b  $  a</a>  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+            ↑           ↑           ↑     ↑
+            <a class="blue">M</a>           C           <a class="red">i</a>     R
+
+0  0  1  0  3  0  1  0  7  0  1  0  <a class="red">9</a>
+@  $  a  <a class="fuchsia">$  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $</a>  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+            ↑           ↑           ↑     ↑
+            <a class="blue">M</a>           C           i     R   
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  <a class="fuchsia">$</a>  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                                 ↑  ↑  ↑                    ↑                       
+                                 <a class="blue">M</a>  <a class="red">C  i                    R</a>
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  <a class="red">1</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  <a class="fuchsia">$  a  $</a>  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                              ↑     ↑     ↑                 ↑                       
+                              <a class="blue">M</a>     C     <a class="red">i</a>                 R
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  <a class="fuchsia">$</a>  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                           ↑        ↑        ↑              ↑                       
+                           <a class="blue">M</a>        C        <a class="red">i</a>              R                         
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  <a class="red">4</a>
+@  $  a  $  b  $  a  $  x  $  a  $  <a class="fuchsia">b  $  a  $  x  $  a  $  b</a>  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                        ↑           ↑           ↑           ↑                       
+                        <a class="blue">M</a>           C           <a class="red">i</a>           R
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  <a class="red">5</a>
+@  $  a  $  b  $  a  $  x  $  a  <a class="fuchsia">$  b  $  a  $  x  $  a  $  b  $</a>  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                        ↑           ↑           ↑           ↑                       
+                        <a class="blue">M</a>           C           i           R
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  <a class="fuchsia">$</a>  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                     ↑              ↑              ↑           ↑                       
+                     <a class="blue">M</a>              C              <a class="red">i</a>           R                        
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  <a class="red">1</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  <a class="fuchsia">$  a  $</a>  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                  ↑                 ↑                 ↑        ↑                       
+                  <a class="blue">M</a>                 C                 <a class="red">i</a>        R                                             
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  <a class="red">0</a>        
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  <a class="fuchsia">$</a>  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+               ↑                    ↑                    ↑     ↑                       
+               <a class="blue">M</a>                    C                    <a class="red">i</a>             R
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  <a class="red">1</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  <a class="fuchsia">$  b  $</a>  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+            ↑                       ↑                       ↑  ↑                       
+            <a class="blue">M</a>                       C                       <a class="red">i</a>  R    
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  <a class="fuchsia">$</a>  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+            ↑                       ↑                          ↑                       
+            <a class="blue">M</a>                       C                         R/<a class="red">i</a>   
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  <a class="red">11</a>
+@  $  a  $  b  $  a  $  x  $  a  <a class="fuchsia">$  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $</a>  y  $  y  $  b  $  &
+         ↑                          ↑                          ↑  ↑                       
+         <a class="blue">M</a>                          C                          R  <a class="red">i</a>   
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  <a class="fuchsia">$</a>  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                                                               ↑  ↑  ↑                             ↑
+                                                               <a class="blue">M</a>  <a class="red">C  i                             R</a>
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  <a class="red">1</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  <a class="fuchsia">$  b  $</a>  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                                                            ↑     ↑     ↑                          ↑
+                                                            <a class="blue">M</a>     C     <a class="red">i</a>                          R
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  <a class="fuchsia">$</a>  a  $  x  $  a  $  b  $  y  $  y  $  b  $  &
+                                                         ↑        ↑        ↑                    ↑
+                                                         <a class="blue">M</a>        C        <a class="red">i</a>                    R                              
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  <a class="red">1</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  <a class="fuchsia">$  a  $</a>  x  $  a  $  b  $  y  $  y  $  b  $  &
+                                                      ↑           ↑           ↑                 ↑
+                                                      <a class="blue">M</a>           C           <a class="red">i</a>                 R                              
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  <a class="fuchsia">$</a>  x  $  a  $  b  $  y  $  y  $  b  $  &
+                                                   ↑              ↑              ↑              ↑
+                                                   <a class="blue">M</a>              C              <a class="red">i</a>              R
+                                                                                                      
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  <a class="red">4</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  <a class="fuchsia">b  $  a  $  x  $  a  $  b</a>  $  y  $  y  $  b  $  &
+                                                ↑                 ↑                 ↑           ↑
+                                                <a class="blue">M</a>                 C                 <a class="red">i</a>           R
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  <a class="red">7</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  <a class="fuchsia">$  y  $  b  $  a  $  x  $  a  $  b  $  y  $</a>  y  $  b  $  &
+                                                ↑                 ↑                 ↑           ↑
+                                                <a class="blue">M</a>                 C                 i           R
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  7  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  <a class="fuchsia">$</a>  a  $  b  $  y  $  y  $  b  $  &
+                                             ↑                    ↑                    ↑        ↑
+                                             <a class="blue">M</a>                    C                    <a class="red">i</a>        R                    
+                    
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  7  0  <a class="red">1</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  <a class="fuchsia">$  a  $</a>  b  $  y  $  y  $  b  $  &
+                                          ↑                       ↑                       ↑     ↑
+                                          <a class="blue">M</a>                       C                       <a class="red">i</a>     R
+                    
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  7  0  1  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  <a class="fuchsia">$</a>  b  $  y  $  y  $  b  $  &
+                                       ↑                          ↑                          ↑  ↑
+                                       <a class="blue">M</a>                          C                          <a class="red">i</a>  R
+                    
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  7  0  1  0  <a class="red">1</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  <a class="fuchsia">$  b  $</a>  y  $  y  $  b  $  &
+                                    ↑                             ↑                             ↑
+                                    <a class="blue">M</a>                             C                            R/<a class="red">i</a>
+                    
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  7  0  1  0  1  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  <a class="fuchsia">$</a>  y  $  y  $  b  $  &
+                                                                                                ↑  ↑
+                                                                                                <a class="red">C R/i</a>
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  7  0  1  0  1  0  <a class="red">1</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  <a class="fuchsia">$  y  $</a>  y  $  b  $  &
+                                                                                                ↑  ↑  ↑
+                                                                                                C  R  <a class="red">i</a>
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  7  0  1  0  1  0  1  <a class="red">4</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  <a class="fuchsia">$  b  $  y  $  y  $  b  $</a>  &
+                                                                                                      ↑  ↑
+                                                                                                      <a class="red">C R/i</a>
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  7  0  1  0  1  0  1  4  <a class="red">1</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  <a class="fuchsia">$  y  $</a>  b  $  &
+                                                                                                      ↑  ↑  ↑        ↑
+                                                                                                      <a class="blue">M</a>  <a class="red">C  i        R</a>
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  7  0  1  0  1  0  1  4  1  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  <a class="fuchsia">$</a>  b  $  &
+                                                                                                   ↑     ↑     ↑     ↑
+                                                                                                   <a class="blue">M</a>     C     <a class="red">i</a>     R
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  7  0  1  0  1  0  1  4  1  0  <a class="red">1</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  <a class="fuchsia">$  b  $</a>  &
+                                                                                                ↑        ↑        ↑  ↑
+                                                                                                <a class="blue">M</a>        C        <a class="red">i</a>  R
+
+0  0  1  0  3  0  1  0  7  0  1  0  9  0  1  0  5  0  1  0  1  0  11 0  1  0  1  0  7  0  1  0  1  0  1  4  1  0  1  <a class="red">0</a>
+@  $  a  $  b  $  a  $  x  $  a  $  b  $  a  $  x  $  a  $  b  $  y  $  b  $  a  $  x  $  a  $  b  $  y  $  y  $  b  <a class="fuchsia">$</a>  &
+                                                                                             ↑           ↑           ↑
+                                                                                             <a class="blue">M</a>           C          R/<a class="red">i</a>
+</pre>
+                    </li>
+                </ul>
+                <hr>
+                <small>Last Updated on: <time>Thursday, Jul 7, 2016</time></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="../../global/js/jquery.js"></script>
+<!-- Cutomize -->
+<!-- <script src="js/binary-search.js"></script> -->
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../global/js/bootstrap.min.js"></script>
+<!-- <script src="../global/js/bootstrap.js"></script> -->
+
+</body>
+</html>
