@@ -12,7 +12,7 @@ public class Solution {
         if (root == null || root.left == null) return root;
         
         TreeNode node = upsideDownBinaryTree(root.left);
-        upsideDownBinaryTree(root.right);
+        // upsideDownBinaryTree(root.right);
         
         TreeNode right = root.right, left = root.left;
         root.right = null;
