@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.Imgli{
+	padding:0px 0px 20px;
+}
+.ImgTable{
+	margin:0px 0px 10px;
+}
+</style>
+</head>
+
+<body>
+
+<center>
+	<h1>Computer Graphics <br> Assignment1 Writeup</h1>
+</center>	
+<hr>
+<h3>General Information</h3>
+<ul>
+	<li><b>Name:</b> Yang Xi</li>
+	<li><b>JHED ID:</b> yxi5</li>
+	<li><b>Class</b> (457)</li>
+	<li><b>Compiler:</b> g++, python</li>
+	<li><b>Environment:</b> Mac OS</li>
+	<li><b>Platform:</b> Sublime Text</li>
+	<li><b>Number of late days used:</b> 0</li>
+	<li><b>Fully implemented</b></li>
+</ul>
+<hr>
+<h3>Sample Results</h3>
+<ul>
+	<li class="Imgli">
+		<b>Image32::AddRandomNoise</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/yoda.bmp" width="200"></td>
+					<td><img src="src/hw1/output/noise(0.1).bmp" width="200"></td>
+					<td><img src="src/hw1/output/noise(0.5).bmp" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>--noisify 0</code></td>
+					<td align="center"><code>--noisify 0.1</code></td>
+					<td align="center"><code>--noisify 0.5</code></td>
+				</tr>
+			</tbody>
+		</table>
+	</li>
+	<li class="Imgli">
+		<b>Image32::Brighten</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/bright(0.5).bmp" width="200"></td>
+					<td><img src="src/hw1/output/yoda.bmp" width="200"></td>
+					<td><img src="src/hw1/output/bright(2.0).bmp" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>--brighten 0.5</code></td>
+					<td align="center"><code>--brighten 1</code></td>
+					<td align="center"><code>--brighten 2</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::Luminance</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/yoda.bmp" width="200"></td>
+					<td><img src="src/hw1/output/gray.bmp" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>orignial</code></td>
+					<td align="center"><code>--gray</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::Contrast</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/contrast(0.5).bmp" width="300"></td>
+					<td><img src="src/hw1/output/sherk.jpg" width="300"></td>
+					<td><img src="src/hw1/output/contrast(2.0).bmp" width="300"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>--contrast 0.5</code></td>
+					<td align="center"><code>--contrast 1.0</code></td>
+					<td align="center"><code>--contrast 2.0</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::Saturate</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/saturate(0.5).bmp" width="300"></td>
+					<td><img src="src/hw1/output/sherk.jpg" width="300"></td>
+					<td><img src="src/hw1/output/saturate(2.0).bmp" width="300"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>--saturate 0.5</code></td>
+					<td align="center"><code>--saturate 1.0</code></td>
+					<td align="center"><code>--saturate 2.0</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::Crop</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/sulley.bmp" width="200"></td>
+					<td><img src="src/hw1/output/crop([20,20],[250,300]).bmp" width="160"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>orignial</code></td>
+					<td align="center"><code>--crop 20 20 250 300</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::Quantize</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/quantize(1).bmp" width="200"></td>
+					<td><img src="src/hw1/output/quantize(2).bmp" width="200"></td>
+					<td><img src="src/hw1/output/quantize(4).bmp" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>--quantize 1</code></td>
+					<td align="center"><code>--quantize 2</code></td>
+					<td align="center"><code>--quantize 4</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::RandomDither</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/rDither(1).bmp" width="200"></td>
+					<td><img src="src/hw1/output/rDither(2).bmp" width="200"></td>
+					<td><img src="src/hw1/output/rDither(4).bmp" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>--rDither 1</code></td>
+					<td align="center"><code>--rDither 2</code></td>
+					<td align="center"><code>--rDither 4</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::OrderedDither2x2</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/oDither(1).bmp" width="200"></td>
+					<td><img src="src/hw1/output/oDither(2).bmp" width="200"></td>
+					<td><img src="src/hw1/output/oDither(4).bmp" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>--oDither2x2 1</code></td>
+					<td align="center"><code>--oDither2x2 2</code></td>
+					<td align="center"><code>--oDither2x2 4</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::FloydSteinbergDither</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/fsDither(1).bmp" width="200"></td>
+					<td><img src="src/hw1/output/fsDither(2).bmp" width="200"></td>
+					<td><img src="src/hw1/output/fsDither(4).bmp" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>--fsDither 1</code></td>
+					<td align="center"><code>--fsDither 2</code></td>
+					<td align="center"><code>--fsDither 4</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::Blur3x3</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/sulley.bmp" width="200"></td>
+					<td><img src="src/hw1/output/blur.bmp" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>orignial</code></td>
+					<td align="center"><code>--blur3x3</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::EdgeDetect3x3</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/sulley.bmp" width="200"></td>
+					<td><img src="src/hw1/output/edge.bmp" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>orignial</code></td>
+					<td align="center"><code>--edges3x3</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>Image32::NearestSample</b></li>
+	<li><b>Image32::BilinearSample</b></li>
+	<li class="Imgli"><b>Image32::GaussianSample</b></li>
+	<li class="Imgli">
+		<b>Image32::ScaleNearest</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/scaleNearest(0.7).bmp" width="150"></td>
+					<td><img src="src/hw1/output/stripe1.bmp" width="200"></td>
+					<td><img src="src/hw1/output/scaleNearest(1.3).bmp" width="260"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>--scaleNearest 0.7</code></td>
+					<td align="center"><code>--scaleNearest 1</code></td>
+					<td align="center"><code>--scaleNearest 1.3</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::ScaleBilinear</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/scaleBilinear(0.7).bmp" width="150"></td>
+					<td><img src="src/hw1/output/stripe1.bmp" width="200"></td>
+					<td><img src="src/hw1/output/scaleBilinear(1.3).bmp" width="260"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>--scaleBilinear 0.7</code></td>
+					<td align="center"><code>--scaleBilinear 1</code></td>
+					<td align="center"><code>--scaleBilinear 1.3</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::ScaleGaussian</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/scaleGaussian(0.7).bmp" width="150"></td>
+					<td><img src="src/hw1/output/stripe1.bmp" width="200"></td>
+					<td><img src="src/hw1/output/scaleGaussian(1.3).bmp" width="260"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>--scaleGaussian 0.7</code></td>
+					<td align="center"><code>--scaleBilinear 1</code></td>
+					<td align="center"><code>--scaleGaussian 1.3</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>Image32::RotateNearest</b></li>
+	<li><b>Image32::RotateBilinear</b></li>
+	<li class="Imgli">
+		<b>Image32::RotateGaussian</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/stripe1.bmp" width="200"></td>
+					<td><img src="src/hw1/output/rotateNearest(30).bmp" width="200"></td>
+					<td><img src="src/hw1/output/rotateBilinear(30).bmp" width="200"></td>
+					<td><img src="src/hw1/output/rotateGaussian(30).bmp" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>original</code></td>
+					<td align="center"><code>--rotateNearest 30</code></td>
+					<td align="center"><code>--rotateBilinear 30</code></td>
+					<td align="center"><code>--rotateGaussian 30</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>Image32::SetAlpha</b></li>
+	<li class="Imgli">
+		<b>Image32::Composite</b><br>
+		<ul>
+			In matte.jpg:
+			<li>blue channel: alpha = 0</li>
+			<li>red channel: 0 < alpha < 1</li>
+			<li>else: alpha = 1</li>
+		</ul>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/jackie_chan.jpg" width="200"></td>
+					<td><img src="src/hw1/output/me.jpg" width="200"></td>
+					<td><img src="src/hw1/output/matte.jpg" width="200"></td>
+					<td><img src="src/hw1/output/composite.bmp" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>Jackie Chan (in img)</code></td>
+					<td align="center"><code>Me (overlay img)</code></td>
+					<td align="center"><code>matte (matte img)</code></td>
+					<td align="center"><code>--composite</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::FunFilter</b> 
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/yoda.bmp" width="200"></td>
+					<td><img src="src/hw1/output/fisheye.bmp" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>original</code></td>
+					<td align="center"><code>--fun (fisheye)</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Beier-Neely Morphing</b>
+		<table class="ImgTable"  border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/morph_curry.jpg" width="200"></td>
+					<td><img src="src/hw1/output/morph_james.jpg" width="200"></td>
+					<td><img src="src/hw1/output/morph.gif" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>Stephen Curry</code></td>
+					<td align="center"><code>Lebron James</code></td>
+					<td align="center"><code>python morphing.py</code></td>
+				</tr>
+			</tbody>
+		</table>		
+		
+		<table border="1">
+			<tbody>
+				<tr>
+					<th colspan="2" align="center"><a href="src/hw1/output/morph.txt"><code>39 lineSegments Pairs</code></a></th>
+					<th colspan="6" align="center"><code>time-steps: 0-10</code></th>
+				</tr>
+				<tr>
+					<td rowspan="2"><img src="src/hw1/output/curry lines.jpg" width="250"></td>
+					<td rowspan="2"><img src="src/hw1/output/james lines.jpg" width="250"></td>
+					<td><img src="src/hw1/output/morph(0).jpg" width="100"></td>
+					<td><img src="src/hw1/output/morph(1).jpg" width="100"></td>
+					<td><img src="src/hw1/output/morph(2).jpg" width="100"></td>
+					<td><img src="src/hw1/output/morph(3).jpg" width="100"></td>
+					<td><img src="src/hw1/output/morph(4).jpg" width="100"></td>
+					<td><img src="src/hw1/output/morph(5).jpg" width="100"></td>
+				</tr>
+				<tr>
+					<td><img src="src/hw1/output/morph(6).jpg" width="100"></td>
+					<td><img src="src/hw1/output/morph(7).jpg" width="100"></td>
+					<td><img src="src/hw1/output/morph(8).jpg" width="100"></td>
+					<td><img src="src/hw1/output/morph(9).jpg" width="100"></td>
+					<td><img src="src/hw1/output/morph(10).jpg" width="100"></td>
+				</tr>
+			</tbody>
+		</table>
+	</li>
+	<li class="Imgli">
+		<b>Animations / Art Contest (optional)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw1/output/artcontest1.gif" width="200"></td>
+					<td><img src="src/hw1/output/artcontest2.gif" width="200"></td>
+				</tr>
+				<tr>
+					<td align="center"><code>python artcontest1.py</code></td>
+					<td align="center"><code>python artcontest2.py</code></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+</ul>
+<hr>
+<h3>Sample Test Code</h3>
+<blockquote>
+<p>All the source images and txts are stored in 'input' folder and all the output images will be stored in 'output' folder. The output sequence images of Morphing, Artcontest1, Artcontest2 will be stored in 'morph_output', 'artcontest1_output' and 'artcontest2_output' folders in 'input' folder directory.</p></blockquote>
+<ul>
+	<li class="Imgli">
+		<b>Image32::AddRandomNoise</b><br>
+		<code>./Assignment1 --noisify 0.1 --in input/yoda.bmp --out output/noise.bmp</code>
+	</li>
+	<li class="Imgli">
+		<b>Image32::Brighten</b><br>
+		<code>./Assignment1 --brighten 0.5 --in input/yoda.bmp --out output/bright.bmp</code>
+	</li>
+	<li class="Imgli">
+		<b>Image32::Luminance</b><br>
+		<code>./Assignment1 --gray --in input/yoda.bmp --out output/gray.bmp</code>	
+	</li>
+	<li class="Imgli">
+		<b>Image32::Contrast</b><br>
+		<code>./Assignment1 --contrast 0.5 --in input/sherk.jpg --out output/contrast.bmp</code>	
+	</li>
+	<li class="Imgli">
+		<b>Image32::Saturate</b><br>
+		<code>./Assignment1 --saturate 0.5 --in input/sherk.jpg --out output/saturate.bmp</code>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::Crop</b><br>
+		<code>./Assignment1 --crop 20 20 250 300  --in input/sulley.bmp --out output/crop.bmp</code>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::Quantize</b><br>
+		<code>./Assignment1 --quantize 1  --in input/ramp.bmp --out output/quantize.bmp</code>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::RandomDither</b><br>
+		<code>./Assignment1 --rDither 1  --in input/ramp.bmp --out output/rDither.bmp</code>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::OrderedDither2x2</b><br>
+		<code>./Assignment1 --oDither2x2 1  --in input/ramp.bmp --out output/oDither.bmp</code>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::FloydSteinbergDither</b><br>
+		<code>./Assignment1 --fsDither 1  --in input/ramp.bmp --out output/fsDither.bmp</code>
+	</li>
+	<li class="Imgli">
+		<b>Image32::Blur3x3</b><br>
+		<code>./Assignment1 --blur3x3 --in input/sulley.bmp --out output/blur.bmp</code>	
+	</li>
+	<li class="Imgli">
+		<b>Image32::EdgeDetect3x3</b>
+		<code>./Assignment1 --edges3x3 --in input/sulley.bmp --out output/edges.bmp</code>	
+	</li>
+	<li><b>Image32::NearestSample</b></li>
+	<li><b>Image32::BilinearSample</b></li>
+	<li class="Imgli"><b>Image32::GaussianSample</b></li>
+	<li class="Imgli">
+		<b>Image32::ScaleNearest</b><br>
+		<code>./Assignment1 --scaleNearest 0.7 --in input/stripe.bmp --out output/scaleNearest.bmp</code>		
+	</li>
+	<li class="Imgli">
+		<b>Image32::ScaleBilinear</b><br>
+		<code>./Assignment1 --scaleBilinear 0.7 --in input/stripe.bmp --out output/scaleBilinear.bmp</code>			
+	</li>
+	<li class="Imgli">
+		<b>Image32::ScaleGaussian</b><br>
+		<code>./Assignment1 --scaleGaussian 0.7 --in input/stripe.bmp --out output/scaleGaussian.bmp</code>
+	</li>
+	<li class="Imgli">
+		<b>Image32::RotateNearest</b><br>
+		<code>./Assignment1 --rotateNearest 30 --in input/stripe.bmp --out output/rotateNearest.bmp</code>
+	</li>
+	<li class="Imgli">
+		<b>Image32::RotateBilinear</b><br>
+		<code>./Assignment1 --rotateBilinear 30 --in input/stripe.bmp --out output/rotateBilinear.bmp</code>
+	</li>
+	<li class="Imgli">
+		<b>Image32::RotateGaussian</b><br>
+		<code>./Assignment1 --rotateGaussian 30 --in input/stripe.bmp --out output/rotateGaussian.bmp</code>
+	</li>
+	<li><b>Image32::SetAlpha</b></li>
+	<li class="Imgli">
+		<b>Image32::Composite</b><br>
+		<code>./Assignment1 --composite input/me.jpg input/matte.jpg --in input/jackie_chan.jpg --out output/composite.bmp</code>
+	</li>
+	<li class="Imgli">
+		<b>Image32::FunFilter</b><br>
+		<code>./Assignment1 --fun --in input/yoda.bmp --out output/fun.bmp</code>
+	</li>
+	<li class="Imgli">
+		<b>Beier-Neely Morphing</b><br>
+		<code>python morphing.py</code>
+	</li>
+	<li class="Imgli">
+		<b>Animations / Art Contest (optional)</b><br>
+		<code>python artcontest1.py</code><br>
+		<code>python artcontest2.py</code>
+	</li>
+</ul>
+
+</body>
+</html>

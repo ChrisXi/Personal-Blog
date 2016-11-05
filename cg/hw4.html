@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.Imgli{
+	padding:0px 0px 20px;
+}
+.ImgTable{
+	margin:0px 0px 10px;
+}
+</style>
+</head>
+
+<body>
+<center>
+	<h1>Computer Graphics <br> Assignment4 Writeup</h1>
+</center>	
+<hr>
+<h3>General Information</h3>
+<ul>
+	<li><b>Name:</b> Yang Xi</li>
+	<li><b>JHED ID:</b> yxi5</li>
+	<li><b>Class</b> (600.457)</li>
+	<li><b>Compiler:</b> g++</li>
+	<li><b>Environment:</b> Mac OS</li>
+	<li><b>Platform:</b> Sublime Text</li>
+	<li><b>Number of late days used:</b>5</li>
+	<li><b>Fully implemented</b></li>
+</ul>
+<hr>
+<h3>Sample Results</h3>
+<ul>
+	<li><b>ParameterSamples::currentValue (implemented)</b></li>
+	<li class="Imgli">
+		<b>Matrix3D::Matrix3D(const Point3D& eulerAngles) (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw4/output/matrix.gif" width="300"></td>
+				</tr>
+			</tbody>
+		</table>
+	</li>
+	
+	<li><b>ParametrizedEulerAnglesAndTranslation::getMatrix (implemented)</b></li>
+	<li class="Imgli">
+		<b> ParametrizedEulerAnglesAndTranslation::value (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw4/output/euler.gif" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>Matrix3D::closestRotation (implemented)</b></li>
+	<li class="Imgli">
+		<b>ParametrizedClosestRotationAndTranslation::getMatrix (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw4/output/closest.gif" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>Matrix3D::Matrix3D(const Quaternion& q) (implemented)</b></li>
+	<li class="Imgli">
+		<b> ParametrizedQuaternionAndTranslation::getMatrix (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw4/output/quaterion.gif" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>Matrix3D::Exp</b></li>
+	<li class="Imgli">
+		<b> ParametrizedRotationLogarithmAndTranslation::getMatrix (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw4/output/log.gif" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>ParameterSamples::setCurrentValue (implemented) Catmull-Rom interpolation</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw4/output/Catmull-Rom.gif" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>ParameterSamples::setCurrentValue (implemented) uniform cubic B-spline approximation</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw4/output/cubic.gif" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li>Modify the OpenGL renderer to allow the user to generate a sequence of video images by taking snapshots of the scene from the same perspective as the RayCamera at a user-specified frame-rate. <b>(implemented)</b></li>
+	The parameter 'n' is the frame-rate, default value is 20/s.<br>
+	<b>You should click 's' to start/end. The snapshots will be stored in 'image' floder.</b><br>
+	<code>./Assignment2 --in muscle.ray -width 400 --height 300--cpllx 10 --factor closest --n 25</code> 
+	
+</ul>
+</body>
+</html>

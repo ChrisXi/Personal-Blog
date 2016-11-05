@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.Imgli{
+	padding:0px 0px 20px;
+}
+.ImgTable{
+	margin:0px 0px 10px;
+}
+</style>
+</head>
+
+<body>
+<center>
+	<h1>Computer Graphics <br> Assignment3 Writeup</h1>
+</center>	
+<hr>
+<h3>General Information</h3>
+<ul>
+	<li><b>Name:</b> Yang Xi</li>
+	<li><b>JHED ID:</b> yxi5</li>
+	<li><b>Class</b> (600.457)</li>
+	<li><b>Compiler:</b> g++</li>
+	<li><b>Environment:</b> Mac OS</li>
+	<li><b>Platform:</b> Sublime Text</li>
+	<li><b>Number of late days used:</b> 0</li>
+	<li><b>Fully implemented</b></li>
+</ul>
+<hr>
+<h3>Sample Results</h3>
+<ul>
+	<li><b>RayCamera::drawOpenGL (implemented)</b></li>
+	<li><b>RayGroup::drawOpenGL (implemented)</b></li>
+	<li class="Imgli">
+		<b>RaySphere::drawOpenGL (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/sphere.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>
+	</li>
+	<li class="Imgli">
+		<b>RayTriangle::drawOpenGL (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/triangle.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>RayMaterial::drawOpenGL (implemented)</b></li>
+	<li><b>RayDirectionalLight::drawOpenGL (implemented)</b></li>
+	<li><b>RayPointLight::drawOpenGL (implemented)</b></li>
+	<li class="Imgli">
+		<b>RaySpotLight::drawOpenGL (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/light.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>RayGroup::drawOpenGL (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/transformation.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>RayGroup::getOpenGLCallList (implemented) Accelerate OpenGL</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/dog.png" width="300"></td>
+					<td><img src="src/hw3/output/bunny.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>RayTriangle::drawOpenGL (implemented) Add Texture 1</b></li>
+	<li><b>RayMaterial::drawOpenGL (implemented) Add Texture 2</b></li>
+	<li class="Imgli">
+		<b>RayTexture::setUpOpenGL (implemented) Add Texture 3</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/texture.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>RayBox::drawOpenGL (implemented)</b></li>
+	<li><b>RayCylinder::drawOpenGL (implemented)</b></li>
+	<li class="Imgli">
+		<b>RayCone::drawOpenGL (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/other primitive.png" width="300"></td>
+					<td><img src="src/hw3/output/other primitive with texture.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>RayCamera::rotateUp(implemented) mouse control 1</b></li>
+	<li class="Imgli">
+		<b>RayCamera::rotateRight(implemented) mouse control 2</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/rotate1.png" width="300"></td>
+					<td><img src="src/hw3/output/rotate2.png" width="300"></td>
+					<td><img src="src/hw3/output/rotate3.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>Describing a room</b><br>
+		<b>Four walls, a floor and ceiling (implemented)</b><br>
+		<b>Furnishings (implemented)</b><br>
+		<b>Transparent surface (implemented)</b><br>
+		<b>Three texture mapped surfaces  (implemented)</b><br>
+		<b>Three point light  (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/room1.png" width="300"></td>
+					<td><img src="src/hw3/output/room2.png" width="300"></td>
+					<td><img src="src/hw3/output/room3.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>	
+		<b>An object that responds to keyboard (implemented)</b><br>
+		By clicking the keyboard 'o' to switch the light on/off.
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/lightoff.png" width="300"></td>
+					<td><img src="src/hw3/output/lighton.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>
+	</li>
+	<li><b>Modify the RayShape::drawOpenGL about calling OpenGl's glMaterial (implemented)</b></li><br>
+
+	<li><b>Implement full scene anti-aliasing (unimplemented)</b></li>
+	<li><b>A Luxo Jr. style lamp (unimplemented)</b></li>
+	<li><b>A mirror (unimplemented)</b></li>
+	<li><b>Shadows on at least one surface (unimplemented)</b></li>
+	<li><b> Write vertex and fragment shaders that implement the traditional fixed pipeline with Gouraud Shading. (unimplemented)</b></li>
+	<li><b>Write vertex and fragment shaders that implement the traditional fixed pipeline with Phong Shading. (unimplemented)</b></li>
+	<li><b>Adapt your Phong shader to support bump mapping. (unimplemented)</b></li>
+	<li><b>Modify the OpenGL renderer to allow the user to ray-trace the scene from the same perspective as the RayCamera.(unimplemented)</b></li>
+</ul>
+<hr>
+<h3>Sample Test Code</h3>
+When you are running the test, you should press the keyboard 'o' to turn the light on, if there was only one light in rayfile.
+<ul>
+	<li class="Imgli">
+		<b>Scene 0</b><br>
+		<code>./Assignment2 --in scene0.ray --width 600 --height 400 --cplx 10</code><br>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/scene0.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>
+	</li>
+	<li class="Imgli">
+		<b>Scene 1</b><br>
+		<code>./Assignment2 --in scene1.ray --width 600 --height 400 --cplx 10</code>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/scene1.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>
+	</li>
+	<li class="Imgli">
+		<b>Room</b><br>
+		<code>./Assignment2 --in room.ray --width 600 --height 400 --cplx 10</code>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw3/output/room.png" width="300"></td>
+				</tr>
+			</tbody>
+		</table>
+	</li>
+</ul>
+</body>
+</html>

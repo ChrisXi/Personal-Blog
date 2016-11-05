@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="../global/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div style="width: 100%; overflow: hidden;">
+    <div style="width: 130px; float: left; margin-left: 20px; top: 20%; position: fixed;" class="list-group">
+        <a href="hw1.html" target="content" class="list-group-item active">Assignment1</a>
+        <a href="hw2.html" target="content" class="list-group-item list-group-item-action">Assignment2</a>
+        <a href="hw3.html" target="content" class="list-group-item list-group-item-action">Assignment3</a>
+        <a href="hw4.html" target="content" class="list-group-item list-group-item-action">Assignment4</a>
+    </div>
+
+    <div style="margin-left: 160px;">
+        <iframe width="100%" height="600px" src="hw1.html" name="content" id="frame" style="border:none;"></iframe>
+    </div>
+</div>
+    
+<!-- jQuery -->
+<script src="../global/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../global/js/bootstrap.min.js"></script>
+
+
+<script>
+  $(function(){
+    console.log('ready');
+    
+    $('.list-group a').click(function(e) {
+        e.preventDefault()
+        
+        $that = $(this);
+        
+        $that.parent().find('a').removeClass('active');
+        $that.addClass('active');
+        $('#frame').attr('src', $that.attr('href'));
+    });
+})
+</script>
+
+</body>
+</html>
+
+

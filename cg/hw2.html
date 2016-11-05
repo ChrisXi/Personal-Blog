@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.Imgli{
+	padding:0px 0px 20px;
+}
+.ImgTable{
+	margin:0px 0px 10px;
+}
+</style>
+</head>
+
+<body>
+<center>
+	<h1>Computer Graphics <br> Assignment2 Writeup</h1>
+</center>	
+<hr>
+<h3>General Information</h3>
+<ul>
+	<li><b>Name:</b> Yang Xi</li>
+	<li><b>JHED ID:</b> yxi5</li>
+	<li><b>Class</b> (600.457)</li>
+	<li><b>Compiler:</b> g++, python</li>
+	<li><b>Environment:</b> Mac OS</li>
+	<li><b>Platform:</b> Sublime Text</li>
+	<li><b>Number of late days used:</b> 1</li>
+	<li><b>Fully implemented</b></li>
+</ul>
+<hr>
+<h3>Sample Results</h3>
+<ul>
+	<li><b>RayScene::GetRay (implemented)</b></li>
+	<li><b>RayGroup::intersect (implemented)</b></li>
+	<li class="Imgli">
+		<b>RaySphere::intersect (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/1-sphere.bmp" width="300"></td>
+				</tr>
+			</tbody>
+		</table>
+	</li>
+	<li class="Imgli">
+		<b>RayTriangle::intersect (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/2-triangle.bmp" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>RayScene::GetRay (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/3-getcolor.bmp" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>RayDirectionalLight::getDiffuse (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/4-diffuse.bmp" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>RayDirectionalLight::getSpecular (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/5-specular.bmp" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>RayDirectionalLight::isInShadow (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/6-shadow.bmp" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>RayPointLight::getDiffuse (implemented)</b></li>
+	<li><b>RayPointLight::getSpecular (implemented)</b></li>
+	<li><b>RayPointLight::isInShadow (implemented)</b></li>
+	<li><b>RaySpotLight::getDiffuse (implemented)</b></li>
+	<li><b>RaySpotLight::getSpecular (implemented)</b></li>
+	<li><b>RaySpotLight::isInShadow (implemented)</b></li>
+	<br>
+	<li class="Imgli">
+		<b>RayGroup:: intersect - transformation (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/7-transform.bmp" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>RayScene::GetColor - recursive reflect (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/8-reflect.bmp" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>RayScene::GetColor - transparecy without refract (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/9-transparent.bmp" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>RayScence::GetColor - partial shadow (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/10-trans-shadow.bmp" width="300"></td>
+				</tr>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>RayScence::GetColor - refract (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/11-refract.bmp" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>RayShape::setBoundingBox (implemented)</b></li>
+	<li><b>RayGroup::setBoundingBox (implemented)</b></li>
+	<li><b>BoundingBox3D::intersect (implemented)</b></li>
+	<li><b>RayGroup::intersect (implemented)</b></li>
+	<li><b>RayGroup::intersect - sorting for early termination (implemented)</b></li>
+	<li><b>RaySpotLight::isInShadow (implemented)</b></li>
+	<li><b>RayTriangle::intersect (implemented)</b></li>
+	
+	<li class="Imgli">
+		<b>RaySphere::intersect (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/dog.bmp" width="150"></td>
+					<td><img src="src/hw2/output/bunny.bmp" width="200"></td>
+					<td><img src="src/hw2/output/budda.bmp" width="260"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li class="Imgli">
+		<b>RayBox::intersect (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/box.bmp" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>RaySphere::intersect - texture mapping (implemented)</b></li>
+	<li class="Imgli">
+		<b>RayTriangle::intersect - texture mapping (implemented)</b>
+		<table border="1">
+			<tbody>
+				<tr>
+					<td><img src="src/hw2/output/texture1.bmp" width="300"></td>
+					<td><img src="src/hw2/output/texture2.bmp" width="300"></td>
+					<td><img src="src/hw2/output/texture3.bmp" width="300"></td>
+				</tr>
+			</tbody>
+		</table>		
+	</li>
+	<li><b>Generate 3D sence (unimplemented)</b></li>
+	<li><b>RayCylinder::intersect (unimplemented)</b></li>
+	<li><b>RayCone::intersect (unimplemented)</b></li>
+	<li><b>Perlin noise functions (unimplemented)</b></li>
+	<li><b>Bump mapping (unimplemented)</b></li>
+	<li><b>Real camera lens (unimplemented)</b></li>
+	<li><b>Accelerate ray intersections (unimplemented)</b></li>
+</ul>
+<hr>
+</body>
+</html>
