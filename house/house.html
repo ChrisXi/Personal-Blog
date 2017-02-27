@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<!-- https://www.google.com/maps/@37.4022452,-122.0833641,14z -->
+
+<html>
+<body>
+
+<style type="text/css">
+#map {
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:-1;
+}
+
+.shuttle {
+	position:absolute;
+	z-index:-1;
+	width:15px;
+}
+
+.house {
+	position:absolute;
+	cursor: pointer;
+	z-index:-1;
+	width:20px;
+	border-radius: 100%;
+}
+
+.house:hover {
+    box-shadow: 0 0 0 2px #4FB06E;
+}
+
+a .tooltip {
+    visibility: hidden;
+    width: 150px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    text-align: center;
+    border-radius: 3px;
+    padding: 2px 0;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 15px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+a:hover .tooltip {
+    visibility: visible;
+}
+
+</style>
+
+<div onmousemove="showCoords(event)" onmouseout="clearCoor()">
+	<img src="https://dl.dropboxusercontent.com/s/q8kfnyug69h51mh/map.png?dl=0" alt="Mountain View" id="map" style="width:1150px">
+
+	<img src="https://dl.dropboxusercontent.com/s/ec302c2lltrae4t/bus1.png?dl=0/" alt="" class="shuttle" style="left:480px;top:78px">
+	<img src="https://dl.dropboxusercontent.com/s/ec302c2lltrae4t/bus1.png?dl=0/" alt="" class="shuttle" style="left:405px;top:285px">
+	<img src="https://dl.dropboxusercontent.com/s/ec302c2lltrae4t/bus1.png?dl=0/" alt="" class="shuttle" style="left:470px;top:371px">
+	
+	<img src="https://dl.dropboxusercontent.com/s/epfut7gzxlhmy5q/bus2.png?dl=0/" alt="" class="shuttle" style="left:433px;top:165px">
+	<img src="https://dl.dropboxusercontent.com/s/epfut7gzxlhmy5q/bus2.png?dl=0/" alt="" class="shuttle" style="left:480px;top:198px">
+	<img src="https://dl.dropboxusercontent.com/s/epfut7gzxlhmy5q/bus2.png?dl=0/" alt="" class="shuttle" style="left:535px;top:201px">
+	<img src="https://dl.dropboxusercontent.com/s/epfut7gzxlhmy5q/bus2.png?dl=0/" alt="" class="shuttle" style="left:638px;top:254px">
+
+	<img src="https://dl.dropboxusercontent.com/s/cjumpit0hsbt2m4/bus3.png?dl=0" alt="" class="shuttle" style="left:693px;top:352px">
+	<img src="https://dl.dropboxusercontent.com/s/cjumpit0hsbt2m4/bus3.png?dl=0" alt="" class="shuttle" style="left:795px;top:377px">
+	<img src="https://dl.dropboxusercontent.com/s/cjumpit0hsbt2m4/bus3.png?dl=0" alt="" class="shuttle" style="left:804px;top:427px">
+
+	<img src="https://dl.dropboxusercontent.com/s/oce6udcb8i0v0up/bus4.png?d" alt="" class="shuttle" style="left:578px;top:525px">
+	<img src="https://dl.dropboxusercontent.com/s/oce6udcb8i0v0up/bus4.png?d" alt="" class="shuttle" style="left:476px;top:450px">
+	<img src="https://dl.dropboxusercontent.com/s/oce6udcb8i0v0up/bus4.png?d" alt="" class="shuttle" style="left:386px;top:401px">
+	<img src="https://dl.dropboxusercontent.com/s/oce6udcb8i0v0up/bus4.png?dl=0" alt="" class="shuttle" style="left:260px;top:335px">
+
+	<a href="http://www.carmelapartments.com/the-village/2-bedroom" target="_blank">
+		<img src="https://dl.dropboxusercontent.com/s/goqn156075a4fsm/house.png?dl=0" alt="" class="house" style="left:282px;top:318px">
+		<span class="tooltip" style="left:282px;top:338px">Carmel The Village<br>2B2B 2000$ (15 month 1800$) </span>
+	</a>
+
+	<a href="https://prometheusreg.com/san-francisco-properties/madrone" target="_blank">
+		<img src="https://dl.dropboxusercontent.com/s/goqn156075a4fsm/house.png?dl=0" alt="" class="house" style="left:450px;top:275px">
+		<span class="tooltip" style="left:450px;top:295px">Madrone Apartments<br>2B1B 3200$<br>2B2B 3900$</span>
+	</a>
+
+	<a href="https://sfbay.craigslist.org/pen/sub/6008826776.html" target="_blank">
+		<img src="https://dl.dropboxusercontent.com/s/goqn156075a4fsm/house.png?dl=0" alt="" class="house" style="left:490px;top:159px">
+		<span class="tooltip" style="left:490px;top:179px">Private House<br>2B2B 3600$ (include utility)</span>
+	</a>
+
+	<a href="https://prometheusreg.com/san-francisco-properties/park-place" target="_blank">
+		<img src="https://dl.dropboxusercontent.com/s/goqn156075a4fsm/house.png?dl=0" alt="" class="house" style="left:558px;top:497px">
+		<span class="tooltip" style="left:558px;top:517px">Park Place<br>2B2B 3200$/3500$</span>
+	</a>
+
+	<a href="http://www.udr.com/san-francisco-bay-area-apartments/mountain-view/birch-creek/floor-plans/#/?beds=2&date=available" target="_blank">
+		<img src="https://dl.dropboxusercontent.com/s/goqn156075a4fsm/house.png?dl=0" alt="" class="house" style="left:410px;top:384px">
+		<span class="tooltip" style="left:410px;top:404px">Birch Creek<br>2B2B 3500$</span>
+	</a>
+
+</div>
+
+<p id="demo"></p>
+
+
+<script>
+function showCoords(event) {
+    var x = event.clientX;
+    var y = event.clientY;
+    var coor = "X coords: " + x + ", Y coords: " + y;
+    document.getElementById("demo").innerHTML = coor;
+}
+
+function clearCoor() {
+    document.getElementById("demo").innerHTML = "";
+}
+</script>
+
+</body>
+</html>
